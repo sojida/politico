@@ -1,5 +1,4 @@
 # Politico
-A platform for citizens and politicians.
 
 
 ## Application Description
