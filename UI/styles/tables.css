@@ -1,0 +1,71 @@
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 10px auto;
+}
+
+th{
+    white-space: nowrap;
+    text-align: left;
+    padding: 5px;
+    background: #17252a;
+    color: #ffffff;
+}
+
+
+tr{
+    background-color: lightgrey;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 3px;
+    
+}
+
+tr:hover{
+    background-color: rgb(168, 167, 167);
+}
+
+td {
+    padding: 5px;
+}
+
+/* Acordion */
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.5s;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .acc-active, .accordion:hover {
+    background-color: rgb(38, 139, 134);
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    background-color: white;
+    display: none;
+    padding: 3px;
+  }
+
+
+  /* SECTIONS */
+
+@media(max-width:375px){
+    .party-table, .party-join-table, .candidate-join-table {
+        overflow: scroll;
+    }
+
+}
