@@ -147,6 +147,11 @@ nav{
     justify-content: space-evenly;
 }
 
+.nav-content-item{
+    display: flex;
+
+}
+
 .nav-item a{
     margin: 0 10px;
     padding: 10px;
