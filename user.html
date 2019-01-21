@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Politico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/tabs.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/tabs.js" ></script>
+</head>
+<body>
+    <div class="hdr-bkg">
+        <nav>
+            <div class="logo"><a href="./index.html">Politico</a></div>
+            <div class="nav-item signin"><a href="./index.html">Logout</a></div>
+        </nav>
+    </div>
+
+    <main class="main-container">
+        <div class="tab">
+            <button class="tablinks" name="vote-section" id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Vote</span></button>
+            <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Party</span></button>
+            <button class="tablinks" name="candidate-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Candidates</span></button>
+            <button class="tablinks" name="politician-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Politician</span></button>
+            <button class="tablinks" name="profile-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">My Profile</span></button>
+        </div>
+
+          <div id="vote-section" class="tabcontent">
+            <h3>Vote</h3>
+
+            <button class="accordion"><span class="acc-text">President</span> <span class="office-type">Federal</span> <span class="vote-status">Not voted</span></button>
+            <div class="president-table panel">
+                <table>
+                    <tr>
+                        <th>Candidate</th>
+                        <th>Party</th>
+                        <th></th>
+
+                    </tr>
+                    <tr>
+                        <td>Habubak Aratiku</td>
+                        <td>PPD</td>
+                        <td><i class="fas fa-thumbs-up"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Dinome Alaye</td>
+                        <td>ACP</td>
+                        <td><i class="fas fa-thumbs-up"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Okoro Charochas</td>
+                        <td>YPP</td>
+                        <td><i class="fas fa-thumbs-up"></i></td>
+                    </tr>
+                </table>
+            </div>
+
+            <button class="accordion"><span class="acc-text">Chairman</span> <span class="office-type">Local</span> <span class="vote-status">Voted</span></button>
+            <div class="president-table panel">
+                <table>
+                    <tr>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>You already voted for Habubak Aratiku</td>
+                        <td><i class="fas fa-handshake"></td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+            <button class="accordion"><span class="acc-text">Governor</span> <span class="office-type">State</span> <span class="vote-status">Voted</span></button>
+            <div class="president-table panel">
+                <table>
+                    <tr>
+                        <th>Status</th>
+                        <th></th>
+                        
+
+                    </tr>
+                    <tr>
+                        <td>You already voted for Denome Alaye</td>
+                        <td><i class="fas fa-handshake"></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            
+          </div>
+          
+          <div id="party-section" class="tabcontent">
+            <h3>Party</h3>
+            <button class="accordion">Political Parties</button>
+            <div class="party-table panel">
+                    <table>
+                        <tr>
+                            <th>Party</th>
+                            <th>Hq Address</th>
+                            <th>Logo</th>
+                        </tr>
+                        <tr>
+                            <td>PPD</td>
+                            <td>Lagos</td>
+                            <td><i class="fas fa-umbrella"></i></td>
+                        </tr>
+                        <tr>
+                            <td>ACP</td>
+                            <td>Abuja</td>
+                            <td><i class="fas fa-broom"></i></td>  
+                        </tr>
+                        <tr>
+                            <td>YPP</td>
+                            <td>Lagos</td>
+                            <td><i class="fas fa-helicopter"></i></td> 
+                        </tr>
+                    </table>
+                </div>
+              </div>
+          
+          <div id="candidate-section" class="tabcontent">
+            <h3>Candidates</h3>
+
+            <button class="accordion">President</button>
+            <div class="candidate-table-pr panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                        </tr>
+                        <tr>
+                            <td>Habubak Aratiku</td>
+                            <td>PPD</td>
+                        </tr>
+                        <tr>
+                            <td>Dinome Alaye</td>
+                            <td>ACP</td>
+                        </tr>
+                        <tr>
+                            <td>Okoro Charochas</td>
+                            <td>YPP</td>
+                        </tr>
+                    </table>
+            </div>
+
+            <button class="accordion">Governor</button>
+            <div class="candidate-table-gv panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                        </tr>
+                        <tr>
+                            <td>Habubak Aratiku</td>
+                            <td>PPD</td>
+                        </tr>
+                        <tr>
+                            <td>Dinome Alaye</td>
+                            <td>ACP</td>
+                        </tr>
+                        <tr>
+                            <td>Okoro Charochas</td>
+                            <td>YPP</td>
+                        </tr>
+                    </table>
+            </div>
+
+            <button class="accordion">Chairman</button>
+            <div class="candidate-table-ch panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                        </tr>
+                        <tr>
+                            <td>Habubak Aratiku</td>
+                            <td>PPD</td>
+                        </tr>
+                        <tr>
+                            <td>Dinome Alaye</td>
+                            <td>ACP</td>
+                        </tr>
+                        <tr>
+                            <td>Okoro Charochas</td>
+                            <td>YPP</td>
+                        </tr>
+                    </table>
+            </div>
+
+
+          </div>
+
+          <div id="politician-section" class="tabcontent">
+                <h3>Become a Politician</h3>
+    
+                <button class="accordion">Join A Party</button>
+                <div class="party-join-table panel">
+                        <table>
+                            <tr>
+                                <th>Party</th>
+                                <th>Hq Address</th>
+                                <th>Logo</th>
+                                <th>Members</th>
+                                <th>Join</th>
+                            </tr>
+                            <tr>
+                                <td>PPD</td>
+                                <td>Lagos</td>
+                                <td><i class="fas fa-umbrella"></i></td>
+                                <td>30</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>ACP</td>
+                                <td>Abuja</td>
+                                <td><i class="fas fa-broom"></i></td>
+                                <td>36</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>YPP</td>
+                                <td>Lagos</td>
+                                <td><i class="fas fa-helicopter"></i></td>
+                                <td>12</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                        </table>
+                </div>
+
+                <button class="accordion">Run For Office</button>
+                <div class="candidate-join-table panel">
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>  
+                                <th>Candidates</th>
+                                <th>Run</th>
+                            </tr>
+                            <tr>
+                                <td>President</td>
+                                <td>Federal</td>
+                                <td>30</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Chairman</td>
+                                <td>Local</td>
+                                <td>15</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Governor</td>
+                                <td>State</td>
+                                <td>22</td>
+                                <td><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                        </table>
+                </div>
+
+
+            </div>
+
+                    
+
+            </div>
+    </main>
+
+
+
+    <footer>
+        <p><a href="admin.html">iReporter</a>, Copyright &copy; 2018</p>
+    </footer>
+
+    <script src="./scripts/accordion.js" ></script>
+</body>
+</html>
