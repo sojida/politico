@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Politico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/tabs.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/tabs.js" ></script>
+</head>
+<body>
+    <div class="hdr-bkg">
+        <nav>
+            <div class="logo"><a href="./index.html">Politico</a></div>
+            <div class="nav-item signin"><a href="./index.html">Logout</a></div>
+        </nav>
+    </div>
+
+    <main class="main-container">
+        <div class="tab">
+            <button class="tablinks" name="dashboard-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
+            <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Parties</span></button>
+            <button class="tablinks" name="office-section" id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Offices</span></button>
+        </div>
+
+          <div id="dashboard-section" class="tabcontent">
+            <h3>Overview</h3>
+
+            <button class="accordion">Political Parties</button>
+            <div class="party-table panel">
+                <table>
+                    <tr>
+                        <th>Party</th>
+                        <th>Hq Address</th>
+                        <th>Logo</th>
+
+                    </tr>
+                    <tr>
+                        <td>PPD</td>
+                        <td>Lagos</td>
+                        <td><i class="fas fa-umbrella"></i></td>
+                    </tr>
+                    <tr>
+                        <td>ACP</td>
+                        <td>Abuja</td>
+                        <td><i class="fas fa-broom"></i></td>
+                    </tr>
+                    <tr>
+                        <td>YPP</td>
+                        <td>Lagos</td>
+                        <td><i class="fas fa-helicopter"></i></td>
+                    </tr>
+                </table>
+            </div>
+
+            <button class="accordion">Offices</button>
+            <div class="office-table panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>    
+                        </tr>
+                        <tr>
+                            <td>President</td>
+                            <td>Federal</td>
+                        </tr>
+                        <tr>
+                            <td>Chairman</td>
+                            <td>Local</td>
+                        </tr>
+                        <tr>
+                            <td>Governor</td>
+                            <td>State</td>
+                        </tr>
+                    </table>
+            </div>
+
+            <button class="accordion">Candidates</button>
+            <div class="candidate-table panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>Office</th>
+                        </tr>
+                        <tr>
+                            <td>Habubak Aratiku</td>
+                            <td>PPD</td>
+                            <td>President</td>
+                        </tr>
+                        <tr>
+                            <td>Dinome Alaye</td>
+                            <td>ACP</td>
+                            <td>Governor</td>
+                        </tr>
+                        <tr>
+                            <td>Okoro Charochas</td>
+                            <td>YPP</td>
+                            <td>Chairman</td>
+                        </tr>
+                    </table>
+            </div>
+
+          </div>
+          
+          <div id="party-section" class="tabcontent">
+            <h3>Party</h3>
+
+            <button class="accordion">Create New Party</button>
+            <div class="create-party panel">
+                    <form action="" enctype="multipart/form-data">
+                        <label for="party">Party Name:</label>
+                        <input type="text" name="party" placeholder="Party Name">
+
+                        <label for="hqAddress">HQ Address:</label>
+                        <input type="text" name="hqAddress" placeholder="Hq">
+
+                        <label for="partyLogo">Party Logo:</label>
+                        <input type="file" name="partyLogo">
+                        <input type="submit" value="Create Party" class="block">
+                    </form>
+            </div>
+
+            <button class="accordion">Political Parties</button>
+            <div class="party-table panel">
+                <table>
+                    <tr>
+                        <th>Party</th>
+                        <th>Hq Address</th>
+                        <th>Logo</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    <tr>
+                        <td>PPD</td>
+                        <td>Lagos</td>
+                        <td><i class="fas fa-umbrella"></i></td>
+                        <td><i class="fas fa-pen"></i></td>
+                        <td><i class="fas fa-trash"></i></td>
+                    </tr>
+                    <tr>
+                        <td>ACP</td>
+                        <td>Abuja</td>
+                        <td><i class="fas fa-broom"></i></td>
+                        <td><i class="fas fa-pen"></i></td>
+                        <td><i class="fas fa-trash"></i></td>
+                    </tr>
+                    <tr>
+                        <td>YPP</td>
+                        <td>Lagos</td>
+                        <td><i class="fas fa-helicopter"></i></td>
+                        <td><i class="fas fa-pen"></i></td>
+                        <td><i class="fas fa-trash"></i></td>
+                    </tr>
+                </table>
+            </div>
+
+
+          </div>
+
+          
+          
+          <div id="office-section" class="tabcontent">
+            <h3>Office</h3>
+            
+            <button class="accordion">Create New Office</button>
+            <div class="create-office panel">
+                    <form action="" enctype="multipart/form-data">
+                        <label for="party">Office Name:</label>
+                        <input type="text" name="officeName" placeholder="Office name">
+
+                        <label for="hqAddress">Government Type:</label>
+                        <select name="officeType" >
+                            <option value="federal">Federal</option>
+                            <option value="state">State</option>
+                            <option value="local">Local</option>
+                        </select>
+
+                        <input type="submit" value="Create Office" class="block">
+                    </form>
+            </div>
+
+            <button class="accordion">Offices</button>
+            <div class="office-table panel">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>    
+                        </tr>
+                        <tr>
+                            <td>President</td>
+                            <td>Federal</td>
+                        </tr>
+                        <tr>
+                            <td>Chairman</td>
+                            <td>Local</td>
+                        </tr>
+                        <tr>
+                            <td>Governor</td>
+                            <td>State</td>
+                        </tr>
+                    </table>
+            </div>
+
+          </div>
+    </main>
+
+
+    <div class="space2"></div>
+    <footer>
+        <p><a href="admin.html">iReporter</a>, Copyright &copy; 2018</p>
+    </footer>
+    <script src="./scripts/accordion.js" ></script>
+</body>
+</html>
