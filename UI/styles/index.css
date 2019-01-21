@@ -12,6 +12,7 @@
 body{
     background: var(--bkg);
     width: 100%;
+    font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -30,15 +31,20 @@ a{
     color: inherit;
 }
 
+p{
+    margin: 10px auto;
+}
+
 button{ 
     border: none;
-    height: 30px;
+    height: 50px;
     width: 150px;
     outline: none;
     background: var(--btn);
     color: #fff;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
 
@@ -170,8 +176,16 @@ nav{
     align-self: center;
 }
 
+.btn-signin{
+    height: 50px;
+}
+
 .btn-signin:hover{
     background: #1c363f;
+}
+
+.btn-signup{
+    height: 50px;
 }
 
 .hdr-vote, .hdr-join, .hdr-sub{
@@ -201,7 +215,7 @@ nav{
 .slogan{
     display: none;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-shadow: 0px 0px 8px #000000;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -293,8 +307,9 @@ nav{
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5);
     padding: 5px;
     text-align: center;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition: 0.5s;
 
 }
@@ -306,7 +321,7 @@ nav{
 }
 
 .how-box i {
-    font-size: 2rem;
+    font-size: 2.3rem;
     align-self: center;
     justify-self: center;
 }
@@ -364,6 +379,10 @@ nav{
 
 @media(max-width:480px){
 
+    body{
+        font-size: 1rem;
+    }
+
     .howToVote-container {
         height: 400px;
         padding: 30px;
@@ -402,8 +421,17 @@ nav{
         height: 100%;
     
     }
-}
 
+    .news-form form input{
+        height: 20px;
+        width: 150px;
+    }
+
+    .news-form button {
+        height: 30px;
+        width: 160px;
+    }
+}
 
 /* NEWSLETTER */
 .news-container{
@@ -419,7 +447,7 @@ nav{
     padding: 20px;
     display: grid;
     margin: 10px auto;
-    max-width: 1000px;
+    width: 40%;
 
 }
 
@@ -432,12 +460,15 @@ nav{
 
 .news-form input{
     height: 20px;
-    border: 1px solid lightgray;
     border-radius: 3px;
-    width: 60%;
+    width: 50%;
     padding: 5px;
     margin: 5px;
 
+}
+
+.news-form button{
+    height: 30px;
 }
 
 .hdr-bkg{
@@ -537,7 +568,7 @@ footer{
     text-align:center;
     border-top: 2px solid #17252a;
     width: 100%;
-    height: 20px;
+    height: 40px;
     background: var(--header);
     
   }
@@ -606,4 +637,26 @@ footer{
 
     
 
+}
+
+@media(max-width:480px){
+    .news-container{
+        height: 200px;
+    }
+
+    .news-form{
+        margin: auto;
+        padding: 20px;
+        width: 70%;
+    }
+
+    .news-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .news-form form button{
+        margin: 5px;
+    }
 }
