@@ -76,14 +76,12 @@ input[type="submit"] {
 }
 
 select{
-    border: none;
     height: 30px;
     width: 250px;
     outline: none;
     border-radius: 3px;
     cursor: pointer;
     margin-bottom: 10px;
-    background: #3aafa9;
 }
 
 .block{
@@ -131,6 +129,15 @@ header{
     background-repeat: no-repeat;
     background-position: center;
 
+}
+
+.hdr-bkg{
+    background: var(--btn);
+    border-bottom:1px solid #17252a;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 nav{
@@ -421,13 +428,6 @@ nav{
 
 }
 
-.news-form button{
-    height: 30px;
-}
-
-.hdr-bkg{
-    background: var(--btn);
-}
 
 /* FORMS CONTAINER */
 .forms-container{
@@ -501,6 +501,33 @@ nav{
     cursor: pointer;
 }
 
+/* PAGINATION */
+
+
+.center {
+    text-align: center;
+  }
+
+.pagination {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: var(--btn);
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+
 
 /* FOOTER */
 
@@ -520,8 +547,6 @@ footer{
     width: 100%;
     height: 40px;
     background: var(--btn);
-    color: #fff
-
     
   }
 
@@ -643,6 +668,7 @@ footer{
     .hdr-bkg nav{
         margin: 0 20px;
         justify-content: space-around;
+    }
       
     .news-container{
         height: 200px;
