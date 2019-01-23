@@ -21,6 +21,7 @@
     margin-top: 50px;
     justify-content: center;
     min-height: 100vh;
+    z-index: 5;
 
   }
   
@@ -69,30 +70,113 @@
   }
 
   .icon{
-      margin: 0 10px;
+      margin: 10px;
   }
 
   .text{
-      margin: 0 10px;
+      margin: 10px;
   }
+
+  /* PROFILE CAARD */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    transition: 0.3s;
+    width: 400px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--header);
+  }
+
+  .card h4{
+      font-size: 1.3rem;
+      margin: 5px;
+  }
+
+  .card-container{
+      background: var(--btn);
+      color: #fff;
+  }
+
+  .card p{
+    font-size: 1rem;
+    margin: 5px;
+}
+
+.card input[type="file"]{
+    display: none;
+}
+
+.card .custom-file-upload {
+    font-size: 1rem;
+    margin: 10px 30px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: var(--header);
+    transition: 0.5s;
+}
+
+.card .custom-file-upload:hover{
+    background: rgb(11, 128, 124);
+}
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+  }
+
+  .card .img-container{
+      display: grid;
+      object-fit: cover;
+      overflow: hidden;
+      width: 400px;
+      height: 200px;
+  }
+  
+  .card img {
+    border-radius: 50%;
+    width:auto;
+    height: 100%;
+    object-position: center;
+    justify-self: center;
+  }
+  
+
 
   @media(max-width: 780px){
-      .tab button{
-          font-size: 1.3rem
-      }
-  }
-
-
-
-
-  @media(max-width: 480px){
     .tab {
-        top: 40px;
         width: 10%;
         transition: 0.3s;
         overflow: hidden;
-        height: auto;
-        margin-top: 1px;
+      }
+
+      .tab:hover, .tab:focus {
+        width: 35%;
+      }
+
+      .tablinks{
+          display: flex;
+          justify-content: left;
+          align-content: center;
+      }
+
+      .icon{
+        margin: 15px;
+    }
+  
+    .text{
+        margin: 15px;
+    }
+
+
+  }
+
+
+  @media(max-width: 480px){
+    .tab{
+        width: 10%;
     }
 
     .tab button {
@@ -100,27 +184,46 @@
         font-size: 1rem;
     }
 
-
       .tab:hover, .tab:focus{
         width: 35%;
       }
 
 
-      .icon{
-        margin: 0 10px;
-    }
-
     .tabcontent{
         width: 90%;
-    }
-
-    .tabcontent{
         margin-left: 10%;
     }
   
+    .icon{
+        margin: 10px;
+    }
+  
     .text{
-        margin: 0 10px;
+        margin: 10px;
+    }
+
+
+    .card {
+        width: 200px
+    }
+
+    .card .img-container{
+        width: 200px;
+        height: 150px
     }
 
   }
 
+  @media(max-width:375px){
+
+    .tab:hover, .tab:focus{
+        width: 40%;
+      }
+    .icon{
+        margin: 5px;
+    }
+  
+    .text{
+        margin: 5px;
+    }
+  }
