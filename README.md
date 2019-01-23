@@ -1,5 +1,10 @@
 # Politico
 
+[![Build Status](https://travis-ci.org/sojida/politico.svg?branch=develop)](https://travis-ci.org/sojida/politico)
+[![Coverage Status](https://coveralls.io/repos/github/sojida/politico/badge.svg)](https://coveralls.io/github/sojida/politico)
+[![Maintainability](https://api.codeclimate.com/v1/badges/61f8b16123a419d7b7b3/maintainability)](https://codeclimate.com/github/sojida/politico/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/61f8b16123a419d7b7b3/test_coverage)](https://codeclimate.com/github/sojida/politico/test_coverage)
+
 
 ## Application Description
 The general elections are around corner, hence it’s a political season. Get into the mood of the

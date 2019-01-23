@@ -1,0 +1,50 @@
+{
+  "name": "politico",
+  "version": "1.0.0",
+  "description": "A platform for citizens and politicians",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./server/index.js",
+    "dev": "nodemon --exec babel-node ./server/index.js",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha --require @babel/register ./test/*.test.js --timeout 10000 --exit",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sojida/politico.git"
+  },
+  "author": "Adesoji Daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sojida/politico/issues"
+  },
+  "homepage": "https://github.com/sojida/politico#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "nodemon": "^1.18.9"
+  },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  }
+}
