@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tabs.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/votemodal.css" />
     <script src="./scripts/index.js"></script>
     <script src="./scripts/tabs.js" ></script>
 </head>
@@ -38,23 +39,23 @@
                     <tr>
                         <th>Candidate</th>
                         <th>Party</th>
-                        <th></th>
+                        <th>Vote</th>
 
                     </tr>
                     <tr>
                         <td>Habubak Aratiku</td>
                         <td>PPD</td>
-                        <td><i class="fas fa-thumbs-up"></i></td>
+                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
                     </tr>
                     <tr>
                         <td>Dinome Alaye</td>
                         <td>ACP</td>
-                        <td><i class="fas fa-thumbs-up"></i></td>
+                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
                     </tr>
                     <tr>
                         <td>Okoro Charochas</td>
                         <td>YPP</td>
-                        <td><i class="fas fa-thumbs-up"></i></td>
+                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
                     </tr>
                 </table>
             </div>
@@ -317,6 +318,26 @@
             </div>
     </main>
 
+    
+<div id="vote-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Vote</h2>
+      </div>
+      <div class="modal-body">
+        <h4>Are you sure you want to vote for</h4>
+        <h2>Dinome Alaye - PPD?</h2>
+        <button class="go">Yes</button>
+        <button class="yes exit">No</button>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+</div>
+
 
 
     <footer>
@@ -324,5 +345,6 @@
     </footer>
 
     <script src="./scripts/accordion.js" ></script>
+    <script src="./scripts/vote.js" ></script>
 </body>
 </html>

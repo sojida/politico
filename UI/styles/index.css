@@ -100,7 +100,9 @@ input[type="file"]{
 .go{
     background: green;
     color: white;
-    text-shadow: 0px 0px 8px #000000;
+    transition: 0.3s;
+    font-size: 1rem;
+    font-weight: 900;
 }
 
 .go:hover{
