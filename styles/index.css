@@ -402,6 +402,10 @@ nav{
         height: 100%;
     
     }
+
+    button{
+        width: 100px;
+    }
 }
 
 
