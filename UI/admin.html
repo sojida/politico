@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tabs.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
-    <script src="./scripts/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/modal.css" />
     <script src="./scripts/tabs.js" ></script>
 </head>
 <body>
@@ -159,21 +159,21 @@
                         <td>PPD</td>
                         <td>Lagos</td>
                         <td><i class="fas fa-umbrella"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td><i class="fas fa-trash"></i></td>
                     </tr>
                     <tr>
                         <td>ACP</td>
                         <td>Abuja</td>
                         <td><i class="fas fa-broom"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td><i class="fas fa-trash"></i></td>
                     </tr>
                     <tr>
                         <td>YPP</td>
                         <td>Lagos</td>
                         <td><i class="fas fa-helicopter"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td><i class="fas fa-trash"></i></td>
                     </tr>
                 </table>
@@ -233,11 +233,46 @@
           </div>
     </main>
 
+    <div id="edit-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Edit Party</h2>
+          </div>
+          <div class="modal-body">
+            <form action="" enctype="multipart/form-data">
+                <p>
+                <label for="party">Party Name:</label>
+                <input type="text" name="party" placeholder="Party Name">
+                </p>
+
+                <p>
+                <label for="hqAddress">HQ Address:</label>
+                <input type="text" name="hqAddress" placeholder="Hq Address">
+                </p>
+
+                <p>
+                <label for="partyLogo">Party Logo:</label>
+                <input type="file" name="partyLogo">
+                </p>
+
+                <input type="submit" value="Edit Party" class="go block">
+            </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      
+      </div>
+
 
     <div class="space2"></div>
     <footer>
         <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2018</a></p>
     </footer>
     <script src="./scripts/accordion.js" ></script>
+    <script src="./scripts/modal.js" ></script>
 </body>
 </html>
