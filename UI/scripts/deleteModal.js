@@ -1,6 +1,6 @@
 const delModal = document.getElementById("delete-modal");
 const delPartyBtn = document.querySelectorAll(".delete-party");
-const span = document.getElementsByClassName("close")[0];
+const delClose = document.getElementsByClassName("del-close")[0];
 const no = document.querySelector('.no')
 
 
@@ -10,7 +10,7 @@ delPartyBtn.forEach((btn) => {
     })
 })
  
-span.onclick = function() {
+delClose.onclick = function() {
   delModal.style.display = "none";
 }
 
@@ -18,8 +18,8 @@ no.onclick = function() {
     delModal.style.display = "none";
   }
 
-window.onclick = function(event) {
-  if (event.target == delModal) {
-    delModal.style.display = "none";
-  }
-}
+  window.addEventListener('click', (event) => {
+    if (event.target == delModal) {
+      delModal.style.display = "none";
+    }
+});
