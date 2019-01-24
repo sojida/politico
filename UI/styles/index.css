@@ -690,4 +690,8 @@ footer{
         margin: 5px;
 
     }
+  
+  button{
+        width: 100px;
+    }
 }
