@@ -101,9 +101,6 @@
   background-color: #e91313;
 }
 
-
-
-
 .delete-party i{
   font-size: 1rem;
   transition: 0.3s;
@@ -118,15 +115,95 @@
   margin: 10px auto;
 }
 
-@media(max-width: 480px){
+/* MODAL FORM */
 
+#edit-modal .modal-content{
+  width: 40%;
+}
+
+.edit-party i{
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.edit-party i:hover{
+  font-size: 1.2rem;
+}
+
+#edit-modal .modal-body form{
+  display: grid;
+  justify-content: center;
+}
+
+#edit-modal form p {
+  display: flex;
+}
+
+#edit-modal form label{
+  text-align: right;
+  width: 140px;
+  margin-right: 10px
+}
+
+#edit-modal form input[type="file"]{
+  margin: 0;
+}
+
+#edit-modal form input[type="submit"]{
+  margin: 10px;
+  margin-left: 150px;
+  background: green;
+  color: white;
+  font-size: 1rem;
+}
+
+#edit-modal form input[type="submit"]:hover{
+  background: rgb(0, 190, 0);
+}
+
+@media(max-width: 780px){
+  #edit-modal .modal-content{
+    width: 60%;
+  }
+
+  #edit-modal .modal-body form{
+    display: grid;
+  }
+}
+
+@media(max-width: 480px){
+  #edit-modal .modal-content{
+    width: 80%;
+  }
+
+  #edit-modal form p {
+    display: flex;
+    flex-direction: column;
+    justify-self: left;
+  }
+
+  #edit-modal form label{
+    text-align: left;
+    margin-bottom:5px;
+  }
+
+  #edit-modal form input[type="submit"]{
+    margin: 10px auto;
   
-#delete-modal h2{
+  }
+  
+  #delete-modal h2{
   font-size: 1rem;
 }
   
   #delete-modal h4{
     font-size: 1rem;
     margin: 5px ;
+  }
+}
+
+@media(max-width: 320px){
+  #edit-modal .modal-content{
+    width: 90%;
   }
 }

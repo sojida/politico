@@ -12,6 +12,7 @@
 body{
     background: var(--bkg);
     width: 100%;
+    font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -30,15 +31,20 @@ a{
     color: inherit;
 }
 
+p{
+    margin: 10px auto;
+}
+
 button{ 
     border: none;
-    height: 30px;
+    height: 50px;
     width: 150px;
     outline: none;
     background: var(--btn);
     color: #fff;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
 
@@ -70,14 +76,12 @@ input[type="submit"] {
 }
 
 select{
-    border: none;
     height: 30px;
     width: 250px;
     outline: none;
     border-radius: 3px;
     cursor: pointer;
     margin-bottom: 10px;
-    background: #3aafa9;
 }
 
 .block{
@@ -127,12 +131,27 @@ header{
 
 }
 
+.hdr-bkg{
+    background: var(--btn);
+    border-bottom:1px solid #17252a;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
 nav{
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    text-shadow: 2px 2px 4px #000000;
+    font-weight: bold
     
+}
+
+.hdr-bkg nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px;
 }
 
 .logo{
@@ -140,6 +159,7 @@ nav{
     color: var(--btn);
     letter-spacing: 3px;
     text-shadow: none;
+    color: #fff;
 }
 
 .nav-content{
@@ -156,10 +176,12 @@ nav{
     margin: 0 10px;
     padding: 5px;
     color: #fff;
+    
 }
 
 .nav-item a:hover{
-    background: var(--btn);
+    background: #fff;
+    color: var(--btn);
 }
 
 
@@ -170,8 +192,16 @@ nav{
     align-self: center;
 }
 
+.btn-signin{
+    height: 50px;
+}
+
 .btn-signin:hover{
     background: #1c363f;
+}
+
+.btn-signup{
+    height: 50px;
 }
 
 .hdr-vote, .hdr-join, .hdr-sub{
@@ -201,7 +231,7 @@ nav{
 .slogan{
     display: none;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-shadow: 0px 0px 8px #000000;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -293,8 +323,9 @@ nav{
     box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5);
     padding: 5px;
     text-align: center;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition: 0.5s;
 
 }
@@ -306,7 +337,7 @@ nav{
 }
 
 .how-box i {
-    font-size: 2rem;
+    font-size: 2.3rem;
     align-self: center;
     justify-self: center;
 }
@@ -362,52 +393,6 @@ nav{
     text-align: center;
 }
 
-@media(max-width:480px){
-
-    .howToVote-container {
-        height: 400px;
-        padding: 30px;
-        
-    }
-
-    .candidate-container{
-        height: 400px;
-    }
-
-    .howToVote{
-        grid-template-rows: auto auto;
-        height: 300px
-        
-    }
-
-    .step1{
-        grid-column: 2 / 6; 
-        height: 100%;
-    }
-
-    .step2{
-        grid-column: 5 / 11;
-        height: 90%;
-    }
-
-    .step3 {
-        grid-column: 1 / 5;
-        grid-row: 2;
-
-    }
-    
-    .step4 {
-        grid-column: 5 / 10;
-        grid-row: 2;
-        height: 100%;
-    
-    }
-
-    button{
-        width: 100px;
-    }
-}
-
 
 /* NEWSLETTER */
 .news-container{
@@ -423,7 +408,7 @@ nav{
     padding: 20px;
     display: grid;
     margin: 10px auto;
-    max-width: 1000px;
+    width: 40%;
 
 }
 
@@ -436,26 +421,20 @@ nav{
 
 .news-form input{
     height: 20px;
-    border: 1px solid lightgray;
     border-radius: 3px;
-    width: 60%;
+    width: 50%;
     padding: 5px;
     margin: 5px;
 
 }
 
-.hdr-bkg{
-    background: var(--header);
-    border-bottom:1px solid #17252a;
-}
 
 /* FORMS CONTAINER */
 .forms-container{
     display: grid;
     grid-template-columns:  1fr 1fr 50px  1fr 1fr;
-    grid-template-rows: 50px 30px 20px auto auto 50px;
+    grid-template-rows: 110px 30px 20px auto auto 50px;
     width: 100vw;
-    height: 500px;
 }
 
 .img-container{
@@ -477,8 +456,8 @@ nav{
     grid-row: 3 / 5;
     background: var(--header);
     justify-self: center;
-    padding: 30px;
-    max-width: 400px;
+    padding: 80px 60px;
+    max-width: 500px;
     border-radius: 5px;
 }
 
@@ -507,7 +486,7 @@ nav{
 }
 
 .form-box p{
-    font-size: 12px;
+    font-size: 0.8rem;
     text-align: center;
     margin: 5px;
 }
@@ -521,6 +500,33 @@ nav{
     color: var(--btn);
     cursor: pointer;
 }
+
+/* PAGINATION */
+
+
+.center {
+    text-align: center;
+  }
+
+.pagination {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: var(--btn);
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
 
 
 /* FOOTER */
@@ -536,20 +542,21 @@ footer{
     position:  fixed;
     z-index: 10;
     bottom: 0;
-    color: #fff;
     padding: 1px;
     text-align:center;
-    border-top: 2px solid #17252a;
     width: 100%;
-    height: 20px;
-    background: var(--header);
+    height: 40px;
+    background: var(--btn);
     
+  }
+
+  footer p{
+      margin: 10px 0;
   }
   
   footer a {
     text-decoration: none;
-    color: #fff;
-  
+    
   }
 
 
@@ -610,4 +617,81 @@ footer{
 
     
 
+}
+
+@media(max-width:480px){
+
+
+    .howToVote-container {
+        height: 400px;
+        padding: 30px;
+        
+    }
+
+    .candidate-container{
+        height: 400px;
+    }
+
+    .howToVote{
+        grid-template-rows: auto auto;
+        height: 300px
+        
+    }
+
+    .step1{
+        grid-column: 2 / 6; 
+        height: 100%;
+    }
+
+    .step2{
+        grid-column: 5 / 11;
+        height: 90%;
+    }
+
+    .step3 {
+        grid-column: 1 / 5;
+        grid-row: 2;
+
+    }
+    
+    .step4 {
+        grid-column: 5 / 10;
+        grid-row: 2;
+        height: 100%;
+    
+    }
+
+    .form-box p{
+        font-size: 0.7rem;
+    }
+
+    .hdr-bkg nav{
+        margin: 0 20px;
+        justify-content: space-around;
+    }
+      
+    .news-container{
+        height: 200px;
+    }
+
+    .news-form{
+        margin: auto;
+        padding: 20px;
+        width: 70%;
+    }
+
+    .news-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .news-form form button{
+        margin: 5px;
+
+    }
+  
+  button{
+        width: 100px;
+    }
 }
