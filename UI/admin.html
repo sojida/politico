@@ -22,9 +22,9 @@
 
     <main class="main-container">
         <div class="tab">
-            <button class="tablinks" name="dashboard-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
+            <button class="tablinks" name="dashboard-section"  id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
             <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Parties</span></button>
-            <button class="tablinks" name="office-section" id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Offices</span></button>
+            <button class="tablinks" name="office-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Offices</span></button>
         </div>
 
           <div id="dashboard-section" class="tabcontent">
@@ -105,6 +105,18 @@
                     </table>
             </div>
 
+            <div class="center">
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#"  class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
           </div>
           
           <div id="party-section" class="tabcontent">
@@ -113,14 +125,21 @@
             <button class="accordion">Create New Party</button>
             <div class="create-party panel">
                     <form action="" enctype="multipart/form-data">
+                        <p>
                         <label for="party">Party Name:</label>
                         <input type="text" name="party" placeholder="Party Name">
+                        </p>
 
+                        <p>
                         <label for="hqAddress">HQ Address:</label>
-                        <input type="text" name="hqAddress" placeholder="Hq">
+                        <input type="text" name="hqAddress" placeholder="Hq Address">
+                        </p> 
 
+                        <p>
                         <label for="partyLogo">Party Logo:</label>
                         <input type="file" name="partyLogo">
+                        </p>
+
                         <input type="submit" value="Create Party" class="block">
                     </form>
             </div>
@@ -140,22 +159,24 @@
                         <td>PPD</td>
                         <td>Lagos</td>
                         <td><i class="fas fa-umbrella"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td class="delete-party"><i class="fas fa-trash"></i></td>
                     </tr>
                     <tr>
                         <td>ACP</td>
                         <td>Abuja</td>
                         <td><i class="fas fa-broom"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td class="delete-party"><i class="fas fa-trash"></i></td>
+
                     </tr>
                     <tr>
                         <td>YPP</td>
                         <td>Lagos</td>
                         <td><i class="fas fa-helicopter"></i></td>
-                        <td><i class="fas fa-pen"></i></td>
+                        <td class="edit-party"><i class="fas fa-pen"></i></td>
                         <td class="delete-party"><i class="fas fa-trash"></i></td>
+
                     </tr>
                 </table>
             </div>
@@ -171,15 +192,19 @@
             <button class="accordion">Create New Office</button>
             <div class="create-office panel">
                     <form action="" enctype="multipart/form-data">
+                        <p>
                         <label for="party">Office Name:</label>
                         <input type="text" name="officeName" placeholder="Office name">
+                        </p>
 
+                        <p>
                         <label for="hqAddress">Government Type:</label>
-                        <select name="officeType" >
+                        <select name="officeType">
                             <option value="federal">Federal</option>
                             <option value="state">State</option>
                             <option value="local">Local</option>
                         </select>
+                        </p>
 
                         <input type="submit" value="Create Office" class="block">
                     </form>
@@ -210,6 +235,7 @@
           </div>
     </main>
 
+
     <div id="delete-modal" class="modal">
 
         <div class="modal-content">
@@ -221,12 +247,45 @@
            <h4>Are you sure you want to delete this party</h4>
            <button class="yes">Yes</button>
            <button class="no">No</button>
+            </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+  </div>
+
+    <div id="edit-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Edit Party</h2>
+          </div>
+          <div class="modal-body">
+            <form action="" enctype="multipart/form-data">
+                <p>
+                <label for="party">Party Name:</label>
+                <input type="text" name="party" placeholder="Party Name">
+                </p>
+
+                <p>
+                <label for="hqAddress">HQ Address:</label>
+                <input type="text" name="hqAddress" placeholder="Hq Address">
+                </p>
+
+                <p>
+                <label for="partyLogo">Party Logo:</label>
+                <input type="file" name="partyLogo">
+                </p>
+
+                <input type="submit" value="Edit Party" class="go block">
+            </form>
+
           </div>
           <div class="modal-footer">
           </div>
         </div>
-
-    </div>
+      </div>
 
 
 
@@ -234,8 +293,10 @@
     <footer>
         <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2018</a></p>
     </footer>
+  
     <script src="./scripts/accordion.js" ></script>
     <script src="./scripts/deleteModal.js" ></script>
+    <script src="./scripts/modal.js" ></script>
 
 </body>
 </html>
