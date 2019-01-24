@@ -104,6 +104,17 @@ td {
   /* SECTIONS */
 
 @media(max-width:480px){
+    .accordion{
+        font-size: 1rem
+    }
+
+    th{
+        font-size: 0.9rem;
+    }
+
+    td{
+        font-size:0.7rem
+    }
     .panel form label{
         display: inline-block;
     }
@@ -115,11 +126,9 @@ td {
     .panel form input[type="submit"]{
         margin-left: 110px;
     }
-}
 
-@media(max-width:375px){
     .party-table, .party-join-table, .candidate-join-table, .create-party {
         overflow: scroll;
     }
-
 }
+

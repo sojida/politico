@@ -23,11 +23,11 @@
 
     <main class="main-container">
         <div class="tab">
-            <button class="tablinks" name="vote-section" id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Vote</span></button>
-            <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Party</span></button>
-            <button class="tablinks" name="candidate-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Candidates</span></button>
-            <button class="tablinks" name="politician-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Politician</span></button>
-            <button class="tablinks" name="profile-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">My Profile</span></button>
+            <button class="tablinks" name="vote-section" id="defaultOpen"><span class="icon"><i class="fas fa-vote-yea"></i></span><span class="text">Vote</span></button>
+            <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
+            <button class="tablinks" name="candidate-section"><span class="icon"><i class="fas fa-users"></i></span><span class="text">Candidates</span></button>
+            <button class="tablinks" name="politician-section"><span class="icon"><i class="fas fa-hands-helping"></i></span><span class="text">Politician</span></button>
+            <button class="tablinks" name="profile-section"><span class="icon"><i class="fas fa-user"></i></span><span class="text">My Profile</span></button>
         </div>
 
           <div id="vote-section" class="tabcontent">
@@ -291,6 +291,27 @@
             </div>
 
             <div id="profile-section" class="tabcontent">
+
+                
+                <div class="card">
+                    <div class="img-container">    
+                    <img src="images/avatar.png" alt="Avatar">
+                    </div>
+                        <div class="card-container">
+                            <h4><b>Ahmed Musa</b></h4> 
+                            <p>08044444444</p> 
+                            <p>musa@gmail.com</p> 
+                            <form action="">
+                            <p>Change Proile Picture:</p>
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload"></i>Upload
+                            </label>
+                            <input type="file" id="file-upload" name="profilePic">
+                            </form>
+                    </div>
+                    </div>
+
+
                 <h3>Your Votes</h3>
 
                     <button class="accordion"><span class="acc-text">Chairman</span> <span class="office-type">Local</span> <span class="vote-status">Voted</span></button>
