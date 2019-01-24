@@ -137,8 +137,14 @@ nav{
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    text-shadow: 2px 2px 4px #000000;
+    font-weight: bold
     
+}
+
+.hdr-bkg nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px;
 }
 
 .logo{
@@ -146,6 +152,7 @@ nav{
     color: var(--btn);
     letter-spacing: 3px;
     text-shadow: none;
+    color: #fff;
 }
 
 .nav-content{
@@ -162,10 +169,12 @@ nav{
     margin: 0 10px;
     padding: 5px;
     color: #fff;
+    
 }
 
 .nav-item a:hover{
-    background: var(--btn);
+    background: #fff;
+    color: var(--btn);
 }
 
 
@@ -377,61 +386,6 @@ nav{
     text-align: center;
 }
 
-@media(max-width:480px){
-
-    body{
-        font-size: 1rem;
-    }
-
-    .howToVote-container {
-        height: 400px;
-        padding: 30px;
-        
-    }
-
-    .candidate-container{
-        height: 400px;
-    }
-
-    .howToVote{
-        grid-template-rows: auto auto;
-        height: 300px
-        
-    }
-
-    .step1{
-        grid-column: 2 / 6; 
-        height: 100%;
-    }
-
-    .step2{
-        grid-column: 5 / 11;
-        height: 90%;
-    }
-
-    .step3 {
-        grid-column: 1 / 5;
-        grid-row: 2;
-
-    }
-    
-    .step4 {
-        grid-column: 5 / 10;
-        grid-row: 2;
-        height: 100%;
-    
-    }
-
-    .news-form form input{
-        height: 20px;
-        width: 150px;
-    }
-
-    .news-form button {
-        height: 30px;
-        width: 160px;
-    }
-}
 
 /* NEWSLETTER */
 .news-container{
@@ -472,17 +426,15 @@ nav{
 }
 
 .hdr-bkg{
-    background: var(--header);
-    border-bottom:1px solid #17252a;
+    background: var(--btn);
 }
 
 /* FORMS CONTAINER */
 .forms-container{
     display: grid;
     grid-template-columns:  1fr 1fr 50px  1fr 1fr;
-    grid-template-rows: 50px 30px 20px auto auto 50px;
+    grid-template-rows: 110px 30px 20px auto auto 50px;
     width: 100vw;
-    height: 500px;
 }
 
 .img-container{
@@ -504,8 +456,8 @@ nav{
     grid-row: 3 / 5;
     background: var(--header);
     justify-self: center;
-    padding: 30px;
-    max-width: 400px;
+    padding: 80px 60px;
+    max-width: 500px;
     border-radius: 5px;
 }
 
@@ -534,7 +486,7 @@ nav{
 }
 
 .form-box p{
-    font-size: 12px;
+    font-size: 0.8rem;
     text-align: center;
     margin: 5px;
 }
@@ -563,20 +515,23 @@ footer{
     position:  fixed;
     z-index: 10;
     bottom: 0;
-    color: #fff;
     padding: 1px;
     text-align:center;
-    border-top: 2px solid #17252a;
     width: 100%;
     height: 40px;
-    background: var(--header);
+    background: var(--btn);
+    color: #fff
+
     
+  }
+
+  footer p{
+      margin: 10px 0;
   }
   
   footer a {
     text-decoration: none;
-    color: #fff;
-  
+    
   }
 
 
@@ -640,6 +595,55 @@ footer{
 }
 
 @media(max-width:480px){
+
+
+    .howToVote-container {
+        height: 400px;
+        padding: 30px;
+        
+    }
+
+    .candidate-container{
+        height: 400px;
+    }
+
+    .howToVote{
+        grid-template-rows: auto auto;
+        height: 300px
+        
+    }
+
+    .step1{
+        grid-column: 2 / 6; 
+        height: 100%;
+    }
+
+    .step2{
+        grid-column: 5 / 11;
+        height: 90%;
+    }
+
+    .step3 {
+        grid-column: 1 / 5;
+        grid-row: 2;
+
+    }
+    
+    .step4 {
+        grid-column: 5 / 10;
+        grid-row: 2;
+        height: 100%;
+    
+    }
+
+    .form-box p{
+        font-size: 0.7rem;
+    }
+
+    .hdr-bkg nav{
+        margin: 0 20px;
+        justify-content: space-around;
+      
     .news-container{
         height: 200px;
     }
@@ -658,5 +662,6 @@ footer{
 
     .news-form form button{
         margin: 5px;
+
     }
 }
