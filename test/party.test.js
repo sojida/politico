@@ -223,6 +223,38 @@ describe('Create political party', () => {
       });
   });
 
+  it('should not respond with the created party: name is number', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties')
+      .send({
+        name: '1',
+        hqAddress: 'Lagos',
+        logoUrl: 'logourl.jpg',
+      })
+      .end((err, res) => {
+        const { status, error } = res.body;
+        expect(status).to.equal(400);
+        expect(error[0].name).to.equal('name should not be only numbers');
+        done();
+      });
+  });
+
+  it('should not respond with the created party: hqAddress is number', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties')
+      .send({
+        name: 'PCPEP',
+        hqAddress: '1',
+        logoUrl: 'logourl.jpg',
+      })
+      .end((err, res) => {
+        const { status, error } = res.body;
+        expect(status).to.equal(400);
+        expect(error[0].hqAddress).to.equal('hqAddress should not be only numbers');
+        done();
+      });
+  });
+
   it('should not respond with the created party: no logo', (done) => {
     chai.request(app)
       .post('/api/v1/parties')

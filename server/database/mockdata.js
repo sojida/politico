@@ -38,12 +38,12 @@ const offices = [
     name: 'President',
   },
   {
-    id: 1,
+    id: 2,
     type: 'State',
     name: 'Governor',
   },
   {
-    id: 1,
+    id: 3,
     type: 'Local',
     name: 'Chairman',
   },

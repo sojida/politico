@@ -1,12 +1,22 @@
 import express from 'express';
-import middleware from '../middleware/office.middleware';
-import controllers from '../controllers/office.controllers';
+import officeMiddleware from '../middleware/office.middleware';
+import officeControllers from '../controllers/office.controllers';
+import officeValidation from '../middleware/office.validation';
 
 const router = express.Router();
 
 // offices
 router.get('/offices',
-  middleware.getAllOffices,
-  controllers.getAllOffices);
+  officeMiddleware.getAllOffices,
+  officeControllers.getAllOffices);
+
+router.get('/offices/:id',
+  officeMiddleware.getOfficesById,
+  officeControllers.getOfficeById);
+
+router.post('/offices',
+  officeValidation,
+  officeMiddleware.createOffice,
+  officeControllers.creatOffice);
 
 export default router;
