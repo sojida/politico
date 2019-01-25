@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import express from 'express';
-import routes from './routes/routes';
+import officeRoutes from './routes/office.routes';
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to the politico API');
 });
 
-app.use('/api/v1', routes);
+app.use('/api/v1', officeRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
