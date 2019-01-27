@@ -10,13 +10,11 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - "psql -c 'create database myapp_test;' -U postgres"
-  - npm run buildTables
 
 script:
   npm test
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-  - npm run dropAllTables
 
 after_success: npm run coveralls

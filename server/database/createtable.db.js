@@ -15,4 +15,4 @@ async function createAllTables() {
 }
 
 
-export default createAllTables;
+export default { createAllTables };

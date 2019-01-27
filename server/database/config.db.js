@@ -14,11 +14,6 @@ pool.on('connect', () => {
 });
 
 
-pool.on('remove', () => {
-  // eslint-disable-next-line no-console
-  console.log('removed from db');
-});
-
 const query = (text, params, callback) => pool.query(text, params, callback);
 
 export default query;
