@@ -17,3 +17,5 @@ async function dropAllTables() {
 dropAllTables()
   .then(() => console.log('tables dropped'))
   .catch(err => console.log(err));
+
+export default { dropAllTables };

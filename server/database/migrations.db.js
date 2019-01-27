@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import bcryptjs from 'bcryptjs';
 import partyDb from './party.db';
 import officeDb from './office.db';
 import userDb from './user.db';
@@ -7,6 +8,8 @@ import voteDb from './vote.db';
 import db from './config.db';
 import creatTable from './createtable.db';
 
+const password = bcryptjs.hashSync('12345678', 10);
+
 async function migrateData() {
   await db(partyDb.createParty('PCP', 'Lagos', 'logo123'));
   await db(partyDb.createParty('PCPC', 'Ibadan', 'logo123'));
@@ -14,11 +17,11 @@ async function migrateData() {
   await db(officeDb.createOffice('President', 'Federal'));
   await db(officeDb.createOffice('Senate', 'Federal'));
   await db(officeDb.createOffice('Chairman', 'Local'));
-  await db(userDb.createUser('Chukes', 'Obi', 'Pete', 'logourl', '09011111111', 'obi@gmail.com', 'NOW', '12345678', 'true'));
-  await db(userDb.createUser('Pete', 'Obi', 'Pete', 'logourl', '09011111112', 'pete@gmail.com', 'NOW', '12345678', 'false'));
-  await db(userDb.createUser('Ade', 'Dan', 'Pete', 'logourl', '09011111113', 'dan@gmail.com', 'NOW', '12345678', 'false'));
-  await db(userDb.createUser('Soji', 'Dan', 'Pete', 'logourl', '09011111114', 'soji@gmail.com', 'NOW', '12345678', 'false'));
-  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111115', 'fred@gmail.com', 'NOW', '12345678', 'false'));
+  await db(userDb.createUser('Chukes', 'Obi', 'Pete', 'logourl', '09011111111', 'obi@gmail.com', 'NOW', password, 'true'));
+  await db(userDb.createUser('Pete', 'Obi', 'Pete', 'logourl', '09011111112', 'pete@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Ade', 'Dan', 'Pete', 'logourl', '09011111113', 'dan@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Soji', 'Dan', 'Pete', 'logourl', '09011111114', 'soji@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111115', 'fred@gmail.com', 'NOW', password, 'false'));
   await db(candidatesDb.createCandidte(1, 1, 2));
   await db(candidatesDb.createCandidte(2, 2, 3));
   await db(voteDb.createVote('NOW', 1, 1, 1));
@@ -28,8 +31,10 @@ async function migrateData() {
   await db(voteDb.createVote('NOW', 5, 1, 1));
 }
 
-creatTable()
+creatTable.createAllTables()
   .then(() => console.log('creating tables'))
   .then(() => migrateData())
   .then(() => console.log('migrating data'))
   .catch(err => console.log(err));
+
+export default { creatTable, migrateData };
