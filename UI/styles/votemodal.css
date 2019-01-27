@@ -18,7 +18,7 @@
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    max-width: 50%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -103,4 +103,35 @@
   
   .vote i:hover{
     font-size: 1.2rem;
+  }
+
+
+  @media(max-width: 480px){
+    .modal{
+      padding-top: 50%;
+      padding-left: 10%; 
+    }
+
+    .close {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+
+    #vote-modal .modal-content{
+      width: 90%;
+    }
+
+    #vote-modal button{
+      width: 30%;
+      height: 25%;
+    }
+
+    #vote-modal h4{
+      font-size: 14px;
+    }
+
+    #vote-modal h2{
+      font-size: 18px;
+    }
   }
