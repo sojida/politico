@@ -4,7 +4,7 @@ const createCandidatesTable = () => {
               id SERIAL PRIMARY KEY,
               office INTEGER NOT NULL,
               party INTEGER NOT NULL,
-              candidate INTEGER NOT NULL,   
+              candidate INTEGER UNIQUE NOT NULL,   
               FOREIGN KEY (office) REFERENCES office (id) ON DELETE CASCADE,   
               FOREIGN KEY (party) REFERENCES party (id) ON DELETE CASCADE,   
               FOREIGN KEY (candidate) REFERENCES users (id) ON DELETE CASCADE

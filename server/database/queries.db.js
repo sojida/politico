@@ -24,9 +24,34 @@ const loginUser = email => ({
   values: [email],
 });
 
+const createCandidte = (office, party, candidate) => ({
+  text: 'INSERT INTO candidates(office, party, candidate) VALUES($1, $2, $3) RETURNING *',
+  values: [office, party, candidate],
+});
+
+const selectOffice = name => ({
+  text: 'SELECT * FROM office WHERE name = $1',
+  values: [name],
+});
+
+const selectParty = name => ({
+  text: 'SELECT * FROM party WHERE name = $1',
+  values: [name],
+});
+
+
+const selectCandidate = (id, partyId) => ({
+  text: 'SELECT * FROM candidates WHERE candidate = $1 OR party = $2',
+  values: [id, partyId],
+});
+
 
 export default {
   checkUser,
   createUser,
   loginUser,
+  createCandidte,
+  selectOffice,
+  selectParty,
+  selectCandidate,
 };

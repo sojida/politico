@@ -194,16 +194,20 @@ const validations = {
       });
     }
 
-    const data = await jwt.verify(token, process.env.JWT_SECRET);
-
-    if (!data) {
-      return res.status(404).json({
-        status: 404,
-        error: 'you need access',
-      });
+    try {
+      const data = await jwt.verify(token, process.env.JWT_SECRET);
+      delete data.password;
+      req.user = data;
+    } catch (err) {
+      if (err) {
+        return res.status(403).json({
+          status: 403,
+          error: 'user authentication failed',
+        });
+      }
     }
 
-    req.data = data;
+
     return next();
   },
 
