@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node ./server/index.js",
     "dev": "nodemon --exec babel-node ./server/index.js",
-    "test": "npm run drop-create && nyc --reporter=html --reporter=text --reporter=lcov mocha --require @babel/register ./test/*.test.js --timeout 10000 --exit",
+    "test": "npm run drop-create && nyc --reporter=html --reporter=text --reporter=lcov mocha --require @babel/register ./test/*.test.js --timeout 20000 --exit",
     "buildTables": "babel-node ./server/database/migrations.db.js",
     "dropAllTables": "babel-node ./server/database/droptables.db.js",
     "drop-create": "npm run dropAllTables && npm run buildTables",
