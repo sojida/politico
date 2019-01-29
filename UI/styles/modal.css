@@ -172,19 +172,55 @@
 }
 
 @media(max-width: 480px){
+  .modal{
+    padding-top: 50%;
+    padding-left: 10%;
+  }
+
+  .modal-header {
+    font-size: 0.7rem;
+  }
+
+  .close {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   #edit-modal .modal-content{
-    width: 80%;
+    width: 90%;
+  }
+
+  #delete-modal .modal-content{
+    width: 90%;
+  }
+
+  #delete-modal button{
+    width: 30%;
+    height: 25%;
+
   }
 
   #edit-modal form p {
     display: flex;
     flex-direction: column;
     justify-self: left;
+    margin: 0 auto;
   }
 
   #edit-modal form label{
     text-align: left;
-    margin-bottom:5px;
+    margin-bottom:3px;
+    font-size: 1rem;
+  }
+
+  #edit-modal form input[type="text"]{
+    width: 200px;
+
+  }
+
+  #edit-modal form input[type="file"]{
+    width: 200px;
+
   }
 
   #edit-modal form input[type="submit"]{
@@ -202,8 +238,3 @@
   }
 }
 
-@media(max-width: 320px){
-  #edit-modal .modal-content{
-    width: 90%;
-  }
-}

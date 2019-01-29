@@ -94,6 +94,7 @@ form{
 
 label{
     display: block;
+    font-size: 1.1rem;
 }
 
 input[type="file"]{
@@ -701,4 +702,12 @@ footer{
   button{
         width: 100px;
     }
+
+    .pagination{
+        font-size: 0.6rem
+    }
+
+    .pagination a {
+        padding: 2px 8px;
+      }
 }
