@@ -24,6 +24,17 @@ const validateParty = (req, res, next) => {
     error.push({ logoUrl: 'logo must be present' });
   }
 
+  if (!isNaN(parseFloat(name))) {
+    verified = false;
+    error.push({ name: 'name should not be only numbers' });
+  }
+
+  if (!isNaN(parseFloat(hqAddress))) {
+    verified = false;
+    error.push({ hqAddress: 'hqAddress should not be only numbers' });
+  }
+
+
   if (!verified) {
     return res.status(400).json({
       status: 400,
