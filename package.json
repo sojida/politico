@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node ./server/index.js",
-    "dev": "nodemon --exec babel-node ./server/index.js",
-    "test": "npm run drop-create && nyc --reporter=html --reporter=text --reporter=lcov mocha --require @babel/register ./test/*.test.js --timeout 20000 --exit",
+    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node ./server/index.js",
+    "test": "cross-env NODE_ENV=test npm run drop-create && cross-env NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha --require @babel/register ./test/*.test.js --timeout 20000 --exit",
     "buildTables": "babel-node ./server/database/migrations.db.js",
+    "start-prod": "npm run buildTables && npm run start",
     "dropAllTables": "babel-node ./server/database/droptables.db.js",
     "drop-create": "npm run dropAllTables && npm run buildTables",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
@@ -36,15 +37,13 @@
     "jsonwebtoken": "^8.4.0",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
-    "pg": "^7.8.0"
+    "pg": "^7.8.0",
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",

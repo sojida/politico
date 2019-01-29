@@ -1,0 +1,528 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Politico_API",
+    "description" : "A platform for citizens and politicians.",
+    "version" : "0.1"
+  },
+  "servers" : [ {
+    "url" : "https://shielded-headland-63958.herokuapp.com"
+  } ],
+  "paths" : {
+    "/api/v1/office/1/result" : {
+      "post" : {
+        "description" : "Collate and fetch the result of specific office following a concluded election.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"candidate\": \"2\",\r\n    \"office\": \"3\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Auto generated using Swagger Inspector",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/parties" : {
+      "get" : {
+        "description" : "Fetch all parties",
+        "responses" : {
+          "200" : {
+            "description" : "Respond with all parties",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "post" : {
+        "description" : "Create a party",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"name\": \"The Party of Parties\",\r\n    \"hqAddress\": \"somwhere around\",\r\n    \"logoUrl\": \"logourl.png\"\r\n}\r\n"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with created party",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/offices/1" : {
+      "get" : {
+        "description" : "Get a specific party",
+        "responses" : {
+          "200" : {
+            "description" : "Respond with specific party",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/auth/login" : {
+      "post" : {
+        "description" : "Login user",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_2"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"email\":\"bitters@gmail.com\",\n    \"password\": \"12345678\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Resopond with user",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/auth/signup" : {
+      "post" : {
+        "description" : "Create a new user",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_3"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"fullname\": \"Soji Bitters Kunle\",\n    \"email\":\"bitters@gmail.com\",\n    \"phoneNumber\": \"09012312312\",\n    \"password\": \"12345678\",\n    \"password2\": \"12345678\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with created user",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/parties/3" : {
+      "delete" : {
+        "description" : "Delete a specific party",
+        "responses" : {
+          "200" : {
+            "description" : "Respond with deleted party",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/votes" : {
+      "post" : {
+        "description" : "Vote a candidate",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_4"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"candidate\": \"2\",\r\n    \"office\": \"3\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with the vote",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/parties/1" : {
+      "get" : {
+        "description" : "Get a specific party",
+        "responses" : {
+          "200" : {
+            "description" : "Respond with created party",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/offices" : {
+      "get" : {
+        "description" : "Get all offices",
+        "responses" : {
+          "200" : {
+            "description" : "Respond with all ofices",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "post" : {
+        "description" : "Create an office",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_5"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n   \"type\": \"Federal\",\n   \"name\": \"Chief Justice League\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with created office",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/office/5/register" : {
+      "post" : {
+        "description" : "Create a candidate",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_6"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n        \"office\": \"1\",\r\n        \"party\": \"1\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with created candidate",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/parties/2/name" : {
+      "patch" : {
+        "description" : "Edit a party name",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_7"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"name\": \"PPD\"\r\n}\r\n"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Respond with the edited party name",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "candidate" : {
+            "type" : "string"
+          },
+          "office" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "hqAddress" : {
+            "type" : "string"
+          },
+          "logoUrl" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_2" : {
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_3" : {
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          },
+          "password2" : {
+            "type" : "string"
+          },
+          "fullname" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_4" : {
+        "type" : "object",
+        "properties" : {
+          "candidate" : {
+            "type" : "string"
+          },
+          "office" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_5" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_6" : {
+        "type" : "object",
+        "properties" : {
+          "office" : {
+            "type" : "string"
+          },
+          "party" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_7" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

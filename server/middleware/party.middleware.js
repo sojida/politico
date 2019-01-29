@@ -1,35 +1,30 @@
-import db from '../database/mockdata';
-
-const { parties } = db;
+import db from '../database/config.db';
+import queries from '../database/queries.db';
 
 const middleware = {
-  getAllParties(req, res, next) {
-    req.data = parties;
+  async getAllParties(req, res, next) {
+    const { rows } = await db(queries.getAllParties());
+    req.data = rows;
     next();
   },
-  getPartiesById(req, res, next) {
+
+  async getPartiesById(req, res, next) {
     const id = parseFloat(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'id must be a number',
-      });
-    }
+    const { rows: party } = await db(queries.selectPartyById(id));
 
-    const party = parties.find(item => item.id === id);
 
-    if (!party) {
+    if (!party.length) {
       return res.status(404).json({
         status: 404,
         error: 'party not found',
       });
     }
 
-    req.data = party;
+    req.data = [...party];
     return next();
   },
 
-  editParties(req, res, next) {
+  async editParties(req, res, next) {
     const id = parseFloat(req.params.id);
     const { name } = req.body;
     if (!name || !name.trim()) {
@@ -39,76 +34,52 @@ const middleware = {
       });
     }
 
-    if (isNaN(id)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'id must be a number',
-      });
-    }
+    const { rows: party } = await db(queries.selectPartyById(id));
 
-    const newPartyName = parties.find(party => party.id === id);
-
-    if (!newPartyName) {
+    if (!party.length) {
       return res.status(404).json({
         status: 404,
         error: 'party not found',
       });
     }
-    newPartyName.name = name;
-    req.data = newPartyName;
+
+    const { rows: newParty } = await db(queries.updatePartyName(req.body.name, id));
+
+    req.data = [...newParty];
     return next();
   },
 
-  deleteParty(req, res, next) {
+  async deleteParty(req, res, next) {
     const id = parseFloat(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'id must be a number',
-      });
-    }
+    const { rows: deletedParty } = await db(queries.deleteParty(id));
 
-    const deletedParty = parties.find((party, i) => {
-      if (party.id === id) {
-        return parties.splice(i, 1);
-      }
-
-      return undefined;
-    });
-
-    if (!deletedParty) {
+    if (!deletedParty.length) {
       return res.status(404).json({
         status: 404,
         error: 'party not found',
       });
     }
 
-    req.data = deletedParty;
+    req.data = [...deletedParty];
     return next();
   },
 
-  createParties(req, res, next) {
-    const partyName = req.body.name.toLowerCase();
-
-    const presentParty = parties.find(party => party.name.toLowerCase() === partyName);
-    if (presentParty) {
+  async createParties(req, res, next) {
+    const { rows: presentParty } = await db(queries.selectPartyByNmae(req.body.name));
+    if (presentParty.length) {
       return res.status(409).json({
         status: 409,
         error: 'party already present',
       });
     }
 
+    const { rows: newParty } = await db(queries.createParty(
+      req.body.name,
+      req.body.hqAddress,
+      req.body.logoUrl,
+    ));
 
-    const newId = parties[parties.length - 1].id + 1;
-    const newParty = {
-      id: newId,
-      name: req.body.name,
-      hqAddress: req.body.hqAddress,
-      logoUrl: req.body.logoUrl,
-    };
-
-    parties.push(newParty);
-    req.data = newParty;
+    req.data = [...newParty];
     return next();
   },
 };

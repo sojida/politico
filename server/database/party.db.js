@@ -4,7 +4,7 @@ const createPartyTable = () => {
             id SERIAL PRIMARY KEY,
             name VARCHAR(40) UNIQUE NOT NULL,
             hqaddress VARCHAR(100) NOT NULL,
-            logo VARCHAR(200) NOT NULL       
+            logoUrl VARCHAR(200) NOT NULL       
           )`;
 
   return text;
@@ -18,7 +18,7 @@ const deleteParty = id => ({
 });
 
 const createParty = (name, hqaddress, logo) => ({
-  text: 'INSERT INTO party(name, hqaddress, logo) VALUES($1, $2, $3) RETURNING *',
+  text: 'INSERT INTO party(name, hqaddress, logoUrl) VALUES($1, $2, $3) RETURNING *',
   values: [name, hqaddress, logo],
 });
 
