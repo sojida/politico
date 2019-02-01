@@ -4,14 +4,14 @@ import queries from '../database/queries.db';
 const middleware = {
   async validateVotes(req, res, next) {
     const { candidate, office } = req.body;
-    if (!candidate || !candidate.trim()) {
+    if (!candidate) {
       return res.status(400).json({
         status: 400,
         error: 'candidate must be present',
       });
     }
 
-    if (!office || !office.trim()) {
+    if (!office) {
       return res.status(400).json({
         status: 400,
         error: 'office must be present',

@@ -6,7 +6,7 @@ import app from '../server/index';
 
 chai.use(chaiHttp);
 
-describe('Homepage', () => {
+describe('HOMEPAGE', () => {
   it('should respond with welcome title', (done) => {
     chai.request(app)
       .get('/')

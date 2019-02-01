@@ -41,6 +41,26 @@ const bodyIsString = (req, res, next) => {
   return next();
 };
 
+const bodyIsNumber = (req, res, next) => {
+  const data = Object.entries(req.body);
+  let verified = true;
+  const error = [];
+  data.forEach((item) => {
+    if (typeof item[1] !== 'number') {
+      verified = false;
+      error.push({ error: `${item[0]} must be a number` });
+    }
+  });
+
+  if (!verified) {
+    return res.status(400).json({
+      status: 400,
+      error,
+    });
+  }
+  return next();
+};
+
 const checkParams = (req, res, next) => {
   const { id } = req.params;
   if (id.trim().length) {
@@ -66,4 +86,5 @@ export default {
   isAdmin,
   bodyIsString,
   checkParams,
+  bodyIsNumber,
 };
