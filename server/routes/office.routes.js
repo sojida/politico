@@ -34,7 +34,7 @@ router.post('/office/:id/register',
   authMiddleware.verifyToken,
   authHelper.isAdmin,
   authHelper.checkParams,
-  authHelper.bodyIsString,
+  authHelper.bodyIsNumber,
   officeMiddleware.registerCandidate,
   officeControllers.registerCandidate);
 

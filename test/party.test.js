@@ -35,7 +35,7 @@ before('login user', (done) => {
     });
 });
 
-describe('Get all parties', () => {
+describe('GET ALL PARTIES', () => {
   it('should respond with all parties', (done) => {
     chai.request(app)
       .get('/api/v1/parties')
@@ -53,7 +53,7 @@ describe('Get all parties', () => {
   });
 });
 
-describe('Get a specific party', () => {
+describe('GET A SPECIFIC PARTY', () => {
   it('should respond with a specific party', (done) => {
     chai.request(app)
       .get('/api/v1/parties/1')
@@ -196,7 +196,7 @@ describe('Edit a party name', () => {
   });
 });
 
-describe('Delete a party', () => {
+describe('DELETE A PARTY', () => {
   it('should respond with a the deleted party and a message', (done) => {
     chai.request(app)
       .delete('/api/v1/parties/3')
@@ -250,7 +250,7 @@ describe('Delete a party', () => {
   });
 });
 
-describe('Create political party', () => {
+describe('CREATE A POLITICAL PARTY', () => {
   it('should respond with the created party', (done) => {
     chai.request(app)
       .post('/api/v1/parties')

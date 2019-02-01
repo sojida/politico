@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post('/votes',
   authMiddleware.verifyToken,
-  authHelpers.bodyIsString,
+  authHelpers.bodyIsNumber,
   voteMiddleware.validateVotes,
   voteMiddleware.createVotes,
   voteControllers.voteCandidate);

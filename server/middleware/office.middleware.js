@@ -6,6 +6,21 @@ const middleware = {
   async registerCandidate(req, res, next) {
     const userId = parseFloat(req.params.id);
 
+    const { office: officeID, party: partyID } = req.body;
+    if (!officeID) {
+      return res.status(400).json({
+        status: 400,
+        error: 'office must be present',
+      });
+    }
+
+    if (!partyID) {
+      return res.status(400).json({
+        status: 400,
+        error: 'party must be present',
+      });
+    }
+
     const { rows: office } = await db(queries.selectOfficeById(req.body.office));
     const { rows: party } = await db(queries.selectPartyById(req.body.party));
 

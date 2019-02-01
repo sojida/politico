@@ -37,7 +37,7 @@ before('login user', (done) => {
 });
 
 
-describe('Get all offices', () => {
+describe('GET ALL OFFICES', () => {
   it('should respond with all offices', (done) => {
     chai.request(app)
       .get('/api/v1/offices')
@@ -55,7 +55,7 @@ describe('Get all offices', () => {
   });
 });
 
-describe('Get a specific office', () => {
+describe('GET A SPECIFIC OFFICE', () => {
   it('should respond with a specific office', (done) => {
     chai.request(app)
       .get('/api/v1/offices/1')
@@ -96,7 +96,7 @@ describe('Get a specific office', () => {
   });
 });
 
-describe('Create office', () => {
+describe('CREATE OFFICE', () => {
   it('should respond with the created office', (done) => {
     chai.request(app)
       .post('/api/v1/offices')
@@ -237,8 +237,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/6/register')
       .set('Authorization', adminToken)
       .send({
-        office: '1',
-        party: '4',
+        office: 1,
+        party: 4,
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -253,8 +253,8 @@ describe('CREATE CANDIDATE', () => {
     chai.request(app)
       .post('/api/v1/office/5/register')
       .send({
-        office: '1',
-        party: '1',
+        office: 1,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -269,8 +269,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/5/register')
       .set('Authorization', 'this is not a token')
       .send({
-        office: '1',
-        party: '1',
+        office: 1,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -285,8 +285,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/5/register')
       .set('Authorization', userToken)
       .send({
-        office: '1',
-        party: '1',
+        office: 1,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -301,8 +301,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/5/register')
       .set('Authorization', adminToken)
       .send({
-        office: '0',
-        party: '1',
+        office: 1000,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -317,8 +317,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/5/register')
       .set('Authorization', adminToken)
       .send({
-        office: '1',
-        party: '0',
+        office: 1,
+        party: 1000,
       })
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -333,8 +333,8 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/2/register')
       .set('Authorization', adminToken)
       .send({
-        office: '1',
-        party: '1',
+        office: 1,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
@@ -344,13 +344,43 @@ describe('CREATE CANDIDATE', () => {
       });
   });
 
+  it('should return not return created candidate: no office', (done) => {
+    chai.request(app)
+      .post('/api/v1/office/5/register')
+      .set('Authorization', adminToken)
+      .send({
+        party: 1,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.have.equal('office must be present');
+        done();
+      });
+  });
+
+  it('should return not return created candidate: no party', (done) => {
+    chai.request(app)
+      .post('/api/v1/office/5/register')
+      .set('Authorization', adminToken)
+      .send({
+        office: 1,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.have.equal('party must be present');
+        done();
+      });
+  });
+
   it('should return not return created candidate: id is not present', (done) => {
     chai.request(app)
       .post('/api/v1/office/ /register')
       .set('Authorization', adminToken)
       .send({
-        office: '1',
-        party: '1',
+        office: 1,
+        party: 1,
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -365,13 +395,29 @@ describe('CREATE CANDIDATE', () => {
       .post('/api/v1/office/a/register')
       .set('Authorization', adminToken)
       .send({
+        office: 1,
+        party: 1,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.have.equal('id must be a number');
+        done();
+      });
+  });
+
+  it('should return not return created candidate: body is string', (done) => {
+    chai.request(app)
+      .post('/api/v1/office/6/register')
+      .set('Authorization', adminToken)
+      .send({
         office: '1',
         party: '1',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
-        expect(res.body.error).to.have.equal('id must be a number');
+        expect(res.body.error[0]).to.have.property('error');
         done();
       });
   });
