@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 let userToken;
 
-before('login user', async () => {
+before('login user', (done) => {
   chai.request(app)
     .post('/api/v1/auth/login')
     .send({
@@ -19,16 +19,17 @@ before('login user', async () => {
     })
     .end((err, res) => {
       userToken = res.body.data[0].token;
+      done();
     });
 });
 
 describe('VOTE', () => {
-  it('should vote candidate', async () => {
+  it('should vote candidate', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
       .send({
-        candidate: '3',
+        candidate: '1',
         office: '1',
       })
       .end((err, res) => {
@@ -37,10 +38,11 @@ describe('VOTE', () => {
         expect(res.body.data).to.have.property('office');
         expect(res.body.data).to.have.property('candidate');
         expect(res.body.data).to.have.property('voter');
+        done();
       });
   });
 
-  it('should not vote candidate: no candidate specified', async () => {
+  it('should not vote candidate: no candidate specified', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
@@ -52,10 +54,11 @@ describe('VOTE', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.equal('candidate must be present');
+        done();
       });
   });
 
-  it('should not vote candidate: no office specified', async () => {
+  it('should not vote candidate: no office specified', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
@@ -67,10 +70,11 @@ describe('VOTE', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.equal('office must be present');
+        done();
       });
   });
 
-  it('should not vote candidate: no such candidates', async () => {
+  it('should not vote candidate: no such candidates', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
@@ -82,10 +86,11 @@ describe('VOTE', () => {
         expect(res).to.have.status(404);
         expect(res.body.status).to.equal(404);
         expect(res.body.error).to.equal('no such candidate');
+        done();
       });
   });
 
-  it('should not vote candidate: no such office', async () => {
+  it('should not vote candidate: no such office', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
@@ -97,10 +102,11 @@ describe('VOTE', () => {
         expect(res).to.have.status(404);
         expect(res.body.status).to.equal(404);
         expect(res.body.error).to.equal('no such office');
+        done();
       });
   });
 
-  it('should not vote candidate: candidate alredy voted', async () => {
+  it('should not vote candidate: candidate alredy voted', (done) => {
     chai.request(app)
       .post('/api/v1/votes')
       .set('Authorization', userToken)
@@ -112,6 +118,7 @@ describe('VOTE', () => {
         expect(res).to.have.status(409);
         expect(res.body.status).to.equal(409);
         expect(res.body.error).to.equal('you have already voted for this office');
+        done();
       });
   });
 });

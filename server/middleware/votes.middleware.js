@@ -2,7 +2,7 @@ import db from '../database/config.db';
 import queries from '../database/queries.db';
 
 const middleware = {
-  validateVotes: async (req, res, next) => {
+  async validateVotes(req, res, next) {
     const { candidate, office } = req.body;
     if (!candidate || !candidate.trim()) {
       return res.status(400).json({
@@ -46,7 +46,7 @@ const middleware = {
     return next();
   },
 
-  createVotes: async (req, res, next) => {
+  async createVotes(req, res, next) {
     const officeId = parseFloat(req.body.office);
     const candidateId = parseFloat(req.body.candidate);
 

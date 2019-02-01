@@ -1,21 +1,13 @@
-import dbMock from '../database/mockdata';
 import db from '../database/config.db';
 import queries from '../database/queries.db';
 
-const { offices } = dbMock;
 
 const middleware = {
   async registerCandidate(req, res, next) {
     const userId = parseFloat(req.params.id);
-    if (!req.user.isadmin) {
-      return res.status(401).json({
-        status: 401,
-        error: 'This user is not an admin',
-      });
-    }
 
-    const { rows: office } = await db(queries.selectOffice(req.body.office));
-    const { rows: party } = await db(queries.selectParty(req.body.party));
+    const { rows: office } = await db(queries.selectOfficeById(req.body.office));
+    const { rows: party } = await db(queries.selectPartyById(req.body.party));
 
 
     if (!office.length) {
@@ -32,7 +24,8 @@ const middleware = {
         error: 'no such party',
       });
     }
-    const { rows: isCandidate } = await db(queries.selectCandidate(userId, party[0].id));
+    const { rows: isCandidate } = await db(queries.validateCandidate(userId,
+      office[0].id, party[0].id));
 
     if (isCandidate.length) {
       return res.status(409).json({
@@ -54,60 +47,49 @@ const middleware = {
     return next();
   },
 
-  getAllOffices(req, res, next) {
-    req.data = offices;
+  async getAllOffices(req, res, next) {
+    const { rows } = await db(queries.getAllOffice());
+    req.data = rows;
     next();
   },
 
-  getOfficesById(req, res, next) {
+  async getOfficesById(req, res, next) {
     const id = parseFloat(req.params.id);
-    if (isNaN(id)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'id must be a number',
-      });
-    }
+    const { rows } = await db(queries.selectOfficeById(id));
 
-    const office = offices.find(item => item.id === id);
-
-    if (!office) {
+    if (!rows.length) {
       return res.status(404).json({
         status: 404,
         error: 'office not found',
       });
     }
 
-    req.data = office;
+    req.data = [...rows];
     return next();
   },
 
-  createOffice(req, res, next) {
-    const officeName = req.body.name.toLowerCase();
+  async createOffice(req, res, next) {
+    const officeName = req.body.name;
 
-    const presentOffice = offices.find(office => office.name.toLowerCase() === officeName);
-    if (presentOffice) {
+    const { rows: presentOffice } = await db(queries.selectOfficeByNmae(officeName));
+
+    if (presentOffice.length) {
       return res.status(409).json({
         status: 409,
         error: 'office already present',
       });
     }
 
-    const newId = offices[offices.length - 1].id + 1;
-    const newOffice = {
-      id: newId,
-      name: req.body.name,
-      type: req.body.type,
-    };
+    const { rows: newOffice } = await db(queries.createOffice(req.body.name, req.body.type));
 
-    offices.push(newOffice);
-    req.data = newOffice;
+    req.data = [...newOffice];
     return next();
   },
 
   async checkOfficeId(req, res, next) {
     const officeId = req.params.id;
 
-    const { rows: isOffice } = await db(queries.selectOfficeId(officeId));
+    const { rows: isOffice } = await db(queries.selectOfficeById(officeId));
     if (!isOffice.length) {
       return res.status(404).json({
         status: 404,
@@ -119,30 +101,19 @@ const middleware = {
   },
 
   async getResultByOffice(req, res, next) {
-    const data = [];
-    const { rows: allCandidates } = await db(queries.getAllCandidates(req.params.id));
+    const { rows: officePresent } = await db(queries.getOfficeInVote(req.params.id));
 
-    if (!allCandidates.length) {
+    if (!officePresent.length) {
       return res.status(404).json({
         status: 404,
-        error: 'no candidate is running for that office',
+        error: 'no such office',
       });
     }
 
-    allCandidates.forEach(async (candidate) => {
-      const { rows } = await db(queries.getOfficeResult(req.params.id, candidate.id));
+    const { rows } = await db(queries.getResultByOffice(req.params.id));
 
-      data.push({
-        office: req.params.id,
-        candidate: candidate.id,
-        result: rows.length,
-      });
-    });
-
-    return setTimeout(() => {
-      req.data = data;
-      next();
-    }, 1000);
+    req.data = rows;
+    return next();
   },
 };
 

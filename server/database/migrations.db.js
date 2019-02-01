@@ -14,6 +14,7 @@ async function migrateData() {
   await db(partyDb.createParty('PCP', 'Lagos', 'logo123'));
   await db(partyDb.createParty('PCPC', 'Ibadan', 'logo123'));
   await db(partyDb.createParty('PCPD', 'Abuja', 'logo123'));
+  await db(partyDb.createParty('PCPF', 'Abuja', 'logo123'));
   await db(officeDb.createOffice('President', 'Federal'));
   await db(officeDb.createOffice('Senate', 'Federal'));
   await db(officeDb.createOffice('Chairman', 'Local'));
@@ -21,14 +22,32 @@ async function migrateData() {
   await db(userDb.createUser('Pete', 'Obi', 'Pete', 'logourl', '09011111112', 'pete@gmail.com', 'NOW', password, 'false'));
   await db(userDb.createUser('Ade', 'Dan', 'Pete', 'logourl', '09011111113', 'dan@gmail.com', 'NOW', password, 'false'));
   await db(userDb.createUser('Soji', 'Dan', 'Pete', 'logourl', '09011111114', 'soji@gmail.com', 'NOW', password, 'false'));
-  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111115', 'fred@gmail.com', 'NOW', password, 'false'));
-  await db(candidatesDb.createCandidte(1, 1, 2));
-  await db(candidatesDb.createCandidte(2, 2, 3));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111115', 'fred1@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111116', 'fred2@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111117', 'fred3@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111118', 'fred4@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111119', 'fred5@gmail.com', 'NOW', password, 'false'));
+  await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111129', 'fred6@gmail.com', 'NOW', password, 'false'));
+  await db(candidatesDb.createCandidate(1, 1, 2));
+  await db(candidatesDb.createCandidate(1, 2, 3));
+  await db(candidatesDb.createCandidate(2, 1, 4));
+  await db(candidatesDb.createCandidate(2, 2, 5));
   await db(voteDb.createVote('NOW', 1, 1, 1));
-  await db(voteDb.createVote('NOW', 2, 2, 1));
-  await db(voteDb.createVote('NOW', 3, 2, 2));
-  await db(voteDb.createVote('NOW', 4, 1, 2));
+  await db(voteDb.createVote('NOW', 1, 2, 3));
+  await db(voteDb.createVote('NOW', 3, 1, 1));
+  await db(voteDb.createVote('NOW', 3, 2, 3));
+  await db(voteDb.createVote('NOW', 4, 1, 1));
+  await db(voteDb.createVote('NOW', 4, 2, 3));
   await db(voteDb.createVote('NOW', 5, 1, 1));
+  await db(voteDb.createVote('NOW', 5, 2, 3));
+  await db(voteDb.createVote('NOW', 6, 1, 1));
+  await db(voteDb.createVote('NOW', 6, 2, 3));
+  await db(voteDb.createVote('NOW', 7, 1, 2));
+  await db(voteDb.createVote('NOW', 7, 2, 4));
+  await db(voteDb.createVote('NOW', 8, 1, 2));
+  await db(voteDb.createVote('NOW', 8, 2, 4));
+  await db(voteDb.createVote('NOW', 9, 1, 2));
+  await db(voteDb.createVote('NOW', 9, 2, 4));
 }
 
 creatTable.createAllTables()

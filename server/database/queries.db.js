@@ -32,20 +32,20 @@ const queries = {
     values: [office, party, candidate],
   }),
 
-  selectOffice: name => ({
-    text: 'SELECT * FROM office WHERE name = $1',
-    values: [name],
+  selectOfficeById: id => ({
+    text: 'SELECT * FROM office WHERE id = $1',
+    values: [id],
   }),
 
-  selectParty: name => ({
-    text: 'SELECT * FROM party WHERE name = $1',
-    values: [name],
+  selectPartyById: id => ({
+    text: 'SELECT * FROM party WHERE id = $1',
+    values: [id],
   }),
 
 
-  selectCandidate: (id, partyId) => ({
-    text: 'SELECT * FROM candidates WHERE candidate = $1 OR party = $2',
-    values: [id, partyId],
+  validateCandidate: (id, office, party) => ({
+    text: 'SELECT * FROM candidates WHERE candidate = $1 OR party = $2 AND office = $3',
+    values: [id, office, party],
   }),
 
   checkCandidate: id => ({
@@ -68,19 +68,49 @@ const queries = {
     values: [createdby, office],
   }),
 
-  selectOfficeId: id => ({
-    text: 'SELECT * FROM office WHERE id = $1',
+  getAllOffice: () => 'SELECT * FROM office',
+
+  getAllParties: () => 'SELECT * FROM party',
+
+  selectOfficeByNmae: name => ({
+    text: 'SELECT * FROM office WHERE name = $1',
+    values: [name],
+  }),
+
+  createOffice: (name, type) => ({
+    text: 'INSERT INTO office(name, type) VALUES($1, $2) RETURNING *',
+    values: [name, type],
+  }),
+
+
+  updatePartyName: (name, id) => ({
+    text: 'UPDATE party SET name = $1 WHERE id = $2 RETURNING *',
+    values: [name, id],
+  }),
+
+  deleteParty: id => ({
+    text: 'DELETE FROM party WHERE id = $1 RETURNING *',
     values: [id],
   }),
 
-  getOfficeResult: (id, candidate) => ({
-    text: 'SELECT * FROM vote WHERE office = $1 AND candidate = $2',
-    values: [id, candidate],
+  selectPartyByNmae: name => ({
+    text: 'SELECT * FROM party WHERE name = $1',
+    values: [name],
   }),
 
-  getAllCandidates: office => ({
-    text: 'SELECT * FROM candidates WHERE office = $1',
-    values: [office],
+  createParty: (name, hqaddress, logoUrl) => ({
+    text: 'INSERT INTO party(name, hqaddress, logoUrl) VALUES($1, $2, $3) RETURNING *',
+    values: [name, hqaddress, logoUrl],
+  }),
+
+  getResultByOffice: officeid => ({
+    text: 'SELECT office, candidate, count(candidate) as results FROM vote where vote.office = $1 GROUP BY vote.candidate , vote.office',
+    values: [officeid],
+  }),
+
+  getOfficeInVote: officeid => ({
+    text: 'SELECT * from vote WHERE office = $1',
+    values: [officeid],
   }),
 
 

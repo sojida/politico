@@ -8,7 +8,7 @@ import app from '../server/index';
 chai.use(chaiHttp);
 
 describe('REGISTER ', () => {
-  it('should create new user', async () => {
+  it('should create new user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -17,7 +17,6 @@ describe('REGISTER ', () => {
         phoneNumber: '09010101010',
         password: '12345678',
         password2: '12345678',
-
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -30,10 +29,11 @@ describe('REGISTER ', () => {
         expect(user).to.have.property('othernames', 'Paul');
         expect(user).to.have.property('phonenumber');
         expect(user).to.have.property('isadmin', false);
+        done();
       });
   });
 
-  it('should not create new user: no fullname', async () => {
+  it('should not create new user: no fullname', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -48,10 +48,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('fullname');
+        done();
       });
   });
 
-  it('should not create new user: no fullname', async () => {
+  it('should not create new user: no fullname', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -66,10 +67,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('fullname');
+        done();
       });
   });
 
-  it('should not create new user: no email', async () => {
+  it('should not create new user: no email', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -78,16 +80,16 @@ describe('REGISTER ', () => {
         phoneNumber: '09011111111',
         password: '12345678',
         password2: '12345678',
-
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('email');
+        done();
       });
   });
 
-  it('should not create new user: invalid email format', async () => {
+  it('should not create new user: invalid email format', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -102,10 +104,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('email');
+        done();
       });
   });
 
-  it('should not create new user: no phone number', async () => {
+  it('should not create new user: no phone number', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -120,10 +123,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('phoneNumber');
+        done();
       });
   });
 
-  it('should not create new user: invalid phone number format', async () => {
+  it('should not create new user: invalid phone number format', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -138,10 +142,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('phoneNumber');
+        done();
       });
   });
 
-  it('should not create new user: no password', async () => {
+  it('should not create new user: no password', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -156,10 +161,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('password');
+        done();
       });
   });
 
-  it('should not create new user: password do not match', async () => {
+  it('should not create new user: password do not match', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -174,10 +180,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('password2');
+        done();
       });
   });
 
-  it('should not create new user: password is invalid (length)', async () => {
+  it('should not create new user: password is invalid (length)', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -192,10 +199,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('password');
+        done();
       });
   });
 
-  it('should not create new user: email already used', async () => {
+  it('should not create new user: email already used', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -210,10 +218,11 @@ describe('REGISTER ', () => {
         expect(res).to.have.status(409);
         expect(res.body.status).to.equal(409);
         expect(res.body.error).to.equal('That email has already been used');
+        done();
       });
   });
 
-  it('should not create new user: phonenumber already used', async () => {
+  it('should not create new user: phonenumber already used', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -222,18 +231,53 @@ describe('REGISTER ', () => {
         phoneNumber: '09011111111',
         password: '12345678',
         password2: '12345678',
-
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body.status).to.equal(409);
         expect(res.body.error).to.equal('That phonenumber has already been used');
+        done();
+      });
+  });
+
+  it('should not create new user: body property is number', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        fullname: 2,
+        email: 'obiwan1@gmail.com',
+        phoneNumber: '09011111111',
+        password: '12345678',
+        password2: '12345678',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error[0]).to.have.property('error');
+        done();
+      });
+  });
+
+  it('should not create new user: fullname property is not present', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'obiwan1@gmail.com',
+        phoneNumber: '09011111111',
+        password: '12345678',
+        password2: '12345678',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error[0]).to.have.property('fullname');
+        done();
       });
   });
 });
 
 describe('LOGIN ', () => {
-  it('login user', async () => {
+  it('login user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -251,10 +295,11 @@ describe('LOGIN ', () => {
         expect(user).to.have.property('othernames');
         expect(user).to.have.property('phonenumber');
         expect(user).to.have.property('isadmin', false);
+        done();
       });
   });
 
-  it('login admin', async () => {
+  it('login admin', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -272,10 +317,11 @@ describe('LOGIN ', () => {
         expect(user).to.have.property('othernames');
         expect(user).to.have.property('phonenumber');
         expect(user).to.have.property('isadmin', true);
+        done();
       });
   });
 
-  it('should not login user: no email', async () => {
+  it('should not login user: no email', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -286,10 +332,11 @@ describe('LOGIN ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('email');
+        done();
       });
   });
 
-  it('should not login user: invalid email format', async () => {
+  it('should not login user: invalid email format', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -300,10 +347,11 @@ describe('LOGIN ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('email');
+        done();
       });
   });
 
-  it('should not login user: no password', async () => {
+  it('should not login user: no password', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -314,10 +362,11 @@ describe('LOGIN ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error[0]).to.have.property('password');
+        done();
       });
   });
 
-  it('should not login user: wrong password', async () => {
+  it('should not login user: wrong password', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -328,10 +377,11 @@ describe('LOGIN ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.have.equal('invalid details');
+        done();
       });
   });
 
-  it('should not login user: wrong email', async () => {
+  it('should not login user: wrong email', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
@@ -342,6 +392,7 @@ describe('LOGIN ', () => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.have.equal('invalid details');
+        done();
       });
   });
 });

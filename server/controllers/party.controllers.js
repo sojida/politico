@@ -9,29 +9,29 @@ const controllers = {
   getPartiesById(req, res) {
     res.status(200).json({
       status: 200,
-      data: [req.data],
+      data: req.data,
     });
   },
 
   editParties(req, res) {
     res.status(200).json({
       status: 200,
-      data: [req.data],
+      data: req.data,
     });
   },
 
   deleteParties(req, res) {
     res.status(200).json({
       status: 200,
-      data: [req.data],
-      message: `${req.data.name} deleted successfully`,
+      data: req.data,
+      message: `${req.data[0].name} deleted successfully`,
     });
   },
 
   createParties(req, res) {
-    res.status(200).json({
+    res.status(201).json({
       status: 201,
-      data: [req.data],
+      data: req.data,
       message: 'party created successfully',
     });
   },

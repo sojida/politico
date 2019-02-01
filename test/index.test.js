@@ -22,7 +22,7 @@ describe('Homepage', () => {
       .get('/api/v1/party')
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal('check documentation on routes');
+        expect(res.body.error).to.equal('check documentation, "/docs"');
         done();
       });
   });
@@ -32,7 +32,7 @@ describe('Homepage', () => {
       .get('/api/v1/office')
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal('check documentation on routes');
+        expect(res.body.error).to.equal('check documentation, "/docs"');
         done();
       });
   });

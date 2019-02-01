@@ -1,13 +1,16 @@
 import express from 'express';
-import middleware from '../middleware/auth.validation';
 import voteMiddleware from '../middleware/votes.middleware';
 import voteControllers from '../controllers/votes.controllers';
+import authMiddleware from '../middleware/auth.validation';
+import authHelpers from '../helper/auth.helper';
+
 
 const router = express.Router();
 
-router.use(middleware.verifyToken);
 
 router.post('/votes',
+  authMiddleware.verifyToken,
+  authHelpers.bodyIsString,
   voteMiddleware.validateVotes,
   voteMiddleware.createVotes,
   voteControllers.voteCandidate);

@@ -16,12 +16,13 @@ const validations = {
     const {
       fullname, email, phoneNumber, password, password2,
     } = req.body;
-    const names = helper.seperateNames(fullname);
 
     if (!fullname || !fullname.trim()) {
       verified = false;
       error.push({ fullname: 'fullname must be present' });
     }
+
+    const names = helper.seperateNames(fullname);
 
     if (!names) {
       verified = false;
