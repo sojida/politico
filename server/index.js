@@ -1,6 +1,10 @@
 import '@babel/polyfill';
 import express from 'express';
+import path from 'path';
+import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
+import bodyParser from 'body-parser';
+import formData from 'express-form-data';
 import officeRoutes from './routes/office.routes';
 import partyRoutes from './routes/party.routes';
 import authRoutes from './routes/auth.routes';
@@ -10,8 +14,17 @@ import apiDocs from '../openapi.json';
 const app = express();
 
 // middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(formData.parse());
+
+app.use('/politico', express.static(path.join(__dirname, '../UI')));
+
+app.use(cors({
+  credentials: true,
+  methods: ['GET', 'PATCH', 'POST', 'DELETE'],
+}));
+
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(apiDocs));
 
