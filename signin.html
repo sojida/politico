@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
-    <script src="./scripts/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/errorModal.css" />
 </head>
 <body>
     <div class="hdr-bkg">
@@ -30,8 +30,10 @@
 
         <div class="form-box">
             <h2>Sign In</h2>
-            <form action="">
+            <form name='signinForm' id="sign-in-form" method="POST" enctype='multipart/form-data'>
+                <p class="err-text"></p>
                 <input type="text" placeholder="Email" name="email" required>
+                <p class="err-text"></p>
                 <input type="password" placeholder="Password" name="password" required>
                 <button>SIGN IN</button>
 
@@ -50,6 +52,25 @@
     <footer>
         <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2019</a></p>
     </footer>
+
+    <div id="error-modal" class="modal">
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close err-close">&times;</span>
+                <h2>Error</h2>
+              </div>
+              <div class="modal-body">
+               <h4 id="err-msg"></h4>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+      </div>
+    
+        <script src="./scripts/errorModal.js"></script>
+        <script src="./scripts/fetch/fetch.js"></script>
+        <script src="./scripts/Auth/signin.js"></script>
 
 </body>
 </html>
