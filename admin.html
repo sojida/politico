@@ -17,7 +17,7 @@
     <div class="hdr-bkg">
         <nav>
             <div class="logo"><a href="./index.html">Politico</a></div>
-            <div class="nav-item signin"><a href="./index.html">Logout</a></div>
+            <div class="nav-item signin"><a id="logOut">Logout</a></div>
         </nav>
     </div>
 
@@ -25,99 +25,27 @@
         <div class="tab">
             <button class="tablinks" name="dashboard-section"  id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
             <button class="tablinks" name="party-section" id="party-tab"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
-            <button class="tablinks" name="office-section"><span class="icon"><i class="fas fa-building"></i></span><span class="text">Office</span></button>
+            <button class="tablinks" name="office-section" id="office-tab"><span class="icon"><i class="fas fa-building"></i></span><span class="text">Office</span></button>
         </div>
 
           <div id="dashboard-section" class="tabcontent">
-            <h3>Overview</h3>
 
-            <button class="accordion">Political Parties</button>
-            <div class="party-table panel">
-                <table>
-                    <tr>
-                        <th>Party</th>
-                        <th>Hq Address</th>
-                        <th>Logo</th>
+            <button class="accordion">Admin Dashboard</button>
+            <div id="admin-options-container">
+                    <div class="admin-option dark" id="goToParty">
+                        <p>Create A Party</p>
+                    </div>
 
-                    </tr>
-                    <tr>
-                        <td>PPD</td>
-                        <td>Lagos</td>
-                        <td><i class="fas fa-umbrella"></i></td>
-                    </tr>
-                    <tr>
-                        <td>ACP</td>
-                        <td>Abuja</td>
-                        <td><i class="fas fa-broom"></i></td>
-                    </tr>
-                    <tr>
-                        <td>YPP</td>
-                        <td>Lagos</td>
-                        <td><i class="fas fa-helicopter"></i></td>
-                    </tr>
-                </table>
-            </div>
+                    <div class="admin-option dark" id="goToOffice">
+                        <p>Create An Office</p>
+                    </div>
 
-            <button class="accordion">Offices</button>
-            <div class="office-table panel">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>    
-                        </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>Federal</td>
-                        </tr>
-                        <tr>
-                            <td>Chairman</td>
-                            <td>Local</td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>State</td>
-                        </tr>
-                    </table>
-            </div>
+                    <div class="admin-option dark" id="goToParty">
+                        <p>Register A Candidate</p>
+                    </div>
 
-            <button class="accordion">Candidates</button>
-            <div class="candidate-table panel">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Party</th>
-                            <th>Office</th>
-                        </tr>
-                        <tr>
-                            <td>Habubak Aratiku</td>
-                            <td>PPD</td>
-                            <td>President</td>
-                        </tr>
-                        <tr>
-                            <td>Dinome Alaye</td>
-                            <td>ACP</td>
-                            <td>Governor</td>
-                        </tr>
-                        <tr>
-                            <td>Okoro Charochas</td>
-                            <td>YPP</td>
-                            <td>Chairman</td>
-                        </tr>
-                    </table>
-            </div>
-
-            <div class="center">
-                <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#"  class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
                 </div>
-            </div>
+
           </div>
           
           <div id="party-section" class="tabcontent">
@@ -125,20 +53,20 @@
 
             <button class="accordion">Create New Party</button>
             <div class="create-party panel">
-                    <form enctype="multipart/form-data" name="partyForm" id="party-form" onsubmit="return false">
-                        <label for="party">Party Name <span class="important">*</span></label>
+                    <form enctype="multipart/form-data" name="partyForm" id="party-form" onsubmit="return false" class="admin-form">
+                        <label for="party">Party Name<span class="important">*</span></label>
                         <p class="err-text"></p>
                         <input type="text" name="name" placeholder="Party Name" required>
 
 
 
-                        <label for="hqAddress">HQ Address <span class="important">*</span></label>
+                        <label for="hqAddress">HQ Address<span class="important">*</span></label>
                         <p class="err-text"></p>
                         <input type="text" name="hqAddress" placeholder="Hq Address" required>
  
 
 
-                        <label for="partyLogo">Party Logo <span class="important">*</span></label>
+                        <label for="partyLogo">Party Logo<span class="important">*</span></label>
                         <p class="err-text"></p>
                         <input type="file" id="logo-upload" name="logoUrl">
                         
@@ -150,6 +78,8 @@
 
             <button class="accordion">Political Parties</button>
             <div class="party-table panel">
+                <p id="edit-error" class="edit-present"></p>
+                <p id="edit-success" class="edit-present"></p>
                 <table>
                     <tr>
                         <th>Party</th>
@@ -172,15 +102,15 @@
             <h3>Office</h3>
             
             <button class="accordion">Create New Office</button>
-            <div class="create-office panel">
-                    <form action="" enctype="multipart/form-data">
+            <div class="create-office panel admin-form-panel">
+                    <form action="" enctype="multipart/form-data"  class="admin-form">
                         <p>
-                        <label for="party">Office Name:</label>
+                        <label for="party">Office Name:<span class="important">*</span></label>
                         <input type="text" name="officeName" placeholder="Office name">
                         </p>
 
                         <p>
-                        <label for="hqAddress">Government Type:</label>
+                        <label for="hqAddress">Government Type:<span class="important">*</span></label>
                         <select name="officeType">
                             <option value="federal">Federal</option>
                             <option value="state">State</option>
@@ -188,7 +118,8 @@
                         </select>
                         </p>
 
-                        <input type="submit" value="Create Office" class="block">
+                        <label for="submit"></label>
+                        <button type="submit" class="create-office-btn">Create Office</button>
                     </form>
             </div>
 
@@ -212,6 +143,20 @@
                             <td>State</td>
                         </tr>
                     </table>
+
+                    
+            <div class="center">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#"  class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div>
             </div>
 
           </div>

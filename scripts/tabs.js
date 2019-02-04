@@ -1,6 +1,14 @@
-const timeNow = Date.now()
-let fetchTime
 window.onload = () => {
+const logout = document.getElementById('logOut');
+
+logout.addEventListener('click', () => {
+    localStorage.clear()
+    location.assign('signin.html')
+})
+
+if(!localStorage.token){
+    location.href = 'signin.html'
+}
 
 const tab = document.querySelector('.tab')
 const tabButton = tab.querySelectorAll('button')
@@ -40,16 +48,14 @@ const partyTable = document.querySelector('.party-edit-info')
 
     fetchFunc.getData(`${url}/parties`)
     .then((res) => {
-        fetchTime = Date.now() - timeNow;
-        console.log(res)
         if(!res.data.length){
             partyTable.innerHTML = `<h1>No Parties</h1>`
         } else {
             partyTable.innerHTML = res.data.map((party) => {
-            return `<tr key=${party.id}>
-                    <td>${party.name}</td>
+            return `<tr class="party-item" key=${party.id}>
+                    <td  contenteditable="true" class="editPartyName">${party.name}</td>
                     <td>${party.hqaddress}</td>
-                    <td>${partylogo(party.logourl)}</td>
+                    <td class="party-logo">${partylogo(party.logourl)}</td>
                     <td class="edit-party"><i class="fas fa-pen"></i></td>
                     <td class="delete-party"><i class="fas fa-trash"></i></td>
                     </tr>
