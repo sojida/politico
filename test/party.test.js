@@ -276,6 +276,29 @@ describe('CREATE A POLITICAL PARTY', () => {
       });
   });
 
+  it('should respond with the created party: image included', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties')
+      .set('Authorization', adminToken)
+      .field('name', 'CPCR')
+      .field('hqAddress', 'Lagos')
+      .attach('logoUrl', './test/test.jpg', 'test.jpg')
+      .end((err, res) => {
+        const { status, data, message } = res.body;
+        const { name, hqaddress } = data[0];
+        expect(status).to.equal(201);
+        expect(data[0]).to.have.property('id');
+        expect(data[0]).to.have.property('name');
+        expect(data[0]).to.have.property('hqaddress');
+        expect(data[0]).to.have.property('logourl');
+        expect(name).to.equal('CPCR');
+        expect(hqaddress).to.equal('Lagos');
+        expect(message).to.equal('party created successfully');
+        done();
+      });
+  });
+
+
   it('should not respond with the created party: no name', (done) => {
     chai.request(app)
       .post('/api/v1/parties')

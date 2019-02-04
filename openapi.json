@@ -28,6 +28,7 @@
     "/api/v1/auth/login" : {
       "post" : {
         "tags" : [ "Authentication" ],
+        "summary" : "Login User",
         "description" : "Login user",
         "requestBody" : {
           "content" : {
@@ -45,7 +46,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Resopond with user",
+            "description" : "Resopond with user object and token",
             "content" : {
               "application/json; charset=utf-8" : {
                 "schema" : {
@@ -67,6 +68,7 @@
     "/api/v1/auth/signup" : {
       "post" : {
         "tags" : [ "Authentication" ],
+        "summary" : "Sign Up User",
         "description" : "Create a new user",
         "requestBody" : {
           "content" : {
@@ -106,6 +108,7 @@
     "/api/v1/office/1/result" : {
       "post" : {
         "tags" : [ "User" ],
+        "summary" : "Get result of a specific office",
         "description" : "Collate and fetch the result of specific office following a concluded election.",
         "requestBody" : {
           "content" : {
@@ -145,6 +148,7 @@
     "/api/v1/parties" : {
       "get" : {
         "tags" : [ "User" ],
+        "summary" : "Get all parties",
         "description" : "Fetch all parties",
         "responses" : {
           "200" : {
@@ -165,6 +169,7 @@
       },
       "post" : {
         "tags" : [ "Admin" ],
+        "summary" : "Create a party",
         "description" : "Create a party",
         "requestBody" : {
           "content" : {
@@ -204,6 +209,7 @@
     "/api/v1/offices/1" : {
       "get" : {
         "tags" : [ "User" ],
+        "summary" : "Get a specific party",
         "description" : "Get a specific party",
         "responses" : {
           "200" : {
@@ -229,6 +235,7 @@
     "/api/v1/parties/3" : {
       "delete" : {
         "tags" : [ "Admin" ],
+        "summary" : "Delete a specific party",
         "description" : "Delete a specific party",
         "responses" : {
           "200" : {
@@ -254,6 +261,7 @@
     "/api/v1/votes" : {
       "post" : {
         "tags" : [ "User" ],
+        "summary" : "User can vote",
         "description" : "Vote a candidate",
         "requestBody" : {
           "content" : {
@@ -293,6 +301,7 @@
     "/api/v1/parties/1" : {
       "get" : {
         "tags" : [ "User" ],
+        "summary" : "Gets a specific party",
         "description" : "Get a specific party",
         "responses" : {
           "200" : {
@@ -318,6 +327,7 @@
     "/api/v1/offices" : {
       "get" : {
         "tags" : [ "User" ],
+        "summary" : "Get all offices",
         "description" : "Get all offices",
         "responses" : {
           "200" : {
@@ -338,6 +348,7 @@
       },
       "post" : {
         "tags" : [ "Admin" ],
+        "summary" : "Create an office",
         "description" : "Create an office",
         "requestBody" : {
           "content" : {
@@ -377,6 +388,7 @@
     "/api/v1/office/5/register" : {
       "post" : {
         "tags" : [ "Admin" ],
+        "summary" : "Register a candidate",
         "description" : "Create a candidate",
         "requestBody" : {
           "content" : {
@@ -416,6 +428,7 @@
     "/api/v1/parties/2/name" : {
       "patch" : {
         "tags" : [ "Admin" ],
+        "summary" : "Edit a party name",
         "description" : "Edit a party name",
         "requestBody" : {
           "content" : {

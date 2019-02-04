@@ -73,6 +73,13 @@ const middleware = {
       });
     }
 
+    if (req.files) {
+      if (req.files.logoUrl) {
+        req.body.logoUrl = `${Date.now()}-${req.files.logoUrl.name}`;
+        req.files.logoUrl.mv(`./server/uploads/${req.body.logoUrl}`, err => err);
+      }
+    }
+
     const { rows: newParty } = await db(queries.createParty(
       req.body.name,
       req.body.hqAddress,

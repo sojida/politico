@@ -21,6 +21,10 @@ body{
     padding: 30px;
 }
 
+.important{
+    color: red;
+}
+
 .hide{
     display: none;
 }
