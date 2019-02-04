@@ -8,7 +8,7 @@ table{
 
 th{
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     background: var(--btn);
     color: #fff;
     width: 250px;
@@ -32,6 +32,11 @@ td {
     padding: 5px 10px;
     width: 100px;
     height: 40px;
+}
+
+td img{
+    width: 100px;
+    height: auto;
 }
 
 /* Acordion */
@@ -66,6 +71,7 @@ td {
     background-color: white;
     display: none;
     padding: 3px;
+    text-align: center;
   }
 
   .panel option{
@@ -74,37 +80,40 @@ td {
   }
 
   .panel form p{
-        display: flex;
-        align-items: center;
-        margin: 10px;
+        margin: 0;
   }
 
-  .panel form label{
-      width: 120px;
-      text-align: right;
-      margin-right: 10px;
-      
+  .panel form input[type="*"]{
+      margin-bottom: 10px;
   }
 
   .panel form input[type="file"]{
-    margin: 0;
-    font-size: 20px;
+      width: 250px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 20px;
+  }
 
-}
+ 
 
 .panel form select, .panel form option{
     font-size: 1.2rem;
 }
 
-.panel form input[type="text"]{
-    margin: 0;
-    
-}
 
-  .panel form input[type="submit"]{
-      margin-left: 140px;
-      font-size: 1.2rem;
+  .panel form input[type="submit"], .create-party-btn{
+    font-size: 1.2rem;
+    margin: 10px 30px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: rgb(0, 53, 51);
+    transition: 0.5s;
+    width: 250px;
   }
+  .panel form input[type="submit"]:hover, .create-party-btn:hover{
+    background:  rgb(15, 165, 160);
+}
 
 
   /* SECTIONS */
