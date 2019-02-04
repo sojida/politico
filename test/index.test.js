@@ -17,6 +17,15 @@ describe('HOMEPAGE', () => {
       });
   });
 
+  it('should respond with data', (done) => {
+    chai.request(app)
+      .get('/api/v1/images/file')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+
   it('should respond with error: invalid routes', (done) => {
     chai.request(app)
       .get('/api/v1/party')

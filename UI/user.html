@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tabs.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/welcomeModal.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/votemodal.css" />
     <script src="./scripts/index.js"></script>
     <script src="./scripts/tabs.js" ></script>
@@ -113,12 +114,15 @@
             <button class="accordion">Political Parties</button>
             <div class="party-table panel">
                     <table>
+                        
                         <tr>
                             <th>Party</th>
                             <th>Hq Address</th>
                             <th>Logo</th>
                         </tr>
-                        <tr>
+                        <tbody class="party-info">
+
+                        <!-- <tr>
                             <td>PPD</td>
                             <td>Lagos</td>
                             <td><i class="fas fa-umbrella"></i></td>
@@ -132,7 +136,8 @@
                             <td>YPP</td>
                             <td>Lagos</td>
                             <td><i class="fas fa-helicopter"></i></td> 
-                        </tr>
+                        </tr> -->
+                    </tbody>
                     </table>
                 </div>
               </div>
@@ -462,6 +467,22 @@
                     
 
             </div>
+
+            <div id="welcome-modal" class="modal wlc-modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <span class="close wlc-close">&times;</span>
+                        <h2>Welcome</h2>
+                      </div>
+                      <div class="modal-body">
+                        <h2 id="wlc-usr"></h2>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                </div>
     </main>
 
     
@@ -486,11 +507,17 @@
 
 
 
+
+
     <footer>
         <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2019</a></p>
     </footer>
 
     <script src="./scripts/accordion.js" ></script>
     <script src="./scripts/vote.js" ></script>
+    <script src="./scripts/welcomeModal.js"></script>
+    <script src="./scripts/user/welcomeUser.js"></script>
+    <script src="./scripts/fetch/fetch.js"></script>
+    <script src="./scripts/user/userParties.js"></script>
 </body>
 </html>

@@ -8,15 +8,113 @@
   "servers" : [ {
     "url" : "https://shielded-headland-63958.herokuapp.com"
   } ],
+  "tags" : [ {
+    "name" : "Authentication",
+    "externalDocs" : {
+      "url" : "https://shielded-headland-63958.herokuapp.com"
+    }
+  }, {
+    "name" : "Admin",
+    "externalDocs" : {
+      "url" : "https://shielded-headland-63958.herokuapp.com"
+    }
+  }, {
+    "name" : "User",
+    "externalDocs" : {
+      "url" : "https://shielded-headland-63958.herokuapp.com"
+    }
+  } ],
   "paths" : {
-    "/api/v1/office/1/result" : {
+    "/api/v1/auth/login" : {
       "post" : {
-        "description" : "Collate and fetch the result of specific office following a concluded election.",
+        "tags" : [ "Authentication" ],
+        "summary" : "Login User",
+        "description" : "Login user",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"email\":\"bitters@gmail.com\",\n    \"password\": \"12345678\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Resopond with user object and token",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/auth/signup" : {
+      "post" : {
+        "tags" : [ "Authentication" ],
+        "summary" : "Sign Up User",
+        "description" : "Create a new user",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\n    \"fullname\": \"Soji Bitters Kunle\",\n    \"email\":\"bitters@gmail.com\",\n    \"phoneNumber\": \"09012312312\",\n    \"password\": \"12345678\",\n    \"password2\": \"12345678\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Respond with created user",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "https://shielded-headland-63958.herokuapp.com"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "https://shielded-headland-63958.herokuapp.com"
+      } ]
+    },
+    "/api/v1/office/1/result" : {
+      "post" : {
+        "tags" : [ "User" ],
+        "summary" : "Get result of a specific office",
+        "description" : "Collate and fetch the result of specific office following a concluded election.",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_2"
               },
               "examples" : {
                 "0" : {
@@ -49,6 +147,8 @@
     },
     "/api/v1/parties" : {
       "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Get all parties",
         "description" : "Fetch all parties",
         "responses" : {
           "200" : {
@@ -68,12 +168,14 @@
         } ]
       },
       "post" : {
+        "tags" : [ "Admin" ],
+        "summary" : "Create a party",
         "description" : "Create a party",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_1"
+                "$ref" : "#/components/schemas/body_3"
               },
               "examples" : {
                 "0" : {
@@ -106,6 +208,8 @@
     },
     "/api/v1/offices/1" : {
       "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Get a specific party",
         "description" : "Get a specific party",
         "responses" : {
           "200" : {
@@ -128,84 +232,10 @@
         "url" : "https://shielded-headland-63958.herokuapp.com"
       } ]
     },
-    "/api/v1/auth/login" : {
-      "post" : {
-        "description" : "Login user",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/body_2"
-              },
-              "examples" : {
-                "0" : {
-                  "value" : "{\n    \"email\":\"bitters@gmail.com\",\n    \"password\": \"12345678\"\n}"
-                }
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Resopond with user",
-            "content" : {
-              "application/json; charset=utf-8" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : { }
-              }
-            }
-          }
-        },
-        "servers" : [ {
-          "url" : "https://shielded-headland-63958.herokuapp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "https://shielded-headland-63958.herokuapp.com"
-      } ]
-    },
-    "/api/v1/auth/signup" : {
-      "post" : {
-        "description" : "Create a new user",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/body_3"
-              },
-              "examples" : {
-                "0" : {
-                  "value" : "{\n    \"fullname\": \"Soji Bitters Kunle\",\n    \"email\":\"bitters@gmail.com\",\n    \"phoneNumber\": \"09012312312\",\n    \"password\": \"12345678\",\n    \"password2\": \"12345678\"\n}"
-                }
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Respond with created user",
-            "content" : {
-              "application/json; charset=utf-8" : {
-                "schema" : {
-                  "type" : "string"
-                },
-                "examples" : { }
-              }
-            }
-          }
-        },
-        "servers" : [ {
-          "url" : "https://shielded-headland-63958.herokuapp.com"
-        } ]
-      },
-      "servers" : [ {
-        "url" : "https://shielded-headland-63958.herokuapp.com"
-      } ]
-    },
     "/api/v1/parties/3" : {
       "delete" : {
+        "tags" : [ "Admin" ],
+        "summary" : "Delete a specific party",
         "description" : "Delete a specific party",
         "responses" : {
           "200" : {
@@ -230,6 +260,8 @@
     },
     "/api/v1/votes" : {
       "post" : {
+        "tags" : [ "User" ],
+        "summary" : "User can vote",
         "description" : "Vote a candidate",
         "requestBody" : {
           "content" : {
@@ -268,6 +300,8 @@
     },
     "/api/v1/parties/1" : {
       "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Gets a specific party",
         "description" : "Get a specific party",
         "responses" : {
           "200" : {
@@ -292,6 +326,8 @@
     },
     "/api/v1/offices" : {
       "get" : {
+        "tags" : [ "User" ],
+        "summary" : "Get all offices",
         "description" : "Get all offices",
         "responses" : {
           "200" : {
@@ -311,6 +347,8 @@
         } ]
       },
       "post" : {
+        "tags" : [ "Admin" ],
+        "summary" : "Create an office",
         "description" : "Create an office",
         "requestBody" : {
           "content" : {
@@ -349,6 +387,8 @@
     },
     "/api/v1/office/5/register" : {
       "post" : {
+        "tags" : [ "Admin" ],
+        "summary" : "Register a candidate",
         "description" : "Create a candidate",
         "requestBody" : {
           "content" : {
@@ -387,6 +427,8 @@
     },
     "/api/v1/parties/2/name" : {
       "patch" : {
+        "tags" : [ "Admin" ],
+        "summary" : "Edit a party name",
         "description" : "Edit a party name",
         "requestBody" : {
           "content" : {
@@ -429,31 +471,6 @@
       "body" : {
         "type" : "object",
         "properties" : {
-          "candidate" : {
-            "type" : "string"
-          },
-          "office" : {
-            "type" : "string"
-          }
-        }
-      },
-      "body_1" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string"
-          },
-          "hqAddress" : {
-            "type" : "string"
-          },
-          "logoUrl" : {
-            "type" : "string"
-          }
-        }
-      },
-      "body_2" : {
-        "type" : "object",
-        "properties" : {
           "password" : {
             "type" : "string"
           },
@@ -462,7 +479,7 @@
           }
         }
       },
-      "body_3" : {
+      "body_1" : {
         "type" : "object",
         "properties" : {
           "password" : {
@@ -478,6 +495,31 @@
             "type" : "string"
           },
           "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_2" : {
+        "type" : "object",
+        "properties" : {
+          "candidate" : {
+            "type" : "string"
+          },
+          "office" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_3" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "hqAddress" : {
+            "type" : "string"
+          },
+          "logoUrl" : {
             "type" : "string"
           }
         }

@@ -1,3 +1,5 @@
+const timeNow = Date.now()
+let fetchTime
 window.onload = () => {
 
 const tab = document.querySelector('.tab')
@@ -32,5 +34,36 @@ function openCity(evt, name) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+// Parties
+const partyTable = document.querySelector('.party-edit-info')
+
+    fetchFunc.getData(`${url}/parties`)
+    .then((res) => {
+        fetchTime = Date.now() - timeNow;
+        console.log(res)
+        if(!res.data.length){
+            partyTable.innerHTML = `<h1>No Parties</h1>`
+        } else {
+            partyTable.innerHTML = res.data.map((party) => {
+            return `<tr key=${party.id}>
+                    <td>${party.name}</td>
+                    <td>${party.hqaddress}</td>
+                    <td>${partylogo(party.logourl)}</td>
+                    <td class="edit-party"><i class="fas fa-pen"></i></td>
+                    <td class="delete-party"><i class="fas fa-trash"></i></td>
+                    </tr>
+                `
+        }).join(' ')
+        }
+    })
+    .catch(err => err);
+
+const partylogo = (logoUrl) => {
+   if (logoUrl === 'logo123'){
+       return 'No logo'
+   }
+   return `<img src="${url}/images/${logoUrl}"></img>`
+}
 
 }

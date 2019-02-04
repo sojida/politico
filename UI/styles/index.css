@@ -21,6 +21,10 @@ body{
     padding: 30px;
 }
 
+.important{
+    color: red;
+}
+
 .hide{
     display: none;
 }
@@ -122,6 +126,14 @@ input[type="file"]{
 
 .reg:hover{
     background: rgb(38, 139, 134);
+}
+
+.err-text{
+    color: red
+}
+
+.err-input{
+    border-color: red; 
 }
 
 /* HEADER */
@@ -436,8 +448,7 @@ nav{
 .forms-container{
     display: grid;
     grid-template-columns:  1fr 1fr 50px  1fr 1fr;
-    grid-template-rows: 110px 30px 20px auto auto 50px;
-    width: 100vw;
+    grid-template-rows: 110px 30px 20px auto auto 20px;
 }
 
 .img-container{
@@ -459,7 +470,7 @@ nav{
     grid-row: 3 / 5;
     background: var(--header);
     justify-self: center;
-    padding: 80px 60px;
+    padding: 20px 90px;
     max-width: 500px;
     border-radius: 5px;
 }

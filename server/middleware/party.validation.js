@@ -2,6 +2,13 @@ const validateParty = (req, res, next) => {
   let verified = true;
   const error = [];
 
+  if (req.files) {
+    if (req.files.logoUrl) {
+      req.body.logoUrl = req.files.logoUrl.name;
+    }
+  }
+
+
   const { name, hqAddress, logoUrl } = req.body;
 
   if (!name || !name.trim()) {
