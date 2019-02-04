@@ -10,7 +10,7 @@
 }
 
 body{
-    background: var(--bkg);
+    background: #fff;
     width: 100%;
     font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -51,10 +51,6 @@ button{
     font-size: 1.2rem;
 }
 
-
-button:hover{
-    background: #172a31;
-}
 
 input[type="text"], input[type="email"], input[type="text"], input[type="tel"], input[type="password"], input[type="number"] {
     border: 1px solid black ;
@@ -109,24 +105,10 @@ input[type="file"]{
 .go{
     background: green;
     color: white;
-    transition: 0.3s;
     font-size: 1rem;
     font-weight: 900;
 }
 
-.go:hover{
-    background: rgb(0, 190, 0);
-}
-
-.reg{
-    background: lightseagreen;
-    color: white;
-    text-shadow: 0px 0px 8px #000000;
-}
-
-.reg:hover{
-    background: rgb(38, 139, 134);
-}
 
 .err-text{
     color: red
@@ -138,16 +120,20 @@ input[type="file"]{
 
 /* HEADER */
 header{
-    height: 350px;
-    background-image: url('../images/thumbsup.jpg');
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(224, 230, 226, 0.3),
+        rgba(10, 190, 34, 0.5)),
+     url('../images/e-Voting.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    position: relative;
 
 }
 
 .hdr-bkg{
-    background: var(--btn);
+    background: #3c9848;
     border-bottom:1px solid #17252a;
     position: fixed;
     top: 0;
@@ -238,7 +224,7 @@ nav{
     display: grid;
     justify-content: center;
     align-content: center;
-    height: 200px;
+    height: 400px;
     padding: 10px;
 }
 
@@ -246,7 +232,7 @@ nav{
 .slogan{
     display: none;
     color: #fff;
-    font-size: 2rem;
+    font-size: 3rem;
     text-shadow: 0px 0px 8px #000000;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -282,7 +268,7 @@ nav{
 
 .register{
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 200px));
+    grid-template-columns: repeat(2, minmax(100px, auto));
     justify-content: center;
 
 }
@@ -291,6 +277,26 @@ nav{
     align-self: center;
     justify-self: center;
     border-bottom: 30px;
+}
+
+.register button{
+    border: 2px solid #fff;
+    height: 70px;
+    width: 250px;
+    outline: none;
+    margin: 0 20px;
+    background: transparent;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+
+.register button:hover{
+    background: #fff;
+    color: black;
+    
 }
 
 
@@ -304,7 +310,8 @@ nav{
 
 .howToVote{
     display: grid;
-    grid-template-columns: 10px 1fr 5px 1fr 5px 1fr 5px 1fr 5px 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
     grid-template-rows: auto;
     height: 200px;
     margin: 10px;
@@ -323,13 +330,19 @@ nav{
 }
 
 .dark{
-    background: #17252a;
-    color: white
+    background: linear-gradient(
+    to right bottom,
+    rgba(85, 223, 85, 0.8),
+    rgba(8, 196, 33, 0.8));
+    color: white;
 }
 
 .darkg{
-    background: #2b7a78;
-    color: white;
+    background: linear-gradient(
+    to right bottom,
+    rgb(85, 225, 85),
+    rgb(20, 225, 20));
+    color: white
 }
 
 
@@ -345,6 +358,9 @@ nav{
 
 }
 
+.how-box:hover{
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.5);
+}
 .how-box p {
     align-self: center;
     justify-self: center;
@@ -357,13 +373,10 @@ nav{
     justify-self: center;
 }
 
-.how-box:hover{
-    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.5);
-}
+
 
 .step1{
-    grid-column: 2 / 4;
-    grid-row: 1;
+    grid-column: 2 / 3;
     height: 80%;
     z-index: 4;
     align-self: center;
@@ -372,25 +385,25 @@ nav{
 }
 
 .step2 {
-    grid-column: 3 / 6;
+    grid-column: 3 / 4;
     grid-row: 1;
-    height: 85%;
+    height: 80%;
     z-index: 2;
     align-self: center;
 }
 
 .step3 {
-    grid-column: 5 / 8;
+    grid-column: 4 / 5;
     grid-row: 1;
-    height: 95%;
+    height: 80%;
     z-index: 3;
     align-self: center;
 }
 
 .step4 {
-    grid-column: 7 / 10;
+    grid-column: 5 / 6;
     grid-row: 1;
-    height: 90%;
+    height: 80%;
     z-index: 1;
     align-self: center;
 
@@ -403,7 +416,7 @@ nav{
 
 .candidate-container{
     padding: 30px;
-    background: grey;
+    background: #56755C;
     color: white;
     text-align: center;
 }
@@ -417,7 +430,7 @@ nav{
 }
 
 .news-form{
-    background: rgba(0, 0, 0, 0.5);
+    background: #56755C;
     border-radius: 3px;
     height: auto;
     padding: 20px;
@@ -435,12 +448,31 @@ nav{
 }
 
 .news-form input{
-    height: 20px;
+    height: 30px;
     border-radius: 3px;
     width: 50%;
     padding: 5px;
     margin: 5px;
+    border: 2px solid white;
+    
 
+}
+.news-form button{
+    border: 2px solid #fff;
+    height: 50px;
+    outline: none;
+    margin: 0 20px;
+    background: transparent;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+
+.news-form button:hover{
+    background: #fff;
+    color: black;
 }
 
 
@@ -468,7 +500,7 @@ nav{
 .form-box{
     grid-column: 2 / 5;
     grid-row: 3 / 5;
-    background: var(--header);
+    background: #3c9848;
     justify-self: center;
     padding: 20px 90px;
     max-width: 500px;
@@ -497,6 +529,20 @@ nav{
     height: 30px;
     color: #111;
     font-size: 1rem;
+}
+.form-box h2{
+    color: #fff;
+}
+
+.form-box button{
+    background: transparent;
+    border: 2px solid white;
+    transition: 0.5s;
+}
+
+.form-box button:hover{
+    background: #fff;
+    color: black
 }
 
 .form-box p{
@@ -536,7 +582,7 @@ nav{
   }
   
   .pagination a.active {
-    background-color: var(--btn);
+    background-color:  #3c9848;
     color: white;
   }
   
@@ -560,7 +606,7 @@ footer{
     text-align:center;
     width: 100%;
     height: 40px;
-    background: var(--btn);
+    background: #3c9848;
     color: #fff;
     
   }
@@ -574,6 +620,76 @@ footer{
     
   }
 
+/* ADMIN OPTION BOX */
+#admin-options-container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-option{
+    background: #3c9848;
+    margin: 0 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.admin-option:hover{
+    background: #26c93c;
+    cursor: pointer;
+}
+/* ADMIN FORM */
+.admin-form{
+    background: lightgray;
+    width: 400px;
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.admin-form button{
+    height: 40px;
+    width: 250px;
+    outline: none;
+    margin: 0 20px;
+    background: #3c9848;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.5s;
+}
+
+.admin-form button:hover{
+    background: #fff;
+    color: black
+}
+
+.editPartyName:focus{
+    background: #fff;
+    border: 2px solid black;
+}
+
+.edit-present{
+    background: #ff0000;
+    color: white;
+    border-radius: 5px;
+    transition: 5s;
+    opacity: 1;
+}
+
+.remove{
+    opacity: 0;
+}
+
+#edit-success{
+    background: #26c93c;
+    color: white;
+    border-radius: 5px;
+}
 
 
 @media(max-width:780px){

@@ -3,7 +3,16 @@ const partyTable = document.querySelector('.party-edit-info')
 const partyForm = document.getElementById('party-form')
 const partyFormData = document.forms.namedItem('partyForm')
 const inputValues = partyForm.querySelectorAll('input')
+const goToParty = document.getElementById('goToParty');
+const goToOffice = document.getElementById('goToOffice');
 
+goToParty.addEventListener('click', () => {
+  document.getElementById('party-tab').click()
+})
+
+goToOffice.addEventListener('click', () => {
+  document.getElementById('office-tab').click()
+})
 
 partyForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -21,7 +30,6 @@ partyForm.addEventListener('submit', (e) => {
         }
 
         if (res.data) {
-            window.location.assign('user.html')
             document.getElementById('party-tab').click()
             showSuccess(res.message)
         }

@@ -192,7 +192,7 @@ describe('CREATE OFFICE', () => {
       .end((err, res) => {
         const { status, error } = res.body;
         expect(status).to.equal(400);
-        expect(error[0].type).to.equal('please specify a valid type: Federal, State, Local or Legislative');
+        expect(error[0].type).to.equal('please specify a valid type: Federal, State, Local or Legislative (no spaces and case sensitive)');
         done();
       });
   });
@@ -426,7 +426,7 @@ describe('CREATE CANDIDATE', () => {
 describe('VOTE RESULTS', () => {
   it('should return results of votes', (done) => {
     chai.request(app)
-      .post('/api/v1/office/1/result')
+      .get('/api/v1/office/1/result')
       .set('Authorization', userToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -440,7 +440,7 @@ describe('VOTE RESULTS', () => {
 
   it('should not return results of votes: no such office', (done) => {
     chai.request(app)
-      .post('/api/v1/office/0/result')
+      .get('/api/v1/office/0/result')
       .set('Authorization', userToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -452,7 +452,7 @@ describe('VOTE RESULTS', () => {
 
   it('should not return results of votes: params is not a number', (done) => {
     chai.request(app)
-      .post('/api/v1/office/a/result')
+      .get('/api/v1/office/a/result')
       .set('Authorization', userToken)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -464,7 +464,7 @@ describe('VOTE RESULTS', () => {
 
   it('should not return results of votes: params is not present', (done) => {
     chai.request(app)
-      .post('/api/v1/office/ /result')
+      .get('/api/v1/office/ /result')
       .set('Authorization', userToken)
       .end((err, res) => {
         expect(res).to.have.status(400);

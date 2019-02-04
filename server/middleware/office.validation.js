@@ -12,7 +12,7 @@ const validateOffice = (req, res, next) => {
 
   if (!typesOfGov.includes(type)) {
     verified = false;
-    error.push({ type: 'please specify a valid type: Federal, State, Local or Legislative' });
+    error.push({ type: 'please specify a valid type: Federal, State, Local or Legislative (no spaces and case sensitive)' });
   }
 
   if (!name || !name.trim()) {

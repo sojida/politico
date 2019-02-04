@@ -17,6 +17,7 @@ const controllers = {
     res.status(200).json({
       status: 200,
       data: req.data,
+      message: `${req.data[0].name} edited successfully`,
     });
   },
 

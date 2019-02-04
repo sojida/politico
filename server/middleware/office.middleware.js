@@ -95,7 +95,7 @@ const middleware = {
       });
     }
 
-    const { rows: newOffice } = await db(queries.createOffice(req.body.name, req.body.type));
+    const { rows: newOffice } = await db(queries.createOffice(req.body.name.trim(), req.body.type));
 
     req.data = [...newOffice];
     return next();

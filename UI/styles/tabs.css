@@ -49,14 +49,16 @@
   
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #3AAFA9;
+    background-color: #587A5F;
+    color: #fff
   }
 
   
   
   /* Create an active/current "tab button" class */
   .tab button.active {
-    background-color: #DEF2F1;
+    background-color: #587A5F;
+    color: #fff
   }
   
   /* Style the tab content */

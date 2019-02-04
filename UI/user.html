@@ -18,7 +18,7 @@
     <div class="hdr-bkg">
         <nav>
             <div class="logo"><a href="./index.html">Politico</a></div>
-            <div class="nav-item signin"><a href="./index.html">Logout</a></div>
+            <div class="nav-item signin" ><a id="logOut">Logout</a></div>
         </nav>
     </div>
 
@@ -35,7 +35,7 @@
           <div id="vote-section" class="tabcontent">
             <h3>Vote</h3>
 
-            <button class="accordion"><span class="acc-text">President</span> <span class="office-type">Federal</span> <span class="vote-status">Not voted</span></button>
+            <button class="accordion"><span class="acc-text">President</span></button>
             <div class="president-table panel">
                 <table>
                     <tr>
@@ -59,52 +59,101 @@
                         <td>YPP</td>
                         <td class="vote"><i class="fas fa-thumbs-up"></i></td>
                     </tr>
-                </table>
+                </table>   
+                
+                <div class="center">
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#"  class="active">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
             </div>
 
-            <button class="accordion"><span class="acc-text">Chairman</span> <span class="office-type">Local</span> <span class="vote-status">Voted</span></button>
+            <button class="accordion"><span class="acc-text">Chairman</span></button>
             <div class="president-table panel">
                 <table>
-                    <tr>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>You already voted for Habubak Aratiku</td>
-                        <td><i class="fas fa-handshake"></td>
-                    </tr>
-                    
-                </table>
-            </div>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Party</th>
+                            <th>Vote</th>
+    
+                        </tr>
+                        <tr>
+                            <td>Habubak Aratiku</td>
+                            <td>PPD</td>
+                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Dinome Alaye</td>
+                            <td>ACP</td>
+                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Okoro Charochas</td>
+                            <td>YPP</td>
+                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                        </tr>
+                    </table>  
 
-            <button class="accordion"><span class="acc-text">Governor</span> <span class="office-type">State</span> <span class="vote-status">Voted</span></button>
-            <div class="president-table panel">
-                <table>
-                    <tr>
-                        <th>Status</th>
-                        <th></th>
+                    <div class="center">
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#"  class="active">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
                         
-
-                    </tr>
-                    <tr>
-                        <td>You already voted for Denome Alaye</td>
-                        <td><i class="fas fa-handshake"></td>
-                    </tr>
-                    
-                </table>
             </div>
 
-            <div class="center">
-                <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#"  class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
-                </div>
+            <button class="accordion"><span class="acc-text">Governor</span></button>
+            <div class="president-table panel">
+                    <table>
+                            <tr>
+                                <th>Candidate</th>
+                                <th>Party</th>
+                                <th>Vote</th>
+        
+                            </tr>
+                            <tr>
+                                <td>Habubak Aratiku</td>
+                                <td>PPD</td>
+                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Dinome Alaye</td>
+                                <td>ACP</td>
+                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Okoro Charochas</td>
+                                <td>YPP</td>
+                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
+                            </tr>
+                        </table> 
+                        
+                        <div class="center">
+                                <div class="pagination">
+                                    <a href="#">&laquo;</a>
+                                    <a href="#"  class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">6</a>
+                                    <a href="#">&raquo;</a>
+                                </div>
+                            </div>
             </div>
             
           </div>
@@ -303,28 +352,32 @@
                     <div class="president-table-result panel">
                             <table>
                                 <tr>
+                                    <th class="serial-num">s/n</th>
                                     <th>Name</th>
                                     <th>Party</th>
                                     <th>Votes</th>
-                                    <th>Status</th>
+                                    
                                 </tr>
                                 <tr>
+                                    <td class="go">1</td>
                                     <td>Habubak Aratiku</td>
                                     <td>PPD</td>
                                     <td>1,234,567</td>
-                                    <td class="go">Winner</td>
+                                    
                                 </tr>
                                 <tr>
+                                    <td>2</td>
                                     <td>Dinome Alaye</td>
                                     <td>ACP</td>
                                     <td>934,567</td>
-                                    <td></td>
+                                    
                                 </tr>
                                 <tr>
+                                    <td>3</td>
                                     <td>Okoro Charochas</td>
                                     <td>YPP</td>
                                     <td>434,567</td>
-                                    <td></td>
+                                    
                                 </tr>
                             </table>
                     </div>
@@ -332,61 +385,69 @@
                     <button class="accordion">Senator</button>
                     <div class="senator-table-result panel">
                             <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Party</th>
-                                    <th>Votes</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>Habubak Aratiku</td>
-                                    <td>PPD</td>
-                                    <td>1,234,567</td>
-                                    <td class="go">Winner</td>
-                                </tr>
-                                <tr>
-                                    <td>Dinome Alaye</td>
-                                    <td>ACP</td>
-                                    <td>934,567</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Okoro Charochas</td>
-                                    <td>YPP</td>
-                                    <td>434,567</td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                                    <tr>
+                                        <th class="serial-num">s/n</th>
+                                        <th>Name</th>
+                                        <th>Party</th>
+                                        <th>Votes</th>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td class="go">1</td>
+                                        <td>Habubak Aratiku</td>
+                                        <td>PPD</td>
+                                        <td>1,234,567</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Dinome Alaye</td>
+                                        <td>ACP</td>
+                                        <td>934,567</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Okoro Charochas</td>
+                                        <td>YPP</td>
+                                        <td>434,567</td>
+                                        
+                                    </tr>
+                                </table>
                     </div>
 
                     <button class="accordion">Chairman</button>
                     <div class="chairman-table-result panel">
                             <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Party</th>
-                                    <th>Votes</th>
-                                    <th>Status</th>
-                                </tr>
-                                <tr>
-                                    <td>Habubak Aratiku</td>
-                                    <td>PPD</td>
-                                    <td>1,234,567</td>
-                                    <td class="go">Winner</td>
-                                </tr>
-                                <tr>
-                                    <td>Dinome Alaye</td>
-                                    <td>ACP</td>
-                                    <td>934,567</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Okoro Charochas</td>
-                                    <td>YPP</td>
-                                    <td>434,567</td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                                    <tr>
+                                        <th class="serial-num">s/n</th>
+                                        <th>Name</th>
+                                        <th>Party</th>
+                                        <th>Votes</th>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td class="go">1</td>
+                                        <td>Habubak Aratiku</td>
+                                        <td>PPD</td>
+                                        <td>1,234,567</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Dinome Alaye</td>
+                                        <td>ACP</td>
+                                        <td>934,567</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Okoro Charochas</td>
+                                        <td>YPP</td>
+                                        <td>434,567</td>
+                                        
+                                    </tr>
+                                </table>
                     </div>
 
 
@@ -497,7 +558,7 @@
       <div class="modal-body">
         <h4>Are you sure you want to vote for</h4>
         <h2>Dinome Alaye - PPD?</h2>
-        <button class="go">Yes</button>
+        <button class="go no-exit">Yes</button>
         <button class="yes exit">No</button>
       </div>
       <div class="modal-footer">

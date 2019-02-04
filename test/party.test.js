@@ -180,7 +180,7 @@ describe('Edit a party name', () => {
       });
   });
 
-  it('should not respond with the edited party name: name not present', (done) => {
+  it('should not respond with the edited party name: user is not admin', (done) => {
     chai.request(app)
       .patch('/api/v1/parties/1/name')
       .set('Authorization', userToken)
@@ -191,6 +191,21 @@ describe('Edit a party name', () => {
         const { status, error } = res.body;
         expect(status).to.equal(401);
         expect(error).to.equal('This user is not an admin');
+        done();
+      });
+  });
+
+  it('should not respond with the edited party name: party already present', (done) => {
+    chai.request(app)
+      .patch('/api/v1/parties/1/name')
+      .set('Authorization', adminToken)
+      .send({
+        name: 'PDP',
+      })
+      .end((err, res) => {
+        const { status, error } = res.body;
+        expect(status).to.equal(409);
+        expect(error).to.equal('PDP already exists');
         done();
       });
   });
@@ -413,7 +428,7 @@ describe('CREATE A POLITICAL PARTY', () => {
       .end((err, res) => {
         const { status, error } = res.body;
         expect(status).to.equal(409);
-        expect(error).to.equal('party already present');
+        expect(error).to.equal('PCPC already exists');
         done();
       });
   });

@@ -1,6 +1,6 @@
 const localUrl = 'http://127.0.0.1:3000/api/v1'
 const herokuUrl = 'https://shielded-headland-63958.herokuapp.com/api/v1'
-const url = `${localUrl}`;
+const url = `${herokuUrl}`;
 
 const fetchFunc = {
 
@@ -49,6 +49,7 @@ const fetchFunc = {
             method: "PATCH",
             mode: "cors",
             headers: {
+                "Content-Type": "Application/json",
                 "Authorization": localStorage.token
             },
             body: JSON.stringify(data)
