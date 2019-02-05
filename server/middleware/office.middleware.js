@@ -91,7 +91,7 @@ const middleware = {
     if (presentOffice.length) {
       return res.status(409).json({
         status: 409,
-        error: 'office already present',
+        error: `${presentOffice[0].name} already exists`,
       });
     }
 

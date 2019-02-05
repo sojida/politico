@@ -103,18 +103,20 @@
             
             <button class="accordion">Create New Office</button>
             <div class="create-office panel admin-form-panel">
-                    <form action="" enctype="multipart/form-data"  class="admin-form">
+                    <form enctype="multipart/form-data"  class="admin-form" id="office-form" name="officeForm">
+                        <p id="office-err" class="err"></p>
                         <p>
                         <label for="party">Office Name:<span class="important">*</span></label>
-                        <input type="text" name="officeName" placeholder="Office name">
+                        <input type="text" name="name" placeholder="Office name" required>
                         </p>
 
                         <p>
-                        <label for="hqAddress">Government Type:<span class="important">*</span></label>
-                        <select name="officeType">
-                            <option value="federal">Federal</option>
-                            <option value="state">State</option>
-                            <option value="local">Local</option>
+                        <label for="type">Government Type:<span class="important">*</span></label>
+                        <select name="type" required>
+                            <option value="Federal">Federal</option>
+                            <option value="State">State</option>
+                            <option value="Local">Local</option>
+                            <option value="Legislative">Legislative</option>
                         </select>
                         </p>
 
@@ -130,18 +132,7 @@
                             <th>Name</th>
                             <th>Type</th>    
                         </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>Federal</td>
-                        </tr>
-                        <tr>
-                            <td>Chairman</td>
-                            <td>Local</td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>State</td>
-                        </tr>
+                        <tbody class="office-info"></tbody>
                     </table>
 
                     

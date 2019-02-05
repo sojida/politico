@@ -208,7 +208,7 @@ describe('CREATE OFFICE', () => {
       .end((err, res) => {
         const { status, error } = res.body;
         expect(status).to.equal(409);
-        expect(error).to.equal('office already present');
+        expect(error).to.equal('President already exists');
         done();
       });
   });
