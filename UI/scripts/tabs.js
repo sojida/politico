@@ -57,7 +57,7 @@ const partyTable = document.querySelector('.party-edit-info')
                     <td>${party.hqaddress}</td>
                     <td class="party-logo">${partylogo(party.logourl)}</td>
                     <td class="edit-party"><i class="fas fa-pen"></i></td>
-                    <td class="delete-party"><i class="fas fa-trash"></i></td>
+                    <td class="delete-party" key=${party.id}><i class="fas fa-trash"></i></td>
                     </tr>
                 `
         }).join(' ')
