@@ -61,3 +61,15 @@ const showTextErr = (error) => {
     errmsg.innerHTML = error
 }
 
+
+const displayWelcome = () => {
+    successModal.style.display = 'block'
+    sccmsg.innerHTML = 'Password reset succesful, Login!'
+    localStorage.clear()
+}
+
+if (localStorage.pass){
+    displayWelcome()
+}
+
+

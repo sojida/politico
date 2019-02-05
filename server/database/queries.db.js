@@ -113,6 +113,15 @@ const queries = {
     values: [officeid],
   }),
 
+  selectUserEmail: email => ({
+    text: 'SELECT * from users WHERE email = $1',
+    values: [email],
+  }),
+
+  updatePassword: (password, email) => ({
+    text: 'UPDATE users SET password = $1 WHERE email = $2 RETURNING *',
+    values: [password, email],
+  }),
 
 };
 

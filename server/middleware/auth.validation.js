@@ -53,7 +53,7 @@ const validations = {
       error.push({ phoneNumber: 'phone number must be present' });
     }
 
-    if (!(/^[\d+]{3,15}$/.test(phoneNumber))) {
+    if (!(/^[\d+-]{3,15}$/.test(phoneNumber))) {
       verified = false;
       error.push({ phoneNumber: 'phone number must be valid: 3 - 15 characters with +, - and only numbers' });
     }
