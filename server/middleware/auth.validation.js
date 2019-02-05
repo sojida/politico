@@ -14,7 +14,7 @@ const validations = {
     const error = [];
 
     const {
-      fullname, email, phoneNumber, password, password2,
+      fullname, email, phoneNumber, password, confirmPassword,
     } = req.body;
 
     if (!fullname || !fullname.trim()) {
@@ -27,6 +27,15 @@ const validations = {
     if (!names) {
       verified = false;
       error.push({ fullname: 'more than one name is required' });
+    }
+
+    if (names) {
+      names.forEach((name) => {
+        if (!(/^[a-z]{2,40}$/i.test(name))) {
+          verified = false;
+          error.push({ fullname: `${name} must be valid: only letters` });
+        }
+      });
     }
 
     if (!email || !email.trim()) {
@@ -44,9 +53,9 @@ const validations = {
       error.push({ phoneNumber: 'phone number must be present' });
     }
 
-    if (!(/^[\d]{11}$/.test(phoneNumber))) {
+    if (!(/^[\d+]{3,15}$/.test(phoneNumber))) {
       verified = false;
-      error.push({ phoneNumber: 'phone number must be valid' });
+      error.push({ phoneNumber: 'phone number must be valid: 3 - 15 characters with +, - and only numbers' });
     }
 
     if (!(/^[\w@-]{8,}$/.test(password))) {
@@ -55,9 +64,9 @@ const validations = {
     }
 
 
-    if (password !== password2) {
+    if (password !== confirmPassword) {
       verified = false;
-      error.push({ password2: 'password do not match' });
+      error.push({ confirmPassword: 'password do not match' });
     }
 
     if (!verified) {

@@ -35,6 +35,7 @@ const middleware = {
     }
 
     const { rows: party } = await db(queries.selectPartyById(id));
+    const { rows: partyName } = await db(queries.selectPartyByNmae(name));
 
     if (!party.length) {
       return res.status(404).json({
@@ -43,7 +44,14 @@ const middleware = {
       });
     }
 
-    const { rows: newParty } = await db(queries.updatePartyName(req.body.name, id));
+    if (partyName.length) {
+      return res.status(409).json({
+        status: 409,
+        error: `${partyName[0].name} already exists`,
+      });
+    }
+
+    const { rows: newParty } = await db(queries.updatePartyName(req.body.name.trim(), id));
 
     req.data = [...newParty];
     return next();
@@ -69,7 +77,7 @@ const middleware = {
     if (presentParty.length) {
       return res.status(409).json({
         status: 409,
-        error: 'party already present',
+        error: `${presentParty[0].name} already exists`,
       });
     }
 
@@ -81,9 +89,9 @@ const middleware = {
     }
 
     const { rows: newParty } = await db(queries.createParty(
-      req.body.name,
-      req.body.hqAddress,
-      req.body.logoUrl,
+      req.body.name.trim(),
+      req.body.hqAddress.trim(),
+      req.body.logoUrl.trim(),
     ));
 
     req.data = [...newParty];

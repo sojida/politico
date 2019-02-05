@@ -38,7 +38,7 @@ router.post('/office/:id/register',
   officeMiddleware.registerCandidate,
   officeControllers.registerCandidate);
 
-router.post('/office/:id/result',
+router.get('/office/:id/result',
   authMiddleware.verifyToken,
   authHelper.checkParams,
   officeMiddleware.checkOfficeId,

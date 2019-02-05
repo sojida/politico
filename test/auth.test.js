@@ -16,7 +16,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '09010101010',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -41,7 +41,26 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
+
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error[0]).to.have.property('fullname');
+        done();
+      });
+  });
+
+  it('should not create new user: invalid full name', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        fullname: '123 456',
+        email: 'obiwan@gmail.com',
+        phoneNumber: '09011111111',
+        password: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -60,7 +79,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -79,7 +98,7 @@ describe('REGISTER ', () => {
         email: ' ',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -97,7 +116,7 @@ describe('REGISTER ', () => {
         email: 'obiwangmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -116,7 +135,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: ' ',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -135,7 +154,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: 'obiwan',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -154,7 +173,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '08011111111',
         password: ' ',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -173,13 +192,13 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '08011111111',
         password: '123456783',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.equal(400);
-        expect(res.body.error[0]).to.have.property('password2');
+        expect(res.body.error[0]).to.have.property('confirmPassword');
         done();
       });
   });
@@ -192,7 +211,7 @@ describe('REGISTER ', () => {
         email: 'obiwan@gmail.com',
         phoneNumber: '08011111111',
         password: '123456',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -211,7 +230,7 @@ describe('REGISTER ', () => {
         email: 'obi@gmail.com',
         phoneNumber: '08022222222',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
 
       })
       .end((err, res) => {
@@ -230,7 +249,7 @@ describe('REGISTER ', () => {
         email: 'obiwan1@gmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
@@ -248,7 +267,7 @@ describe('REGISTER ', () => {
         email: 'obiwan1@gmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -265,7 +284,7 @@ describe('REGISTER ', () => {
         email: 'obiwan1@gmail.com',
         phoneNumber: '09011111111',
         password: '12345678',
-        password2: '12345678',
+        confirmPassword: '12345678',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);

@@ -1,5 +1,4 @@
 setTimeout(()=>{
-  console.log(fetchTime)
   const delModal = document.getElementById("delete-modal");
   const delPartyBtn = document.querySelectorAll(".delete-party");
   const delClose = document.getElementsByClassName("del-close")[0];
