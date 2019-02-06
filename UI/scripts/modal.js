@@ -1,4 +1,6 @@
-setTimeout(() => {
+const addEditFunction = () => {
+
+  
   const modal = document.getElementById('edit-modal');
   const editPartyBtn = document.querySelectorAll(".edit-party");
   const editClose = document.getElementsByClassName("edit-close")[0];
@@ -43,7 +45,7 @@ setTimeout(() => {
   }
 
   animateSuccess = (message) => {
-    document.getElementById('edit-success').innerHTML = `${oldPartyName}: ${message}`
+    document.getElementById('edit-success').innerHTML = message
     setTimeout(() => {
       document.getElementById('edit-success').innerHTML = ''
     }, 5000)
@@ -64,4 +66,6 @@ setTimeout(() => {
       modal.style.display = "none";
     }
   }) 
-}, 2000)
+}
+
+

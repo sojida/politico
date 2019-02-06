@@ -62,3 +62,7 @@ typings/
 
 # upload files
 server/uploads/*jpg
+server/uploads/*png
+server/uploads/*gif
+server/uploads/*tiff
+server/uploads/*jpeg
