@@ -5,6 +5,10 @@ const partyFormData = document.forms.namedItem('partyForm')
 const inputValues = partyForm.querySelectorAll('input')
 const goToParty = document.getElementById('goToParty');
 const goToOffice = document.getElementById('goToOffice');
+const officeForm = document.getElementById('office-form')
+const officeFormData = document.forms.namedItem('officeForm')
+const officeTable = document.querySelector('.office-info')
+
 
 goToParty.addEventListener('click', () => {
   document.getElementById('party-tab').click()
@@ -35,6 +39,31 @@ partyForm.addEventListener('submit', (e) => {
             document.getElementById('party-tab').click()
             showSuccess(res.message)
         }    
+    })
+    .catch(err => console.log(err))
+    
+    return false;
+})
+
+// create office
+officeForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const data = new FormData(officeFormData);
+
+    fetchFunc.postData(`${url}/offices`, data)
+    .then((res) => {
+        if (typeof res.error === 'object'){
+            officeErrObj(res.error)
+            
+        } else if (typeof res.error === 'string') {
+            officeErr(res.error)
+        }
+
+        if (res.data) {
+            document.getElementById('office-tab').click()
+            showSuccess(res.message)
+        }
     })
     .catch(err => console.log(err))
     
@@ -76,6 +105,23 @@ const partylogo = (logoUrl) => {
     }
     return `<img src="${url}/images/${logoUrl}"></img>`
  }
+const officeErrObj = (error) => {
+    if (error[0].name){
+        document.getElementById('office-err').innerText = error[0].name
+    }
+    setTimeout(() => {
+        document.getElementById('office-err').innerText = ''
+    }, 5000)
+    
+}
+
+const officeErr = (error) => {
+    document.getElementById('office-err').innerText = error
+    setTimeout(() => {
+        document.getElementById('office-err').innerText = ''
+    }, 5000)
+}
+
 
 
 const removeErr = (inputs) => {
@@ -109,4 +155,22 @@ const showSuccess = (msg) => {
 
 
 
+document.getElementById('office-tab').addEventListener('click', () => {
+
+    fetchFunc.getData(`${url}/offices`)
+    .then((res) => {
+        if(!res.data.length){
+            officeTable.innerHTML = `<h1>No Offices</h1>`
+        } else {
+            officeTable.innerHTML = res.data.map((office) => {
+            return `<tr class="office-item" key=${office.id}>
+                    <td>${office.name}</td>
+                    <td>${office.type}</td>
+                    </tr>
+                `
+        }).join(' ')
+        }
+    })
+    .catch(err => err);
+})  
 

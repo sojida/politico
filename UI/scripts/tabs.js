@@ -72,4 +72,23 @@ const partylogo = (logoUrl) => {
    return `<img src="${url}/images/${logoUrl}"></img>`
 }
 
+
+// office table
+const officeTable = document.querySelector('.office-info')
+    fetchFunc.getData(`${url}/offices`)
+    .then((res) => {
+        if(!res.data.length){
+            officeTable.innerHTML = `<h1>No Offices</h1>`
+        } else {
+            officeTable.innerHTML = res.data.map((office) => {
+            return `<tr class="office-item" key=${office.id}>
+                    <td>${office.name}</td>
+                    <td>${office.type}</td>
+                    </tr>
+                `
+        }).join(' ')
+        }
+    })
+    .catch(err => err);
+
 }
