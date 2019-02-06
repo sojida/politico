@@ -5,6 +5,7 @@ const partyFormData = document.forms.namedItem('partyForm')
 const inputValues = partyForm.querySelectorAll('input')
 const goToParty = document.getElementById('goToParty');
 const goToOffice = document.getElementById('goToOffice');
+const goToInterest = document.getElementById('goToInterest');
 const officeForm = document.getElementById('office-form')
 const officeFormData = document.forms.namedItem('officeForm')
 const officeTable = document.querySelector('.office-info')
@@ -17,6 +18,10 @@ goToParty.addEventListener('click', () => {
 goToOffice.addEventListener('click', () => {
   document.getElementById('office-tab').click()
 })
+
+goToInterest.addEventListener('click', () => {
+    document.getElementById('interest-tab').click()
+  })
 
 
 // create party
@@ -174,3 +179,90 @@ document.getElementById('office-tab').addEventListener('click', () => {
     .catch(err => err);
 })  
 
+
+
+
+const officeList = document.getElementById('office-list')
+        officeList.addEventListener('change', (e) => {
+            const id = e.target.value
+            const interestInfo = document.getElementById('interest-info')
+
+            fetchFunc.getData(`${url}/interest/${id}`)
+            .then((res) => {
+                if (!res.data.length){
+                    interestInfo.innerHTML = '<h2>No Intrested Candidates</h2>'
+                } else {
+                    interestInfo.innerHTML = res.data.map((info) => {
+                        return `
+                        <tr class="interest-item" key=${info.id}>
+                            <td partyid="${info.party}">${info.partyname}</td>
+                            <td officeid="${info.office}">${info.officename}</td>
+                            <td candidateid="${info.candidate}">${info.firstname} ${info.lastname}</td>
+                            <td class="register-user dark-btn"><i class="fas fa-user-check"></i></td>
+                        </tr>`
+                    }).join(' ')
+                }
+                
+                addRegisterFunctionality()
+            })
+
+    })
+
+
+    const addRegisterFunctionality = () => {
+        const interestRow = document.querySelectorAll('.interest-item')
+
+        interestRow.forEach((interest) => {
+            interest.addEventListener('click', (e) => {
+                const regbtn = e.target.parentElement.children[3]
+                if (e.target === regbtn ){
+                    const officeid = e.target.parentElement.children[1].attributes.officeid.value
+                    const partyid = e.target.parentElement.children[0].attributes.partyid.value
+                    const userid = e.target.parentElement.children[2].attributes.candidateid.value
+
+                    const errMsg = document.getElementById('interest-err')
+                    const successMsg = document.getElementById('interest-msg')
+
+                    const data = {
+                        office: parseFloat(officeid),
+                        party: parseFloat(partyid)
+                        }
+
+                        const postData = (url = '', data = {}) => {
+                            return fetch(url, {
+                                method: "POST",
+                                mode: "cors",
+                                headers: {
+                                    "content-type": "Application/json",
+                                    "Authorization": localStorage.token,
+                                },
+                                body: JSON.stringify(data),
+                            })
+                            .then(res => res.json())
+                            .then(res => res)
+                            .catch(err =>  err)
+                        }
+                        const clearMsg = () => {
+                            errMsg.innerText = ''
+                            successMsg.innerText = ''
+                        }
+
+                        postData(`${url}/office/${userid}/register`, data)
+                        .then((res) => {
+                            if(res.error){
+                                errMsg.innerText = res.error
+                                setTimeout(clearMsg, 5000)
+                            }
+
+                            if(res.message){
+                                successMsg.innerText = res.message
+                                setTimeout(clearMsg, 5000)
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+                    }
+                })
+        })
+    }

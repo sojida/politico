@@ -11,6 +11,8 @@
     "start-prod": "npm run buildTables && npm run start",
     "dropAllTables": "babel-node ./server/database/droptables.db.js",
     "drop-create": "npm run dropAllTables && npm run buildTables",
+    "drop-create:dev": "cross-env NODE_ENV=dev npm run drop-create",
+    "drop-create:heroku": "cross-env NODE_ENV=production npm run drop-create",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

@@ -5,6 +5,7 @@ import officeDb from './office.db';
 import userDb from './user.db';
 import candidatesDb from './candidates.db';
 import voteDb from './vote.db';
+import interestDb from './interest.db';
 import db from './config.db';
 import creatTable from './createtable.db';
 
@@ -15,6 +16,7 @@ async function migrateData() {
   await db(partyDb.createParty('PCPC', 'Ibadan', 'logo123'));
   await db(partyDb.createParty('PCPD', 'Abuja', 'logo123'));
   await db(partyDb.createParty('PCPF', 'Abuja', 'logo123'));
+  await db(partyDb.createParty('PCPZ', 'Abuja', 'logo123'));
   await db(officeDb.createOffice('President', 'Federal'));
   await db(officeDb.createOffice('Senate', 'Federal'));
   await db(officeDb.createOffice('Chairman', 'Local'));
@@ -28,6 +30,14 @@ async function migrateData() {
   await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111118', 'fred4@gmail.com', 'NOW', password, 'false'));
   await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111119', 'fred5@gmail.com', 'NOW', password, 'false'));
   await db(userDb.createUser('Fred', 'Dan', 'Pete', 'logourl', '09011111129', 'fred6@gmail.com', 'NOW', password, 'false'));
+  await db(interestDb.createInterestee(1, 1, 2));
+  await db(interestDb.createInterestee(1, 2, 3));
+  await db(interestDb.createInterestee(1, 4, 6));
+  await db(interestDb.createInterestee(1, 5, 7));
+  await db(interestDb.createInterestee(2, 1, 4));
+  await db(interestDb.createInterestee(2, 2, 5));
+  await db(interestDb.createInterestee(2, 4, 8));
+  await db(interestDb.createInterestee(2, 5, 9));
   await db(candidatesDb.createCandidate(1, 1, 2));
   await db(candidatesDb.createCandidate(1, 2, 3));
   await db(candidatesDb.createCandidate(2, 1, 4));
