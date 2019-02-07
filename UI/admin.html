@@ -23,31 +23,10 @@
 
     <main class="main-container">
         <div class="tab">
-            <button class="tablinks" name="dashboard-section"  id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
             <button class="tablinks" name="party-section" id="party-tab"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
             <button class="tablinks" name="office-section" id="office-tab"><span class="icon"><i class="fas fa-building"></i></span><span class="text">Office</span></button>
             <button class="tablinks" name="interest-section" id="interest-tab"><span class="icon"><i class="fas fa-user-edit"></i></span><span class="text">Interests</span></button>
         </div>
-
-          <div id="dashboard-section" class="tabcontent">
-
-            <button class="accordion">Admin Dashboard</button>
-            <div id="admin-options-container">
-                    <div class="admin-option dark" id="goToParty">
-                        <p>Create A Party</p>
-                    </div>
-
-                    <div class="admin-option dark" id="goToOffice">
-                        <p>Create An Office</p>
-                    </div>
-
-                    <div class="admin-option dark" id="goToInterest">
-                        <p>Register A Candidate</p>
-                    </div>
-
-                </div>
-
-          </div>
           
           <div id="party-section" class="tabcontent">
             <h3>Party</h3>
@@ -86,7 +65,6 @@
                         <th>Party</th>
                         <th>Hq Address</th>
                         <th>Logo</th>
-                        <th>Edit</th>
                         <th>Delete</th>
 
                     </tr>
@@ -141,7 +119,7 @@
           </div>
 
           <div id="interest-section" class="tabcontent">
-            <h3>Intrested Candidates</h3>
+            <h3>Interested Candidates</h3>
 
                 <button class="accordion">Register A Candidate</button>
                 <div class="inrterest-table panel">
@@ -164,6 +142,8 @@
                             <tbody id="interest-info"></tbody>
 
                         </table>
+
+                        <div id="no-interest" class="center"></div>
                 </div>
                        
           </div>

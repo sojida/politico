@@ -51,10 +51,15 @@
     cursor: pointer;
   }
   
-  .modal-header {
+  #vote-modal .modal-header {
     padding: 2px 16px;
-    background-color: #5cb8b4;
-    color: white;
+    border-bottom: 2px solid #043d3a;
+    color: black;
+    text-align: center;
+    background: linear-gradient(
+    to right bottom,
+    rgba(85, 223, 85, 0.8),
+    rgba(8, 196, 33, 0.8));
   }
   
   .modal-body {
@@ -90,10 +95,13 @@
     background: #043d3a;
   }
   
-  .modal-footer {
+  #vote-modal .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb8b4;
     color: white;
+    background: linear-gradient(
+    to right bottom,
+    rgba(85, 223, 85, 0.8),
+    rgba(8, 196, 33, 0.8));
   }
   
   .vote i {

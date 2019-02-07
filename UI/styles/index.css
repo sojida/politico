@@ -663,12 +663,42 @@ footer{
 /* ADMIN FORM */
 .admin-form{
     background: lightgray;
-    width: 400px;
+    width: 50%;
     text-align: center;
     margin: 20px auto;
     border-radius: 5px;
     padding: 30px;
 }
+
+.admin-form label{
+    text-align: left;
+}
+
+.admin-form input{
+    width: 100%;
+    height: 40px;
+}
+
+.admin-form input[type="file"]{
+    text-align: left;
+}
+
+.admin-form select{
+    width: 100%;
+    height: 40px;
+}
+
+
+.no-candidate{
+    color: red;
+}
+
+#vote-gif{
+    width: 100%;
+    height: auto;
+    padding: 20px 20px;
+}
+
 
 .run-form table{
     margin: 0 auto;

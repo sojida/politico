@@ -12,7 +12,6 @@ describe('HOMEPAGE', () => {
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.text).to.equal('Welcome to the politico API');
         done();
       });
   });

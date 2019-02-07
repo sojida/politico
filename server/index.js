@@ -11,6 +11,7 @@ import partyRoutes from './routes/party.routes';
 import authRoutes from './routes/auth.routes';
 import voteRoutes from './routes/votes.routes';
 import interestRoutes from './routes/interest.routes';
+import uploadPicRoute from './routes/upload.routes';
 import apiDocs from '../openapi.json';
 
 const app = express();
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(fileupload());
 
-app.use('/politico', express.static(path.join(__dirname, '../UI')));
+app.use('/', express.static(path.join(__dirname, '../UI')));
 
 app.use(cors({
   credentials: true,
@@ -30,9 +31,6 @@ app.use(cors({
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(apiDocs));
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the politico API');
-});
 
 // image api
 app.get('/api/v1/images/:name', (req, res) => {
@@ -46,6 +44,7 @@ app.use('/api/v1', officeRoutes);
 app.use('/api/v1', partyRoutes);
 app.use('/api/v1', voteRoutes);
 app.use('/api/v1', interestRoutes);
+app.use('/api/v1', uploadPicRoute);
 
 
 // invalid routes

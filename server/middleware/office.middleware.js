@@ -21,9 +21,17 @@ const middleware = {
       });
     }
 
+    const { rows: users } = await db(queries.selectUserById(userId));
     const { rows: office } = await db(queries.selectOfficeById(req.body.office));
     const { rows: party } = await db(queries.selectPartyById(req.body.party));
 
+
+    if (!users.length) {
+      return res.status(404).json({
+        status: 404,
+        error: 'no user found',
+      });
+    }
 
     if (!office.length) {
       return res.status(404).json({
@@ -86,7 +94,7 @@ const middleware = {
   async createOffice(req, res, next) {
     const officeName = req.body.name;
 
-    const { rows: presentOffice } = await db(queries.selectOfficeByNmae(officeName));
+    const { rows: presentOffice } = await db(queries.selectOfficeByNmae(officeName.trim()));
 
     if (presentOffice.length) {
       return res.status(409).json({

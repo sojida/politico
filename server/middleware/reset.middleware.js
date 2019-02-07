@@ -121,7 +121,7 @@ export default {
   },
 
   acceptRequest(req, res) {
-    res.status(200).redirect(`${url}/politico/reset.html?reset=${req.data}`);
+    res.status(200).redirect(`${url}/reset.html?reset=${req.data}`);
   },
 
   validatePassword(req, res, next) {

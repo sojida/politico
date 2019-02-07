@@ -73,7 +73,7 @@ const middleware = {
   },
 
   async createParties(req, res, next) {
-    const { rows: presentParty } = await db(queries.selectPartyByNmae(req.body.name));
+    const { rows: presentParty } = await db(queries.selectPartyByNmae(req.body.name.trim()));
     if (presentParty.length) {
       return res.status(409).json({
         status: 409,
