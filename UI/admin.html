@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/modal.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/errorModal.css" />
-    <script defer src="./scripts/tabs.js" ></script>
+    <script defer src="./scripts/adminTabs.js" ></script>
 </head>
 <body>
     <div class="hdr-bkg">
@@ -26,6 +26,7 @@
             <button class="tablinks" name="dashboard-section"  id="defaultOpen"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Overview</span></button>
             <button class="tablinks" name="party-section" id="party-tab"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
             <button class="tablinks" name="office-section" id="office-tab"><span class="icon"><i class="fas fa-building"></i></span><span class="text">Office</span></button>
+            <button class="tablinks" name="interest-section" id="interest-tab"><span class="icon"><i class="fas fa-user-edit"></i></span><span class="text">Interests</span></button>
         </div>
 
           <div id="dashboard-section" class="tabcontent">
@@ -40,7 +41,7 @@
                         <p>Create An Office</p>
                     </div>
 
-                    <div class="admin-option dark" id="goToParty">
+                    <div class="admin-option dark" id="goToInterest">
                         <p>Register A Candidate</p>
                     </div>
 
@@ -133,23 +134,38 @@
                             <th>Type</th>    
                         </tr>
                         <tbody class="office-info"></tbody>
-                    </table>
+                </table>
 
-                    
-            <div class="center">
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a href="#"  class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                    </div>
-                </div>
             </div>
 
+          </div>
+
+          <div id="interest-section" class="tabcontent">
+            <h3>Intrested Candidates</h3>
+
+                <button class="accordion">Register A Candidate</button>
+                <div class="inrterest-table panel">
+
+                        <form enctype="multipart/form-data"  class="admin-form interest-form" id="office-form" name="officeForm">
+                           
+                            <label for="office">Select Office<span class="important">*</span></label>
+                            <select name="office" id="office-list"></select>                            
+                        </form>
+                        <p class="err" id="interest-err"></p>
+                        <p class="msg" id="interest-msg"></p>
+
+                        <table class="interestee">
+                            <tr>
+                                <th>Party</th>
+                                <th>Office</th>
+                                <th>Interested Candidate</th>
+                                <th>Resgister</th>
+                            </tr>
+                            <tbody id="interest-info"></tbody>
+
+                        </table>
+                </div>
+                       
           </div>
     </main>
 

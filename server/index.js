@@ -10,6 +10,7 @@ import officeRoutes from './routes/office.routes';
 import partyRoutes from './routes/party.routes';
 import authRoutes from './routes/auth.routes';
 import voteRoutes from './routes/votes.routes';
+import interestRoutes from './routes/interest.routes';
 import apiDocs from '../openapi.json';
 
 const app = express();
@@ -44,6 +45,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1', officeRoutes);
 app.use('/api/v1', partyRoutes);
 app.use('/api/v1', voteRoutes);
+app.use('/api/v1', interestRoutes);
 
 
 // invalid routes

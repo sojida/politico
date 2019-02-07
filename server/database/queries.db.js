@@ -123,6 +123,41 @@ const queries = {
     values: [password, email],
   }),
 
+  getAllIntrestee: officeid => ({
+    text: `select interest.id, interest.party, party.name as partyname, interest.office, office.name as officename, interest.candidate, users.firstname, users.lastname
+      from interest, party, office, users
+      where 
+      interest.office = $1 and
+      interest.party = party.id and
+      interest.office = office.id and
+      interest.candidate = users.id
+      group by interest.id, interest.party, party.name, interest.office, office.name, interest.candidate, users.firstname, users.lastname`,
+    values: [officeid],
+  }),
+
+  getAllCandidates: officeid => ({
+    text: `select candidates.id, candidates.party, party.name as partyname, candidates.office, office.name as officename, candidates.candidate, users.firstname, users.lastname
+    from candidates, party, office, users
+    where 
+    candidates.office = $1 and
+    candidates.party = party.id and
+    candidates.office = office.id and
+    candidates.candidate = users.id
+    group by candidates.id, candidates.party, party.name, candidates.office, office.name, candidates.candidate, users.firstname, users.lastname`,
+    values: [officeid],
+  }),
+
+  validateIntrestee: (id, office, party) => ({
+    text: 'SELECT * FROM interest WHERE candidate = $1 OR party = $2 AND office = $3',
+    values: [id, office, party],
+  }),
+
+  createInterestee: (office, party, candidate) => ({
+    text: 'INSERT INTO interest(office, party, candidate) VALUES($1, $2, $3) RETURNING *',
+    values: [office, party, candidate],
+  }),
+
+
 };
 
 export default queries;

@@ -43,52 +43,5 @@ function openCity(evt, name) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-// Parties
-const partyTable = document.querySelector('.party-edit-info')
-
-    fetchFunc.getData(`${url}/parties`)
-    .then((res) => {
-        if(!res.data.length){
-            partyTable.innerHTML = `<h1>No Parties</h1>`
-        } else {
-            partyTable.innerHTML = res.data.map((party) => {
-            return `<tr class="party-item" key=${party.id}>
-                    <td  contenteditable="true" class="editPartyName">${party.name}</td>
-                    <td>${party.hqaddress}</td>
-                    <td class="party-logo">${partylogo(party.logourl)}</td>
-                    <td class="edit-party"><i class="fas fa-pen"></i></td>
-                    <td class="delete-party" key=${party.id}><i class="fas fa-trash"></i></td>
-                    </tr>
-                `
-        }).join(' ')
-        }
-    })
-    .catch(err => err);
-
-const partylogo = (logoUrl) => {
-   if (logoUrl === 'logo123'){
-       return 'No logo'
-   }
-   return `<img src="${url}/images/${logoUrl}"></img>`
-}
-
-
-// office table
-const officeTable = document.querySelector('.office-info')
-    fetchFunc.getData(`${url}/offices`)
-    .then((res) => {
-        if(!res.data.length){
-            officeTable.innerHTML = `<h1>No Offices</h1>`
-        } else {
-            officeTable.innerHTML = res.data.map((office) => {
-            return `<tr class="office-item" key=${office.id}>
-                    <td>${office.name}</td>
-                    <td>${office.type}</td>
-                    </tr>
-                `
-        }).join(' ')
-        }
-    })
-    .catch(err => err);
 
 }

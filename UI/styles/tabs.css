@@ -89,7 +89,7 @@
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    background: var(--header);
+    background: #587A5F;
   }
 
   .card h4{
@@ -117,12 +117,14 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-    background: var(--header);
+    background: transparent;
     transition: 0.5s;
+    border: 2px solid #fff;
 }
 
 .card .custom-file-upload:hover{
-    background: rgb(11, 128, 124);
+    background: #fff;
+    color: black;
 }
   
   .card:hover {

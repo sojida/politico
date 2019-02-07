@@ -1,18 +1,23 @@
 const signinForm = document.getElementById('sign-in-form')
 const signinFormData = document.forms.namedItem('signinForm')
 const inputValues = document.querySelectorAll('form input')
+const signErr = document.getElementById('sign-err');
+const signLoad = document.getElementById('sign-load');
 
 
 signinForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    loader(signLoad)
     const data = new FormData(signinFormData);
 
     fetchFunc.postData(`${url}/auth/login`, data)
     .then((res) => {
         if (typeof res.error === 'object'){
+            removeLoader(signLoad)
             removeErr(inputValues);
             showErr(res.error);
         } else if (typeof res.error === 'string') {
+            removeLoader(signLoad)
             removeErr(inputValues);
             showTextErr(res.error)
         }
@@ -57,8 +62,10 @@ const showErr = (error) => {
 }
 
 const showTextErr = (error) => {
-    errModal.style.display = 'block';
-    errmsg.innerHTML = error
+    signErr.innerText = error
+    setTimeout(() => {
+        signErr.innerText = ''
+    }, 5000)
 }
 
 
@@ -66,6 +73,14 @@ const displayWelcome = () => {
     successModal.style.display = 'block'
     sccmsg.innerHTML = 'Password reset succesful, Login!'
     localStorage.clear()
+}
+
+const loader = (element) => {
+    element.classList.add('loader')   
+}
+
+const removeLoader = (element) => {
+    element.classList.remove('loader')  
 }
 
 if (localStorage.pass){

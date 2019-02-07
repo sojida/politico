@@ -1,6 +1,7 @@
-const signupForm = document.getElementById('sign-up-form')
-const signupFormData = document.forms.namedItem('signupForm')
-const inputValues = document.querySelectorAll('form input')
+const signupForm = document.getElementById('sign-up-form');
+const signupFormData = document.forms.namedItem('signupForm');
+const inputValues = document.querySelectorAll('form input');
+const signErr = document.getElementById('sign-err');
 
 signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -52,6 +53,9 @@ const showErr = (error) => {
 }
 
 const showTextErr = (error) => {
-    errModal.style.display = 'block';
-    errmsg.innerHTML = error
+    signErr.innerText = error
+    setTimeout(() => {
+        signErr.innerText = ''
+    }, 5000)
 }
+    

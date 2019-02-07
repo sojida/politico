@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/tables.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/welcomeModal.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/votemodal.css" />
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/tabs.js" ></script>
+    <script src="./scripts/userTabs.js" ></script>
 </head>
 <body>
     <div class="hdr-bkg">
@@ -277,69 +276,25 @@
 
           <div id="politician-section" class="tabcontent">
                 <h3>Become a Politician</h3>
-    
-                <button class="accordion">Join A Party</button>
-                <div class="party-join-table panel">
-                        <table>
-                            <tr>
-                                <th>Party</th>
-                                <th>Hq Address</th>
-                                <th>Logo</th>
-                                <th>Members</th>
-                                <th>Join</th>
-                            </tr>
-                            <tr>
-                                <td>PPD</td>
-                                <td>Lagos</td>
-                                <td><i class="fas fa-umbrella"></i></td>
-                                <td>30</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>ACP</td>
-                                <td>Abuja</td>
-                                <td><i class="fas fa-broom"></i></td>
-                                <td>36</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>YPP</td>
-                                <td>Lagos</td>
-                                <td><i class="fas fa-helicopter"></i></td>
-                                <td>12</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                        </table>
-                </div>
 
                 <button class="accordion">Run For Office</button>
                 <div class="candidate-join-table panel">
-                        <table>
-                            <tr>
-                                <th>Name</th>
-                                <th>Type</th>  
-                                <th>Candidates</th>
-                                <th>Run</th>
-                            </tr>
-                            <tr>
-                                <td>President</td>
-                                <td>Federal</td>
-                                <td>30</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Chairman</td>
-                                <td>Local</td>
-                                <td>15</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Governor</td>
-                                <td>State</td>
-                                <td>22</td>
-                                <td><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                        </table>
+                        <div>
+                                <form name="runForm" id="run-form" class="admin-form run-form">
+                                        <p class="err" id="run-err"></p>
+                                        <p class="msg" id="run-msg"></p>
+
+                                        <label for="office">Office<span class="important">*</span></label>
+                                        <select name="office" id="office-list"></select>
+                                        <table id="office-info"></table>
+
+                                        <label for="party">Party<span class="important">*</span></label>
+                                        <select name="party" id="party-list"></select>
+                                        <table id="party-info"></table>
+                                        <button class="user-run">DECLEAR INTEREST</button>
+                        
+                                    </form>
+                        </div>
                 </div>
 
 
