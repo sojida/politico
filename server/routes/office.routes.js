@@ -45,5 +45,12 @@ router.get('/office/:id/result',
   officeMiddleware.getResultByOffice,
   officeControllers.getResults);
 
+router.get('/office/:id/vote_result',
+  authMiddleware.verifyToken,
+  authHelper.checkParams,
+  officeMiddleware.checkOfficeId,
+  officeMiddleware.getResultAndDetialsByOffice,
+  officeControllers.getResults);
+
 
 export default router;

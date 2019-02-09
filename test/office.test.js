@@ -453,6 +453,22 @@ describe('VOTE RESULTS', () => {
       });
   });
 
+  it('should return results of votes with information', (done) => {
+    chai.request(app)
+      .get('/api/v1/office/1/vote_result')
+      .set('Authorization', userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data[0]).to.have.property('office');
+        expect(res.body.data[0]).to.have.property('firstname');
+        expect(res.body.data[0]).to.have.property('lastname');
+        expect(res.body.data[0]).to.have.property('partyname');
+        expect(res.body.data[0]).to.have.property('results');
+        done();
+      });
+  });
+
   it('should not return results of votes: no such office', (done) => {
     chai.request(app)
       .get('/api/v1/office/0/result')

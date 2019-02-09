@@ -167,6 +167,19 @@ const queries = {
     values: [passporturl, id],
   }),
 
+  getResultInfoByOffice: officeid => ({
+    text: `SELECT vote.office, users.firstname, users.lastname, office.name AS officeName, party.name AS partyName, count(vote.candidate)::int as results
+    FROM users, vote, candidates, office, party
+    WHERE vote.office = $1 AND
+    vote.candidate = candidates.id AND
+    candidates.candidate = users.id AND
+    candidates.party = party.id AND
+    vote.office = office.id
+    GROUP BY vote.office, users.firstname, users.lastname,  office.name, party.name
+    ORDER BY results DESC`,
+    values: [officeid],
+  }),
+
 
 };
 

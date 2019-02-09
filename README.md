@@ -49,23 +49,31 @@ that makes it compete healthily with other languages. See [here](https://en.wiki
 
 
 ## Installation
-1. Clone this repository into your local machine:
+- Clone this repository into your local machine:
 
 `git clone https://github.com/sojida/politico.git`
 
-2. Install dependencies
+- Install dependencies
 
 `npm install`
 
-3. Start the application by running
+- Install and Setup PostgreSQL
+
+ `https://www.postgresql.org/download/`
+
+- Setup your env variables
+
+`example.env`
+
+- Start the application by running
 
 `npm start`
 
-4. Open your browse and Navigate to
+- Open your browse and Navigate to
 
 `localhost:3000`
 
-5. Install postman to test all endpoints
+- Install postman to test all endpoints
 
 
 

@@ -11,6 +11,20 @@ window.onload = () => {
     if(!localStorage.token){
         location.href = 'signin.html'
     } 
+
+    fetchFunc.getData(`${url}/parties`)
+    .then((res) => {
+        if(res.error == 'user authentication failed'){
+            location.href = 'signin.html'
+        }
+    })
+
+    fetchFunc.getData(`${url}/parties`)
+    .then((res) => {
+        if(res.error == 'you need access'){
+            location.href = 'signin.html'
+        }
+    })
     
     
     tabButton.forEach((btn) => {
@@ -77,7 +91,7 @@ window.onload = () => {
         
            
 
-            // thisis the functionaltity for the tabs
+            // this is the functionaltity for the tabs
             const addTabFunctonality = () => {
                 const acc = document.getElementsByClassName("accordion");
 
@@ -175,9 +189,59 @@ window.onload = () => {
             
             }
 
+            const handleWinner = (index) =>{
+                if(index === 1){
+                    return 'class="go"'
+                }
+            }
+
+
+            const populateResultList = () => {
+                const officeList = document.getElementById('office-result-list')
+
+                fetchFunc.getData(`${url}/offices`)
+                .then((res) => {
+                    if(!res.data.length){
+                        officeList.innerHTML = `<option>No Offices</option>`
+                    } else {
+                        officeList.innerHTML = res.data.map((office) => {
+                        return `<option value="${office.id}">${office.name}</option>`
+                    }).join(' ')
+                    }
+                })
+                .then(() => {
+                    const resultInfo = document.getElementById('result-info')
+                    const noResult = document.getElementById('no-result')
+                    officeList.addEventListener('change', (e) => {
+                        const officeid = e.target.value;
+                        fetchFunc.getData(`${url}/office/${officeid}/vote_result`)
+                        .then((res) => {
+                            if(!res.data.length){
+                                resultInfo.innerHTML = ''
+                                noResult.innerHTML = '<h2 class="center">No result for this office</h2>'
+                            } else {
+                                noResult.innerHTML = ''
+                                resultInfo.innerHTML = res.data.map((info, index) => {
+                                    return ` 
+                                    <tr>
+                                        <td ${handleWinner(index+1)}>${index+1}</td>
+                                        <td>${info.firstname} ${info.lastname}</td>
+                                        <td>${info.partyname}</td>
+                                        <td>${info.results}</td>
+                                    </tr>`
+                                }).join(' ')
+                            }
+                        })
+                        
+                    })
+                })
+                .catch((err) => console.log(err))
+            }
+
 
             populateOffice();
-            populateVoteSection()
+            populateVoteSection();
+            populateResultList()
 
 
 
