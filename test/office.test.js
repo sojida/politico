@@ -106,12 +106,11 @@ describe('CREATE OFFICE', () => {
         type: 'Federal',
       })
       .end((err, res) => {
-        const { status, data, message } = res.body;
+        const { status, data } = res.body;
         expect(status).to.equal(201);
         expect(data[0]).to.have.property('id');
         expect(data[0]).to.have.property('name');
         expect(data[0]).to.have.property('type');
-        expect(message).to.equal('office created successfully');
         done();
       });
   });
@@ -324,6 +323,22 @@ describe('CREATE CANDIDATE', () => {
         expect(res).to.have.status(404);
         expect(res.body.status).to.equal(404);
         expect(res.body.error).to.have.equal('no such party');
+        done();
+      });
+  });
+
+  it('should return not return created candidate: no such user', (done) => {
+    chai.request(app)
+      .post('/api/v1/office/8000/register')
+      .set('Authorization', adminToken)
+      .send({
+        office: 1,
+        party: 1,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.have.equal('no user found');
         done();
       });
   });

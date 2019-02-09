@@ -25,7 +25,6 @@
         <div class="tab">
             <button class="tablinks" name="vote-section" id="defaultOpen"><span class="icon"><i class="fas fa-vote-yea"></i></span><span class="text">Vote</span></button>
             <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
-            <button class="tablinks" name="candidate-section"><span class="icon"><i class="fas fa-users"></i></span><span class="text">Candidates</span></button>
             <button class="tablinks" name="politician-section"><span class="icon"><i class="fas fa-hands-helping"></i></span><span class="text">Politician</span></button>
             <button class="tablinks" name="result-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Results</span></button>
             <button class="tablinks" name="profile-section"><span class="icon"><i class="fas fa-user"></i></span><span class="text">My Profile</span></button>
@@ -34,126 +33,13 @@
           <div id="vote-section" class="tabcontent">
             <h3>Vote</h3>
 
-            <button class="accordion"><span class="acc-text">President</span></button>
-            <div class="president-table panel">
-                <table>
-                    <tr>
-                        <th>Candidate</th>
-                        <th>Party</th>
-                        <th>Vote</th>
-
-                    </tr>
-                    <tr>
-                        <td>Habubak Aratiku</td>
-                        <td>PPD</td>
-                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Dinome Alaye</td>
-                        <td>ACP</td>
-                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Okoro Charochas</td>
-                        <td>YPP</td>
-                        <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                    </tr>
-                </table>   
-                
-                <div class="center">
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#"  class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </div>
+            <p id="vote-err" class="err center"></p>
+            <p id="vote-msg" class="msg center"></p>
+            
+            <div id="vote-section-container">
+                <!--fecth office by party--->
             </div>
-
-            <button class="accordion"><span class="acc-text">Chairman</span></button>
-            <div class="president-table panel">
-                <table>
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Party</th>
-                            <th>Vote</th>
-    
-                        </tr>
-                        <tr>
-                            <td>Habubak Aratiku</td>
-                            <td>PPD</td>
-                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Dinome Alaye</td>
-                            <td>ACP</td>
-                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Okoro Charochas</td>
-                            <td>YPP</td>
-                            <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                        </tr>
-                    </table>  
-
-                    <div class="center">
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#"  class="active">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </div>
-                        
-            </div>
-
-            <button class="accordion"><span class="acc-text">Governor</span></button>
-            <div class="president-table panel">
-                    <table>
-                            <tr>
-                                <th>Candidate</th>
-                                <th>Party</th>
-                                <th>Vote</th>
-        
-                            </tr>
-                            <tr>
-                                <td>Habubak Aratiku</td>
-                                <td>PPD</td>
-                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Dinome Alaye</td>
-                                <td>ACP</td>
-                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Okoro Charochas</td>
-                                <td>YPP</td>
-                                <td class="vote"><i class="fas fa-thumbs-up"></i></td>
-                            </tr>
-                        </table> 
-                        
-                        <div class="center">
-                                <div class="pagination">
-                                    <a href="#">&laquo;</a>
-                                    <a href="#"  class="active">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
-                                    <a href="#">&raquo;</a>
-                                </div>
-                            </div>
-            </div>
+          </div>
             
           </div>
           
@@ -168,111 +54,11 @@
                             <th>Hq Address</th>
                             <th>Logo</th>
                         </tr>
-                        <tbody class="party-info">
-
-                        <!-- <tr>
-                            <td>PPD</td>
-                            <td>Lagos</td>
-                            <td><i class="fas fa-umbrella"></i></td>
-                        </tr>
-                        <tr>
-                            <td>ACP</td>
-                            <td>Abuja</td>
-                            <td><i class="fas fa-broom"></i></td>  
-                        </tr>
-                        <tr>
-                            <td>YPP</td>
-                            <td>Lagos</td>
-                            <td><i class="fas fa-helicopter"></i></td> 
-                        </tr> -->
-                    </tbody>
+                        <tbody class="party-info"></tbody>
                     </table>
                 </div>
               </div>
           
-          <div id="candidate-section" class="tabcontent">
-            <h3>Candidates</h3>
-
-            <button class="accordion">President</button>
-            <div class="candidate-table-pr panel">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Party</th>
-                        </tr>
-                        <tr>
-                            <td>Habubak Aratiku</td>
-                            <td>PPD</td>
-                        </tr>
-                        <tr>
-                            <td>Dinome Alaye</td>
-                            <td>ACP</td>
-                        </tr>
-                        <tr>
-                            <td>Okoro Charochas</td>
-                            <td>YPP</td>
-                        </tr>
-                    </table>
-            </div>
-
-            <button class="accordion">Governor</button>
-            <div class="candidate-table-gv panel">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Party</th>
-                        </tr>
-                        <tr>
-                            <td>Habubak Aratiku</td>
-                            <td>PPD</td>
-                        </tr>
-                        <tr>
-                            <td>Dinome Alaye</td>
-                            <td>ACP</td>
-                        </tr>
-                        <tr>
-                            <td>Okoro Charochas</td>
-                            <td>YPP</td>
-                        </tr>
-                    </table>
-            </div>
-
-            <button class="accordion">Chairman</button>
-            <div class="candidate-table-ch panel">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Party</th>
-                        </tr>
-                        <tr>
-                            <td>Habubak Aratiku</td>
-                            <td>PPD</td>
-                        </tr>
-                        <tr>
-                            <td>Dinome Alaye</td>
-                            <td>ACP</td>
-                        </tr>
-                        <tr>
-                            <td>Okoro Charochas</td>
-                            <td>YPP</td>
-                        </tr>
-                    </table>
-            </div>
-
-            <div class="center">
-                <div class="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#"  class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">&raquo;</a>
-                </div>
-            </div>
-
-          </div>
 
           <div id="politician-section" class="tabcontent">
                 <h3>Become a Politician</h3>
@@ -291,7 +77,7 @@
                                         <label for="party">Party<span class="important">*</span></label>
                                         <select name="party" id="party-list"></select>
                                         <table id="party-info"></table>
-                                        <button class="user-run">DECLEAR INTEREST</button>
+                                        <button class="user-run">DECLARE INTEREST</button>
                         
                                     </form>
                         </div>
@@ -494,6 +280,7 @@
                       </div>
                       <div class="modal-body">
                         <h2 id="wlc-usr"></h2>
+                        <img id="vote-gif" src="">
                       </div>
                       <div class="modal-footer">
                       </div>
@@ -512,7 +299,7 @@
       </div>
       <div class="modal-body">
         <h4>Are you sure you want to vote for</h4>
-        <h2>Dinome Alaye - PPD?</h2>
+        <h2 id="candidate-dets"></h2>
         <button class="go no-exit">Yes</button>
         <button class="yes exit">No</button>
       </div>
@@ -529,7 +316,6 @@
         <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2019</a></p>
     </footer>
 
-    <script src="./scripts/accordion.js" ></script>
     <script src="./scripts/vote.js" ></script>
     <script src="./scripts/welcomeModal.js"></script>
     <script src="./scripts/user/welcomeUser.js"></script>

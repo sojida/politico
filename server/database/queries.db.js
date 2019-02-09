@@ -73,7 +73,7 @@ const queries = {
   getAllParties: () => 'SELECT * FROM party',
 
   selectOfficeByNmae: name => ({
-    text: 'SELECT * FROM office WHERE name = $1',
+    text: 'SELECT * FROM office WHERE lower(name) = lower($1)',
     values: [name],
   }),
 
@@ -94,7 +94,7 @@ const queries = {
   }),
 
   selectPartyByNmae: name => ({
-    text: 'SELECT * FROM party WHERE name = $1',
+    text: 'SELECT * FROM party WHERE lower(name) = lower($1)',
     values: [name],
   }),
 
@@ -104,7 +104,7 @@ const queries = {
   }),
 
   getResultByOffice: officeid => ({
-    text: 'SELECT office, candidate, count(candidate) as results FROM vote where vote.office = $1 GROUP BY vote.candidate , vote.office',
+    text: 'SELECT office, candidate, count(candidate)::int as results FROM vote where vote.office = $1 GROUP BY vote.candidate , vote.office',
     values: [officeid],
   }),
 
@@ -116,6 +116,11 @@ const queries = {
   selectUserEmail: email => ({
     text: 'SELECT * from users WHERE email = $1',
     values: [email],
+  }),
+
+  selectUserById: id => ({
+    text: 'SELECT * from users WHERE id = $1',
+    values: [id],
   }),
 
   updatePassword: (password, email) => ({
@@ -155,6 +160,11 @@ const queries = {
   createInterestee: (office, party, candidate) => ({
     text: 'INSERT INTO interest(office, party, candidate) VALUES($1, $2, $3) RETURNING *',
     values: [office, party, candidate],
+  }),
+
+  updateProfilePic: (passporturl, id) => ({
+    text: 'UPDATE users SET passporturl = $1 WHERE id = $2 RETURNING *',
+    values: [passporturl, id],
   }),
 
 

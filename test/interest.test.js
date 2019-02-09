@@ -135,6 +135,22 @@ describe('CREATE INTEREST', () => {
       });
   });
 
+  it('should return not return created interest: no such user', (done) => {
+    chai.request(app)
+      .post('/api/v1/interest/5000/register')
+      .set('Authorization', adminToken)
+      .send({
+        office: 1,
+        party: 1,
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.have.equal('no user found');
+        done();
+      });
+  });
+
   it('should return not return created interest: user already running for that office', (done) => {
     chai.request(app)
       .post('/api/v1/interest/2/register')

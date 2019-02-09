@@ -3,25 +3,10 @@ const partyTable = document.querySelector('.party-edit-info')
 const partyForm = document.getElementById('party-form')
 const partyFormData = document.forms.namedItem('partyForm')
 const inputValues = partyForm.querySelectorAll('input')
-const goToParty = document.getElementById('goToParty');
-const goToOffice = document.getElementById('goToOffice');
-const goToInterest = document.getElementById('goToInterest');
 const officeForm = document.getElementById('office-form')
 const officeFormData = document.forms.namedItem('officeForm')
 const officeTable = document.querySelector('.office-info')
 
-
-goToParty.addEventListener('click', () => {
-  document.getElementById('party-tab').click()
-})
-
-goToOffice.addEventListener('click', () => {
-  document.getElementById('office-tab').click()
-})
-
-goToInterest.addEventListener('click', () => {
-    document.getElementById('interest-tab').click()
-  })
 
 
 // create party
@@ -88,7 +73,6 @@ document.getElementById('party-tab').addEventListener('click', () => {
                     <td  contenteditable="true" class="editPartyName">${party.name}</td>
                     <td>${party.hqaddress}</td>
                     <td class="party-logo">${partylogo(party.logourl)}</td>
-                    <td class="edit-party"><i class="fas fa-pen"></i></td>
                     <td class="delete-party" key=${party.id}><i class="fas fa-trash"></i></td>
                     </tr>
                 `
@@ -186,12 +170,14 @@ const officeList = document.getElementById('office-list')
         officeList.addEventListener('change', (e) => {
             const id = e.target.value
             const interestInfo = document.getElementById('interest-info')
-
+            const noInterest = document.getElementById('no-interest')
             fetchFunc.getData(`${url}/interest/${id}`)
             .then((res) => {
                 if (!res.data.length){
-                    interestInfo.innerHTML = '<h2>No Intrested Candidates</h2>'
+                    interestInfo.innerHTML = ''
+                    noInterest.innerHTML = '<h2>No Intrested Candidates</h2>'
                 } else {
+                    noInterest.innerHTML = ''
                     interestInfo.innerHTML = res.data.map((info) => {
                         return `
                         <tr class="interest-item" key=${info.id}>

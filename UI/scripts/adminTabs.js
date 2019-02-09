@@ -40,7 +40,7 @@ window.onload = () => {
     }
     
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    document.getElementById("party-tab").click();
 
     // Parties
 const partyTable = document.querySelector('.party-edit-info')
@@ -55,7 +55,6 @@ const partyTable = document.querySelector('.party-edit-info')
                     <td  contenteditable="true" class="editPartyName">${party.name}</td>
                     <td>${party.hqaddress}</td>
                     <td class="party-logo">${partylogo(party.logourl)}</td>
-                    <td class="edit-party"><i class="fas fa-pen"></i></td>
                     <td class="delete-party" key=${party.id}><i class="fas fa-trash"></i></td>
                     </tr>
                 `

@@ -75,7 +75,8 @@ td img{
   }
   
   .acc-active, .accordion:hover {
-    background-color: none;
+    background-color: #587A5F;
+    color: #fff;
   }
   
   /* Style the accordion panel. Note: hidden by default */
@@ -100,7 +101,6 @@ td img{
   }
 
   .panel form input[type="file"]{
-      width: 250px;
       margin-top: 0;
       margin-bottom: 10px;
       font-size: 20px;
