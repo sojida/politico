@@ -54,7 +54,9 @@
                             <th>Hq Address</th>
                             <th>Logo</th>
                         </tr>
-                        <tbody class="party-info"></tbody>
+                        <tbody class="party-info">
+                            <!--fecth all parties party--->
+                        </tbody>
                     </table>
                 </div>
               </div>
@@ -89,109 +91,30 @@
             <div id="result-section" class="tabcontent">
                 <h3>Results</h3>
 
-                    <button class="accordion">President</button>
-                    <div class="president-table-result panel">
-                            <table>
-                                <tr>
-                                    <th class="serial-num">s/n</th>
-                                    <th>Name</th>
-                                    <th>Party</th>
-                                    <th>Votes</th>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="go">1</td>
-                                    <td>Habubak Aratiku</td>
-                                    <td>PPD</td>
-                                    <td>1,234,567</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Dinome Alaye</td>
-                                    <td>ACP</td>
-                                    <td>934,567</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Okoro Charochas</td>
-                                    <td>YPP</td>
-                                    <td>434,567</td>
-                                    
-                                </tr>
-                            </table>
+                <button class="accordion">Results</button>
+                <div class="get-result-table panel">
+
+                    <form enctype="multipart/form-data"  class="admin-form interest-form" id="office-form" name="officeForm">
+                            
+                        <label for="office">Select Office<span class="important">*</span></label>
+                        <select name="office" id="office-result-list"></select>                            
+                    </form>
+
+                    <div id="result-office">
+                        <table class="result-table">
+                            <tr>
+                                <th class="serial-num">s/n</th>
+                                <th>Name</th>
+                                <th>Party</th>
+                                <th>Votes</th>              
+                            </tr>
+                            <tbody id="result-info"></tbody>
+
+                        </table>
+
+                        <div id="no-result" class="center"></div>
                     </div>
-
-                    <button class="accordion">Senator</button>
-                    <div class="senator-table-result panel">
-                            <table>
-                                    <tr>
-                                        <th class="serial-num">s/n</th>
-                                        <th>Name</th>
-                                        <th>Party</th>
-                                        <th>Votes</th>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td class="go">1</td>
-                                        <td>Habubak Aratiku</td>
-                                        <td>PPD</td>
-                                        <td>1,234,567</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Dinome Alaye</td>
-                                        <td>ACP</td>
-                                        <td>934,567</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Okoro Charochas</td>
-                                        <td>YPP</td>
-                                        <td>434,567</td>
-                                        
-                                    </tr>
-                                </table>
-                    </div>
-
-                    <button class="accordion">Chairman</button>
-                    <div class="chairman-table-result panel">
-                            <table>
-                                    <tr>
-                                        <th class="serial-num">s/n</th>
-                                        <th>Name</th>
-                                        <th>Party</th>
-                                        <th>Votes</th>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td class="go">1</td>
-                                        <td>Habubak Aratiku</td>
-                                        <td>PPD</td>
-                                        <td>1,234,567</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Dinome Alaye</td>
-                                        <td>ACP</td>
-                                        <td>934,567</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Okoro Charochas</td>
-                                        <td>YPP</td>
-                                        <td>434,567</td>
-                                        
-                                    </tr>
-                                </table>
-                    </div>
-
-
+                </div>
 
             </div>
 
@@ -313,7 +236,7 @@
 
 
     <footer>
-        <p><a href="admin.html">Politico</a>, Copyright &copy; <a href="user.html">2019</a></p>
+        <p><a>Politico</a>, Copyright &copy; <a>2019</a></p>
     </footer>
 
     <script src="./scripts/vote.js" ></script>

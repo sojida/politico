@@ -138,6 +138,13 @@ const middleware = {
     req.data = rows;
     return next();
   },
+
+  async getResultAndDetialsByOffice(req, res, next) {
+    const { rows } = await db(queries.getResultInfoByOffice(req.params.id));
+
+    req.data = rows;
+    return next();
+  },
 };
 
 export default middleware;

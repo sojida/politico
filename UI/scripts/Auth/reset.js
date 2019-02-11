@@ -1,6 +1,6 @@
 const urlParams = new URLSearchParams(location.search)
 localStorage.token = urlParams.get('reset')
-localStorage.pass = 'success'
+
 
     
 
@@ -21,7 +21,6 @@ resetForm.addEventListener('submit', (e) => {
             handleStringErr(res.error)
         }
 
-        console.log(res)
         if (res.message) {
             handleSuccessMessage(res.message)       
         }
@@ -54,6 +53,7 @@ const handleStringErr = (err) => {
 
 const handleSuccessMessage = (message) => {
     goodMsg.innerText = message
+    localStorage.pass = 'success'
     setTimeout(() => {
         location.assign('signin.html')
     }, 2000);
