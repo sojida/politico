@@ -165,3 +165,111 @@ runForm.addEventListener('submit', (e) => {
         console.log(err)
     })
 })
+
+const handleProfilePic = (img) => {
+    if(img == 'null') {
+        return './images/avatar.png'
+    } 
+
+    if (img == 'logourl'){
+        return './images/avatar.png'
+    }
+
+    return `${url}/images/${img}`
+   
+}
+
+const userCard = document.getElementsByClassName('card')[0]
+const updateUserCard = () => {
+    const userDetails = JSON.parse(localStorage.user)
+
+    userCard.innerHTML = `
+    <div class="img-container">   
+        <img id="userPic" src="${handleProfilePic(userDetails.passporturl)}" alt="Avatar">
+    </div>
+    <div class="card-container">
+        <h4><b>${userDetails.firstname} ${userDetails.lastname}</b></h4> 
+        <p>${userDetails.phonenumber}</p> 
+        <p>${userDetails.email}</p> 
+        <form enctype="multipart/form-data" name="userProfileForm" id="user-pic-form">
+        <p>Change Proile Picture:</p>
+        <label for="file-upload" class="custom-file-upload">
+            <i class="fa fa-upload"></i> Upload
+        </label>
+        <input type="file" id="file-upload" name="passporturl" oninput="uploadMyPic()">
+        </form>
+    </div>
+`
+}
+updateUserCard()
+
+const uploadBtn = document.getElementById('file-upload')
+const profilePic = document.forms.namedItem('userProfileForm')
+const userPicForm = document.getElementById('user-pic-form')
+const uploadMsg = document.getElementById('upld-msg')
+const uploadErr = document.getElementById('upld-err')
+const signLoad = document.getElementById('sign-load');
+
+const clearUploadMsg = () => {
+    uploadMsg.innerText = ''
+    uploadErr.innerText = ''
+}
+
+
+const loader = (element) => {
+    element.classList.add('loader2')   
+}
+
+const removeLoader = (element) => {
+    element.classList.remove('loader2')  
+}
+
+const uploadMyPic = () => {
+    loader(signLoad)
+
+    const data = new FormData(profilePic)
+   
+    fetchFunc.postData(`${url}/profile_pic`, data)
+    .then((res) => {
+        if(res.data) {
+            removeLoader(signLoad)
+            delete res.data[0].password
+            localStorage.user = JSON.stringify(res.data[0])
+            uploadMsg.innerText = res.message
+            updateUserCard()
+            setTimeout(clearUploadMsg, 5000)
+        }
+
+        if(typeof res.error === 'object'){
+            removeLoader(signLoad)
+            handleObjErr(res.error)
+        }
+
+        if(typeof res.err === 'string'){
+            removeLoader(signLoad)
+            handleStringErr(res.error)
+        }
+        
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+    
+    
+}
+
+const handleObjErr = (err) => {
+    if(err[0].passporturl){
+        uploadErr.innerText = err[0].passporturl
+    }
+    setTimeout(() => {
+        uploadErr.innerText = ''
+    }, 5000)
+}
+
+const handleStringErr = (err) => {
+    uploadErr.innerText = err
+    setTimeout(() => {
+        uploadErr.innerText = ''
+    }, 5000)
+}
