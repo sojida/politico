@@ -180,6 +180,18 @@ const queries = {
     values: [officeid],
   }),
 
+  getUserVotes: userid => ({
+    text: `SELECT vote.createdby, users.firstname, users.lastname, office.name AS officeName, party.name AS partyName
+    FROM users, vote, candidates, office, party
+    WHERE vote.createdby = $1 AND
+    vote.candidate = candidates.id AND
+    candidates.candidate = users.id AND
+    candidates.party = party.id AND
+    vote.office = office.id
+    GROUP BY vote.createdby, vote.office, users.firstname, users.lastname,  office.name, party.name`,
+    values: [userid],
+  }),
+
 
 };
 

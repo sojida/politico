@@ -137,3 +137,22 @@ describe('VOTE', () => {
       });
   });
 });
+
+describe('GET USER VOTES', () => {
+  it('should return with users votes', (done) => {
+    chai.request(app)
+      .get('/api/v1/user_votes')
+      .set('Authorization', userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        if (res.body.data.length) {
+          expect(res.body.data[0]).to.have.property('createdby');
+          expect(res.body.data[0]).to.have.property('firstname');
+          expect(res.body.data[0]).to.have.property('lastname');
+          expect(res.body.data[0]).to.have.property('officename');
+          expect(res.body.data[0]).to.have.property('partyname');
+        }
+        done();
+      });
+  });
+});
