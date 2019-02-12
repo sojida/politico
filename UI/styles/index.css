@@ -801,12 +801,21 @@ footer{
 }
 
 .loader {
-    border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #26c93c; /* Blue */
+    border: 5px solid #f3f3f3; 
+    border-top: 5px solid #26c93c;
     border-radius: 50%;
     width: 10px;
     height: 10px;
     animation: spin 0.5s linear infinite;
+  }
+
+  .loader2{
+    border: 5px solid #26c93c; 
+    border-top: 5px solid #f3f3f3;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 0.5s linear infinite; 
   }
   
 @keyframes spin {

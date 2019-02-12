@@ -47,7 +47,7 @@ const middleware = {
 
     res.status(200).json({
       status: 200,
-      data: rows[0].passporturl,
+      data: rows,
       message: 'upload successful',
     });
   },
