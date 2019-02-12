@@ -27,7 +27,7 @@
             <button class="tablinks" name="party-section"><span class="icon"><i class="fas fa-republican"></i></span><span class="text">Party</span></button>
             <button class="tablinks" name="politician-section"><span class="icon"><i class="fas fa-hands-helping"></i></span><span class="text">Politician</span></button>
             <button class="tablinks" name="result-section"><span class="icon"><i class="fas fa-bars"></i></span><span class="text">Results</span></button>
-            <button class="tablinks" name="profile-section"><span class="icon"><i class="fas fa-user"></i></span><span class="text">My Profile</span></button>
+            <button class="tablinks" name="profile-section" id="user-section"><span class="icon"><i class="fas fa-user"></i></span><span class="text">My Profile</span></button>
         </div>
 
           <div id="vote-section" class="tabcontent">
@@ -132,53 +132,21 @@
 
                 <h3>Your Votes</h3>
 
-                    <button class="accordion"><span class="acc-text">Chairman</span> <span class="office-type">Local</span> <span class="vote-status">Voted</span></button>
-                    <div class="president-table panel">
-                        <table>
+                <div id="user-votes">
+                        <table class="user-votes-table">
                             <tr>
-                                <th>Status</th>
-                                <th></th>
+                                <th class="serial-num">s/n</th>
+                                <th>Office</th>
+                                <th>Party</th>
+                                <th>Candidate</th>              
                             </tr>
-                            <tr>
-                                <td>You voted for Habubak Aratiku</td>
-                                <td><i class="fas fa-handshake"></td>
-                            </tr>
-                            
+                            <tbody id="user-votes-info"></tbody>
+
                         </table>
+                        <div id="no-votes" class="center"></div>
+
                     </div>
-
-                    <button class="accordion"><span class="acc-text">Governor</span> <span class="office-type">State</span> <span class="vote-status">Voted</span></button>
-                    <div class="president-table panel">
-                        <table>
-                            <tr>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>You voted for Denome Alaye</td>
-                                <td><i class="fas fa-handshake"></td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-
-                    <button class="accordion"><span class="acc-text">President</span> <span class="office-type">Federal</span> <span class="vote-status">Voted</span></button>
-                    <div class="president-table panel">
-                        <table>
-                            <tr>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>You voted for Liamu Hamed</td>
-                                <td><i class="fas fa-handshake"></td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-
-                    
-
+                   
             </div>
 
             <div id="welcome-modal" class="modal wlc-modal">

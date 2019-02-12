@@ -15,4 +15,9 @@ router.post('/votes',
   voteMiddleware.createVotes,
   voteControllers.voteCandidate);
 
+router.get('/user_votes',
+  authMiddleware.verifyToken,
+  voteMiddleware.getUserVotes,
+  voteControllers.getUserVotes);
+
 export default router;

@@ -60,6 +60,13 @@ const middleware = {
 
     return next();
   },
+
+  async getUserVotes(req, res, next) {
+    const { rows: votes } = await db(queries.getUserVotes(req.user.id));
+
+    req.data = votes;
+    return next();
+  },
 };
 
 

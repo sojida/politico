@@ -245,6 +245,30 @@ window.onload = () => {
 
 
 
+            const userInfo = document.getElementById('user-votes-info');
+            const noVotes = document.getElementById('no-votes')
+
+            fetchFunc.getData(`${url}/user_votes`)
+            .then((res) => {
+                if(!res.data.length){
+                    userInfo.innerHTML = ''
+                    noVotes.innerHTML = '<h2>You have not voted yet</h2>'
+                } else if (res.data.length) {
+                    noVotes.innerHTML = ''
+                    userInfo.innerHTML = res.data.map((info, index) => {
+                        return `
+                        <tr>
+                            <td>${index+1}</td>
+                            <td>${info.officename}</td>
+                            <td>${info.partyname}</td>
+                            <td>${info.firstname} ${info.lastname}</td>
+                        </tr>`
+                    }).join(' ')
+                }
+            })
+
+
+
 
 
 }
