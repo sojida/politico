@@ -146,9 +146,7 @@ td img{
     td{
         font-size:0.9rem
     }
-    .panel form label{
-        display: inline-block;
-    }
+
   
     .panel form input[type="file"]{
       margin-left: 10px;
