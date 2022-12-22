@@ -41,7 +41,7 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.1",
     "express-form-data": "^2.0.8",
-    "jsonwebtoken": "^8.4.0",
+    "jsonwebtoken": "^9.0.0",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
     "pg": "^7.8.0",
